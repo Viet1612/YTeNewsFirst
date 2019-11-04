@@ -1,0 +1,123 @@
+/**
+ * Copyright(C) 2019 Tran Thanh Viet
+ * Constans.java, Oct 9, 2019 VietTT
+ */
+package ytebnews.utils;
+
+
+/**
+ * @author VietTT
+ *
+ */
+public class Constant {
+	
+	public static final String UTF8 = "utf-8";
+	public static final String DATABASE_PROP = "database.properties";
+	public static final String MESS_PROP = "message.properties";
+	public static final String CONFIG_PROP = "config.properties";
+	public static final String IMAGES_NEWS_FOLDER = "images_news";
+	
+	public static final String T_LOGIN_NAME = "login_name";
+	public static final String T_PASS = "pass";
+	public static final String T_SALT = "salt";
+	public static final String T_CATEGORY_NAME = "category_name";
+	public static final String T_CATEGORY_ID = "category_id";
+	public static final String T_NEWS_ID = "news_id";
+	public static final String T_NEWS_NAME = "news_name";
+	public static final String T_DESCRIPTION = "description";
+	public static final String T_CONTENT = "content";
+	public static final String T_IMAGE = "image";
+	public static final String T_DATE = "date";
+	public static final String T_USER_NAME = "user_name";
+	public static final String T_VIEW = "view";
+	public static final String T_RULE = "rule";
+	public static final String T_FUll_NAME = "full_name";
+	public static final String T_USER_ID = "user_id";
+	//Messege or ERR
+	public static final String ER016 = "ER016";
+	
+	//Rule
+	public static final int RULE_ADMIN = 0;
+	public static final int RULE_USER = 1;
+	public static final int RULE_AUTHOR = 2;
+	public static final int APPROVE_Y = 1;
+	public static final int APPROVE_N = 0;
+	public static final int APPROVE_DC = -1;
+	
+	//atribute
+	public static final String LOGIN_NAME = "loginname";
+	public static final String MESS_ERR = "err";
+	public static final String PASS = "pass";
+	public static final String ACTION = "action";
+	public static final String KEYNAME = "keyname";
+	public static final String CATEGORY_ID = "categoryid";
+	public static final String CURRENT_PAGE = "currentpage";
+	public static final String SEARCH = "search";
+	public static final String PAGING = "paging";
+	public static final String BACK = "back";
+	public static final String INSERT_SUCC = "insertsuccess";
+	//jsp
+	public static final String LOGIN_ADMIN_JSP = "/admin/login.jsp";
+	public static final String LIST_CATEGORY_JSP = "/admin/manager_category.jsp";
+	public static final String INDEX_ADMIN_JSP = "/admin/index.jsp";
+	public static final String MANAGER_NEWS_JSP = "/admin/manager_news.jsp";
+	public static final String MANAGER_NEWS_AUTHOR_JSP = "/admin/news_author.jsp";
+	public static final String INSERT_NEWS_JSP = "/admin/insert_news.jsp";
+	
+	
+	//servlet
+	public static final String LOGIN_URL = "/login.do";
+	public static final String LOGOUT_URL = "/logout.do";
+	public static final String LIST_CATEGORY_URL = "/listcategory.do";
+	public static final String LIST_NEWS_URL = "/listnews.do";
+	public static final String INDEX_ADMIN_URL = "/index.do";
+	public static final String LIST_NEWS_AUTHOR_URL = "/listnewsauthor.at";
+	public static final String INSERT_NEWS_URL = "/insertnews.at";
+	
+	//
+	//Số bản ghi trên một page
+	public static int LIMIT = Common.parseInt(ConfigProperties.getConfig("limit"), Constant.LIMIT_DEFAULT);
+	public static final int LIMIT_DEFAULT = 5;
+	// Số pagning tối đa
+	public static final int PAGING_PAGE = Common.parseInt(ConfigProperties.getConfig("pagning_max"), Constant.PAGING_PAGE_DEFAULT);
+	public static final int PAGING_PAGE_DEFAULT = 3;
+	public static final int OFFSET = 0;
+	//
+	public static final String KEYNAME_DEFAULT = "";
+	public static final int CATEGORY_ID_DEFAULT = 0;
+	public static final int APPROVE_DEFAULT = -1;
+	public static final int CURRENT_PAGE_DEFAULT = 1;
+	public static final int USER_ID_DEFAULT = 0;
+	public static final String NEXT_CHAR = ">>";
+	public static final String PRE_CHAR = "<<";
+	public static final String PREVIOUS = "previous";
+	public static final String PREVIOUS_CHAR_AT = "previouschar";
+	public static final String NEXT = "next";
+	public static final String NEXT_CHAR_AT = "nextchar";
+	public static final String TOTAL_NEWS = "totalnews";
+	public static final String APPROVE = "approve";
+	public static final long VIEW_DEFAULT = 0;
+	public static final String USER_ID = "userid";
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+
+	
+
+	
+
+	
+	
+	
+	
+	
+
+}
