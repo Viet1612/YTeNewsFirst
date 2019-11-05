@@ -23,7 +23,6 @@ import ytebnews.utils.Constant;
  * Servlet implementation class InsertNewsController
  */
 @WebServlet(value = { Constant.INSERT_NEWS_URL })
-@MultipartConfig
 public class InsertNewsController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -54,7 +53,7 @@ public class InsertNewsController extends HttpServlet {
 				News news = getNewsInfo(request);
 				news.setUserId(userId);
 				newsLogic.insertNewAuthor(news);
-				Common.uploadFile(request, news.getImage());
+				
 			}else {
 				path = Constant.LOGOUT_URL;
 			}
@@ -80,6 +79,7 @@ public class InsertNewsController extends HttpServlet {
 		String content= request.getParameter(Constant.T_CONTENT);
 		System.out.println(content);
 		String image  = Common.getSalt()+".png";
+		Common.uploadFile(request, news.getImage());
 		news.setNewsName(newsName);
 		news.setDescription(description);
 		news.setImage(image);
