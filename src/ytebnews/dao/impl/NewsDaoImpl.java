@@ -163,6 +163,7 @@ public class NewsDaoImpl extends BaseDaoImpl implements NewsDao {
 					news.setUserName(rs.getString(Constant.T_FUll_NAME));
 					news.setView(rs.getLong(Constant.T_VIEW));
 					news.setCategoryId(rs.getInt(Constant.T_CATEGORY_ID));
+					news.setApprove(rs.getInt("approve"));
 					news.setCategoryName(rs.getString(Constant.T_CATEGORY_NAME));
 					// add userInfor vào list
 					listNews.add(news);

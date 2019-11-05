@@ -35,6 +35,7 @@ public class Constant {
 	public static final String T_USER_ID = "user_id";
 	//Messege or ERR
 	public static final String ER016 = "ER016";
+	public static final String ER001 = "ER001";
 	
 	//Rule
 	public static final int RULE_ADMIN = 0;
@@ -99,6 +100,10 @@ public class Constant {
 	public static final long VIEW_DEFAULT = 0;
 	public static final String USER_ID = "userid";
 	
+	
+	public static final int MEMORY_THRESHOLD = 1024 * 1024 * 3; // 3MB
+	public static final int MAX_FILE_SIZE = 1024 * 1024 * 90; // 90MB
+	public static final int MAX_REQUEST_SIZE = 1024 * 1024 * 100; // 100MB
 	
 	
 	

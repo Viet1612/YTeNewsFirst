@@ -145,12 +145,13 @@
 											<td><c:out value="${news.userName}" /></td>
 											<td><c:out value="${news.datePost}" /></td>
 
-											<td><a class="btn btn-sm btn-primary" href=""> <i
+											<td><c:if test="${news.approve == 0}"><button class="btn btn-sm btn-primary" onclick=""> <i
 													class="fa fa-plus-circle"></i>
-											</a>
-												<button class="btn  btn-sm btn-danger" onclick="">
+											</button></c:if>
+											<button class="btn  btn-sm btn-danger" onclick="">
 													<i class="fa fa-trash"></i>
-												</button></td>
+												</button>
+											</td>
 										</tr>
 									</c:forEach>
 
