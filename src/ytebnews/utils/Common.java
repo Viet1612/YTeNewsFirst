@@ -203,6 +203,7 @@ public class Common {
 						String fileImg = dirUrl + File.separator + nameImage;
 						File file = new File(fileImg);
 						fileItem.write(file);
+						System.out.println(fileImg);
 					}
 				}
 			}

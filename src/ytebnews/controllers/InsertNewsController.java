@@ -72,14 +72,15 @@ public class InsertNewsController extends HttpServlet {
 	 */
 	private News getNewsInfo(HttpServletRequest request) {
 		News news = new News();
+		String image  = Common.getSalt()+".png";
+		Common.uploadFile(request, news.getImage());
 		String newsName = request.getParameter("title");
 		System.out.println(newsName);
 		String description = request.getParameter(Constant.T_DESCRIPTION);
 		System.out.println(description);
 		String content= request.getParameter(Constant.T_CONTENT);
 		System.out.println(content);
-		String image  = Common.getSalt()+".png";
-		Common.uploadFile(request, news.getImage());
+
 		news.setNewsName(newsName);
 		news.setDescription(description);
 		news.setImage(image);
