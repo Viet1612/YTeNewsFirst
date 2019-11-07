@@ -4,7 +4,6 @@
  */
 package ytebnews.utils;
 
-import java.io.File;
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
@@ -13,12 +12,6 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
-import javax.servlet.http.HttpServletRequest;
-
-import org.apache.commons.fileupload.FileItem;
-import org.apache.commons.fileupload.disk.DiskFileItemFactory;
-import org.apache.commons.fileupload.servlet.ServletFileUpload;
-
 /**
  * Chứa các hàm common của dự án
  * 
@@ -26,9 +19,8 @@ import org.apache.commons.fileupload.servlet.ServletFileUpload;
  *
  */
 public class Common {
-	private static final int MEMORY_THRESHOLD   = 1024 * 1024 * 3;  // 3MB
-	private static final int MAX_FILE_SIZE      = 1024 * 1024 * 90; // 90MB
-	private static final int MAX_REQUEST_SIZE   = 1024 * 1024 * 100; // 100MB
+
+
 	/**
 	 * Mã hóa SHA1
 	 * 
@@ -172,46 +164,7 @@ public class Common {
 		return result;
 	}
 
-	/**
-	 * Upload ảnh lên server
-	 * 
-	 * @param request
-	 * @return tên ảnh lưu vào DB
-	 */
-	public static void uploadFile(HttpServletRequest request, String nameImage) {
-		// xử lý upload file khi người dùng nhấn nút thực hiện
-		try {
-			DiskFileItemFactory fileItemFactory = new DiskFileItemFactory();
-			fileItemFactory.setSizeThreshold(MEMORY_THRESHOLD);
-			fileItemFactory.setRepository(new File(System.getProperty("java.io.tmpdir")));
-			ServletFileUpload upload = new ServletFileUpload(fileItemFactory);
-		     // sets maximum size of upload file
-	        upload.setFileSizeMax(MAX_FILE_SIZE);
-	        // sets maximum size of request (include file + form data)
-	        upload.setSizeMax(MAX_REQUEST_SIZE);
-			List<FileItem> fileItems = upload.parseRequest(request);
-			for (FileItem fileItem : fileItems) {
-				if (!fileItem.isFormField()) {
-					// xử lý file
-					if (!"".equals(nameImage)) {
-						String dirUrl = request.getServletContext().getRealPath("") + File.separator
-								+ Constant.IMAGES_NEWS_FOLDER;
-						File dir = new File(dirUrl);
-						if (!dir.exists()) {
-							dir.mkdir();
-						}
-						String fileImg = dirUrl + File.separator + nameImage;
-						File file = new File(fileImg);
-						fileItem.write(file);
-					}
-				}
-			}
-		} catch (Exception e) {
-			nameImage = null;
-			e.printStackTrace();
-		}
 
-	}
 
 	/**
 	 * Lấy thời gian hiện tại
@@ -227,4 +180,6 @@ public class Common {
 		timeNow = yearNow + "-" + monthNow + "-" + dayNow;
 		return timeNow;
 	}
+	
+	
 }

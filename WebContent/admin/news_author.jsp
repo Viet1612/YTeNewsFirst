@@ -44,6 +44,7 @@
         <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
         <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
         <![endif]-->
+
 </head>
 
 <body class="hold-transition skin-blue sidebar-mini">
@@ -71,6 +72,9 @@
 				<div class="box">
 					<div class="box-header with-border">
 						<h3 class="box-title">List</h3>
+						<div>
+							<h3>${insertsuccess}</h3>
+						</div>
 						<div class="box-tools pull-right">
 							<button class="btn btn-box-tool" data-widget="collapse"
 								data-toggle="tooltip" title="Collapse">
@@ -95,9 +99,15 @@
 											name="keyname" value="${keyname}" placeholder="keyword_title">
 										<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><select
 											style="margin-top: 9px; width: 30%;" name="approve">
-											<option value="-1" <c:if test="${approve == -1}"> selected </c:if>>Please Choose stt...</option>
-											<option value="0" <c:if test="${approve == 0}"> selected </c:if>>Chưa duyệt</option>
-											<option value="1" <c:if test="${approve == 1}"> selected </c:if>>Đã duyệt</option>
+											<option value="-1"
+												<c:if test="${approve == -1}"> selected </c:if>>Please
+												Choose stt...</option>
+											<option value="0"
+												<c:if test="${approve == 0}"> selected </c:if>>Chưa
+												duyệt</option>
+											<option value="1"
+												<c:if test="${approve == 1}"> selected </c:if>>Đã
+												duyệt</option>
 										</select> <span class="input-group-btn">
 											<button class="btn btn-default" type="submit">
 												Search</button>
@@ -107,7 +117,8 @@
 							</form>
 
 							<div style="width: 40%;" class="col-md-6" align="right">
-								<button onclick="window.location.href='${pageContext.request.contextPath}/insertnews.at'"
+								<button
+									onclick="window.location.href='${pageContext.request.contextPath}/insertnews.at'"
 									class="btn btn-success">Add News</button>
 							</div>
 
@@ -118,11 +129,11 @@
 								<table class="table table-bordered ">
 									<tr>
 										<th style="width: 12%">Image</th>
-										<th style="width: 12%">Title</th>
-										<th style="width: 11%">Description</th>
+										<th style="width: 14%">Title</th>
+										<th style="width: 13%">Description</th>
 										<th style="width: 45%">Content</th>
 										<th style="width: 7%">Date Post</th>
-										<th style="width: 8%">Action</th>
+										<th style="width: 4%">Action</th>
 									</tr>
 									<c:forEach items="${listNews}" var="news">
 										<tr>
@@ -134,12 +145,16 @@
 											<td><c:out value="${news.content}" /></td>
 											<td><c:out value="${news.datePost}" /></td>
 
-											<td><a class="btn btn-sm btn-primary" href=""> <i
-													class="fa fa-pencil"></i>
-											</a>
-												<button class="btn  btn-sm btn-danger" onclick="">
-													<i class="fa fa-trash"></i>
-												</button></td>
+											<td><c:if test="${news.approve == 0}">
+													<a class="btn btn-sm btn-primary" href=""> <i
+														class="fa fa-pencil"></i>
+													</a>
+												</c:if>
+												<c:if test="${news.approve == 1}">
+													<button class="btn  btn-sm btn-danger" onclick="">
+														<i class="fa fa-trash"></i>
+													</button>
+												</c:if></td>
 										</tr>
 									</c:forEach>
 
@@ -163,8 +178,8 @@
 								<c:url value="listnewsauthor.at" var="url_paging">
 									<c:param name="action" value="paging" />
 									<c:param name="keyname" value="${keyname}" />
-									<c:param name="categoryid" value="${categoryid}"/>
-									<c:param name="approve" value="${approve}"  />
+									<c:param name="categoryid" value="${categoryid}" />
+									<c:param name="approve" value="${approve}" />
 
 								</c:url>
 								<td class="lbl_paging"><a
@@ -210,6 +225,7 @@
 	<!-- AdminLTE for demo purposes -->
 	<script
 		src="${pageContext.request.contextPath}/admin/content/dist/js/demo.js"></script>
+
 
 </body>
 
