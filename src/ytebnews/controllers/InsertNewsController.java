@@ -77,13 +77,14 @@ public class InsertNewsController extends HttpServlet {
 				String content = "";
 				for (FileItem fileItem : fileItems) {
 					i = i + 1;
+					// Lấy title
 					if (i == 1) {
 						title = new String(fileItem.getString().getBytes("iso-8859-1"), "UTF-8");
 					} else if (i == 2) {
-						description = new String(fileItem.getString().getBytes("iso-8859-1"), "UTF-8");
+						description = new String(fileItem.getString().getBytes("iso-8859-1"), "UTF-8"); // des
 					} else if (!fileItem.isFormField()) {
 
-						// xử lý file
+						// xử lý file upload ảnh
 						if (!"".equals(image)) {
 							String dirUrl = request.getServletContext().getRealPath("") + File.separator
 									+ Constant.IMAGES_NEWS_FOLDER;
@@ -96,7 +97,7 @@ public class InsertNewsController extends HttpServlet {
 							fileImage = fileItem;
 						}
 					} else if (i == 4) {
-						content = new String(fileItem.getString().getBytes("iso-8859-1"), "UTF-8");
+						content = new String(fileItem.getString().getBytes("iso-8859-1"), "UTF-8");//content
 					}
 				}
 				news.setNewsName(title);
@@ -107,6 +108,7 @@ public class InsertNewsController extends HttpServlet {
 				news.setView(Constant.VIEW_DEFAULT);
 				news.setApprove(Constant.APPROVE_N);
 				news.setUserId(userId);
+				// Check nhập
 				if (!(Common.checkEmpty(title) && Common.checkEmpty(description) && Common.checkEmpty(content)
 						&& fileImage.getSize() > 0)) {
 					request.setAttribute("err", MessageProperties.getMesage(Constant.ER001));
@@ -115,8 +117,10 @@ public class InsertNewsController extends HttpServlet {
 							.getRequestDispatcher(Constant.INSERT_NEWS_JSP);
 					dispatch.forward(request, response);
 				} else {
-					fileImage.write(file);
+					//Insert vào db
 					newsLogic.insertNewAuthor(news);
+					//Ghi file upload
+					fileImage.write(file);
 					response.sendRedirect(request.getContextPath() + Constant.LIST_NEWS_AUTHOR_URL + "?action=insertsuccess");
 				}
 

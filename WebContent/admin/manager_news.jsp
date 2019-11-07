@@ -38,6 +38,7 @@
 <link
 	href="${pageContext.request.contextPath}/admin/content/dist/css/skins/_all-skins.min.css"
 	rel="stylesheet" type="text/css" />
+	
 <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
 <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
 <!--[if lt IE 9]>
@@ -145,7 +146,7 @@
 											<td><c:out value="${news.userName}" /></td>
 											<td><c:out value="${news.datePost}" /></td>
 
-											<td><c:if test="${news.approve == 0}"><button class="btn btn-sm btn-primary" onclick=""> <i
+											<td><c:if test="${news.approve == 0}"><button class="btn btn-sm btn-primary"  data-toggle="modal" data-target="#myModal"> <i
 													class="fa fa-plus-circle"></i>
 											</button></c:if>
 											<button class="btn  btn-sm btn-danger" onclick="">
@@ -201,6 +202,27 @@
 		<!-- Control Sidebar -->
 
 	</div>
+	    <!-- The Modal -->
+      <div class="modal" id="myModal">
+         <div class="modal-dialog">
+            <div class="modal-content">
+               <!-- Modal Header -->
+               <div class="modal-header">
+                  <h4 class="modal-title">Modal Heading</h4>
+                  <button type="button" class="close" data-dismiss="modal">&times;</button>
+               </div>
+               <!-- Modal body -->
+               <div class="modal-body">
+                  Modal body..
+               </div>
+               <!-- Modal footer -->
+               <div class="modal-footer">
+                  <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                  <button type="button" class="btn btn-danger" data-dismiss="modal" style="background: Blue">Add</button>
+               </div>
+            </div>
+         </div>
+      </div>
 	<!-- ./wrapper -->
 	<!-- jQuery 2.2.3 -->
 	<script
@@ -222,6 +244,11 @@
 	<!-- AdminLTE for demo purposes -->
 	<script
 		src="${pageContext.request.contextPath}/admin/content/dist/js/demo.js"></script>
+
+
+<!-- modal -->
+<script src="${pageContext.request.contextPath}/admin/content/bootstrap/modal/jquery-3.2.1.slim.min.js"></script>
+    <script src="${pageContext.request.contextPath}/admin/content/bootstrap/modal/popper.min.js"></script>
 
 </body>
 
