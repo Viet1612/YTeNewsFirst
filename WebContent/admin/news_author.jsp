@@ -150,7 +150,7 @@
 														class="fa fa-pencil"></i>
 													</a>
 												</c:if>
-												<c:if test="${news.approve == 1}">
+												<c:if test="${news.approve == 1 || news.approve == 0}">
 													<button class="btn  btn-sm btn-danger" onclick="">
 														<i class="fa fa-trash"></i>
 													</button>

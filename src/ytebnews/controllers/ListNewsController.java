@@ -77,6 +77,8 @@ public class ListNewsController extends HttpServlet {
 					currentPage = (int) session.getAttribute(Constant.CURRENT_PAGE);
 				} else if (Constant.INSERT_SUCC.equals(action)) {
 					request.setAttribute(Constant.INSERT_SUCC, MessageProperties.getMesage("MSG001"));
+				}else if (Constant.APPROVE_SUCC.equals(action) && Constant.LIST_NEWS_URL.equals(servletPath)) {
+					request.setAttribute(Constant.APPROVE_SUCC, MessageProperties.getMesage("MSG002"));
 				}
 
 			}

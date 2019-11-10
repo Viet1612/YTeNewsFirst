@@ -112,7 +112,7 @@ public class InsertNewsController extends HttpServlet {
 				if (!(Common.checkEmpty(title) && Common.checkEmpty(description) && Common.checkEmpty(content)
 						&& fileImage.getSize() > 0)) {
 					request.setAttribute("err", MessageProperties.getMesage(Constant.ER001));
-					request.setAttribute("news", news);
+					request.setAttribute(Constant.NEWS, news);
 					RequestDispatcher dispatch = request.getServletContext()
 							.getRequestDispatcher(Constant.INSERT_NEWS_JSP);
 					dispatch.forward(request, response);

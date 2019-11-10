@@ -10,6 +10,7 @@ import java.util.List;
 
 import ytebnews.dao.NewsDao;
 import ytebnews.entities.News;
+import ytebnews.utils.Common;
 import ytebnews.utils.Constant;
 
 /**
@@ -217,6 +218,119 @@ public class NewsDaoImpl extends BaseDaoImpl implements NewsDao {
 			closeConnectDB();
 		}
 
+	}
+
+	/* (non-javadoc)
+	 * @see ytebnews.dao.NewsDao#checkExistNewsId(int)
+	 */
+	@Override
+	public boolean checkExistNewsId(int newsId) throws ClassNotFoundException, SQLException {
+		boolean check = false;
+		try {
+			connectDB();
+			if (con != null) {
+				// Câu SQl
+				StringBuilder sqlQuery = new StringBuilder();
+				sqlQuery.append("SELECT news_id ");
+				sqlQuery.append("FROM tbl_news ");
+				sqlQuery.append("WHERE news_id = ? ");
+				
+				// Tao đối tượng prepareStatement để gửi các câu lệnh sql được tham số hóa đến csdl
+				pst = con.prepareStatement(sqlQuery.toString());
+				int index = 0;
+				pst.setInt(++index, newsId);
+				rs = pst.executeQuery();
+				// Lấy bản ghi
+				if (rs.next()) {
+					check = true;
+				}
+
+			}
+
+		} catch (SQLException e) {
+			System.out.println(this.getClass().getName() + "-"
+					+ Thread.currentThread().getStackTrace()[1].getMethodName() + e.getMessage());
+			throw e;
+		} finally {
+			closeConnectDB();
+		}
+
+		return check;
+	}
+
+	/* (non-javadoc)
+	 * @see ytebnews.dao.NewsDao#getNewsById(int)
+	 */
+	@Override
+	public News getNewsById(int newsId) throws ClassNotFoundException, SQLException {
+		News news = null;
+		try {
+			connectDB();
+			if (con != null) {
+				// Câu SQl
+				StringBuilder sqlQuery = new StringBuilder();
+				sqlQuery.append("SELECT * ");
+				sqlQuery.append("FROM tbl_news ");
+				sqlQuery.append("WHERE news_id = ?");
+				// Tao đối tượng prepareStatement để gửi các câu lệnh sql được tham số hóa đến csdl
+				pst = con.prepareStatement(sqlQuery.toString());
+				int index = 0;
+				pst.setLong(++index, newsId);
+				rs = pst.executeQuery();
+				// Lấy bản ghi
+				while (rs.next()) {
+					news = new News();
+					news.setNewsId(rs.getInt(Constant.T_NEWS_ID));
+					news.setNewsName(rs.getString(Constant.T_NEWS_NAME));
+					news.setDescription(rs.getString(Constant.T_DESCRIPTION));
+					news.setContent(rs.getString(Constant.T_CONTENT));
+					news.setImage(rs.getString(Constant.T_IMAGE));
+					news.setDatePost(rs.getString(Constant.T_DATE));
+					news.setView(rs.getLong(Constant.T_VIEW));
+					news.setCategoryId(rs.getInt(Constant.T_CATEGORY_ID));
+					news.setApprove(rs.getInt("approve"));
+				}
+
+			}
+
+		} catch (SQLException e) {
+			System.out.println(this.getClass().getName() + "-"
+					+ Thread.currentThread().getStackTrace()[1].getMethodName() + e.getMessage());
+			throw e;
+		} finally {
+			closeConnectDB();
+		}
+		return news;
+	}
+
+	/* (non-javadoc)
+	 * @see ytebnews.dao.NewsDao#approveNews()
+	 */
+	@Override
+	public void approveNews(int newsId) throws ClassNotFoundException, SQLException {
+		try {
+			connectDB();
+			// TẠo câu sql
+			StringBuilder sqlQuery = new StringBuilder();
+			sqlQuery.append("UPDATE tbl_news ");
+			sqlQuery.append("SET approve = ?, date = ? ");
+			sqlQuery.append("WHERE news_id = ? ");
+			// Tao đối tượng prepareStatement để gửi các câu lệnh sql được tham số hóa đến csdl
+			pst = con.prepareStatement(sqlQuery.toString());
+			int index = 0;
+			// Truyền các giá trị value
+			pst.setInt(++index, Constant.APPROVE_Y);
+			pst.setString(++index, Common.getTimeNow());
+			pst.setInt(++index, newsId);
+			// Thực thi câu lệnh
+			pst.executeUpdate();
+		} catch (SQLException e) {
+			System.out.println(this.getClass().getName() + "-"
+					+ Thread.currentThread().getStackTrace()[1].getMethodName() + e.getMessage());
+			throw e;
+		}finally {
+			closeConnectDB();
+		}
 	}
 
 }

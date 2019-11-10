@@ -75,6 +75,9 @@
 				<div class="box">
 					<div class="box-header with-border">
 						<h3 class="box-title">List</h3>
+						<div>
+							<h3>${approvesuccess}</h3>
+						</div>
 						<div class="box-tools pull-right">
 							<button class="btn btn-box-tool" data-widget="collapse"
 								data-toggle="tooltip" title="Collapse">
@@ -136,7 +139,7 @@
 									</tr>
 									<c:forEach items="${listNews}" var="news">
 										<tr>
-											<td><c:out value="${news.newsId}" /></td>
+											<td><a href="${pageContext.request.contextPath}/detailnews.do?newsid=${news.newsId}"><c:out value="${news.newsId}" /></a></td>
 											<td><img
 												src="${pageContext.request.contextPath}/images_news/${news.image}"
 												class="img-responsive" alt="${news.categoryName}"></td>
@@ -146,9 +149,9 @@
 											<td><c:out value="${news.userName}" /></td>
 											<td><c:out value="${news.datePost}" /></td>
 
-											<td><c:if test="${news.approve == 0}"><button class="btn btn-sm btn-primary"  data-toggle="modal" data-target="#myModal"> <i
+											<td><c:if test="${news.approve == 0}"><a href="${pageContext.request.contextPath}/detailnews.do?newsid=${news.newsId}"><button class="btn btn-sm btn-primary"  > <i
 													class="fa fa-plus-circle"></i>
-											</button></c:if>
+											</button></a></c:if>
 											<button class="btn  btn-sm btn-danger" onclick="">
 													<i class="fa fa-trash"></i>
 												</button>
@@ -214,6 +217,7 @@
                <!-- Modal body -->
                <div class="modal-body">
                   Modal body..
+                  data-toggle="modal" data-target="#myModal"
                </div>
                <!-- Modal footer -->
                <div class="modal-footer">

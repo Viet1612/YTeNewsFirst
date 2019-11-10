@@ -55,4 +55,28 @@ public class NewsLogicImpl implements NewsLogic {
 		
 	}
 
+	/* (non-javadoc)
+	 * @see ytebnews.logics.NewsLogic#checkExistNewsId(int)
+	 */
+	@Override
+	public boolean checkExistNewsId(int newsId) throws ClassNotFoundException, SQLException {
+		return newsDao.checkExistNewsId(newsId);
+	}
+
+	/* (non-javadoc)
+	 * @see ytebnews.logics.NewsLogic#getNewsById(int)
+	 */
+	@Override
+	public News getNewsById(int newsId) throws ClassNotFoundException, SQLException {
+		return newsDao.getNewsById(newsId);
+	}
+
+	/* (non-javadoc)
+	 * @see ytebnews.logics.NewsLogic#approveNews(int)
+	 */
+	@Override
+	public void approveNews(int newsId) throws ClassNotFoundException, SQLException {
+		newsDao.approveNews(newsId);
+	}
+
 }

@@ -64,6 +64,7 @@ public class Constant {
 	public static final String MANAGER_NEWS_JSP = "/admin/manager_news.jsp";
 	public static final String MANAGER_NEWS_AUTHOR_JSP = "/admin/news_author.jsp";
 	public static final String INSERT_NEWS_JSP = "/admin/insert_news.jsp";
+	public static final String DETAIL_NEWS_ADMIN_JSP = "/admin/detail_news.jsp";
 	
 	
 	//servlet
@@ -74,6 +75,9 @@ public class Constant {
 	public static final String INDEX_ADMIN_URL = "/index.do";
 	public static final String LIST_NEWS_AUTHOR_URL = "/listnewsauthor.at";
 	public static final String INSERT_NEWS_URL = "/insertnews.at";
+	public static final String SYSTEM_ERR_URL = "/systemerror";
+	public static final String VIEW_NEWS_URL = "/detailnews.do";
+	public static final String APPROVE_URL = "/approvenews.do";
 	
 	//
 	//Số bản ghi trên một page
@@ -104,6 +108,12 @@ public class Constant {
 	public static final int MEMORY_THRESHOLD = 1024 * 1024 * 3; // 3MB
 	public static final int MAX_FILE_SIZE = 1024 * 1024 * 90; // 90MB
 	public static final int MAX_REQUEST_SIZE = 1024 * 1024 * 100; // 100MB
+	public static final String NEWS_ID = "newsid";
+	public static final int NEWS_ID_DEFAULT = 0;
+	public static final String NEWS = "news";
+	public static final String APPROVE_SUCC = "approvesuccess";
+	
+	
 	
 	
 	
