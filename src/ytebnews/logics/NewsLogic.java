@@ -65,5 +65,5 @@ public interface NewsLogic {
 	 * @throws SQLException 
 	 * @throws ClassNotFoundException 
 	 */
-	public void approveNews(int newsId) throws ClassNotFoundException, SQLException;
+	public void approveNews(int newsId, int categoryId) throws ClassNotFoundException, SQLException;
 }

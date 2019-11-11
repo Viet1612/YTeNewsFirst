@@ -220,7 +220,9 @@ public class NewsDaoImpl extends BaseDaoImpl implements NewsDao {
 
 	}
 
-	/* (non-javadoc)
+	/*
+	 * (non-javadoc)
+	 * 
 	 * @see ytebnews.dao.NewsDao#checkExistNewsId(int)
 	 */
 	@Override
@@ -234,8 +236,9 @@ public class NewsDaoImpl extends BaseDaoImpl implements NewsDao {
 				sqlQuery.append("SELECT news_id ");
 				sqlQuery.append("FROM tbl_news ");
 				sqlQuery.append("WHERE news_id = ? ");
-				
-				// Tao đối tượng prepareStatement để gửi các câu lệnh sql được tham số hóa đến csdl
+
+				// Tao đối tượng prepareStatement để gửi các câu lệnh sql được tham số hóa đến
+				// csdl
 				pst = con.prepareStatement(sqlQuery.toString());
 				int index = 0;
 				pst.setInt(++index, newsId);
@@ -258,7 +261,9 @@ public class NewsDaoImpl extends BaseDaoImpl implements NewsDao {
 		return check;
 	}
 
-	/* (non-javadoc)
+	/*
+	 * (non-javadoc)
+	 * 
 	 * @see ytebnews.dao.NewsDao#getNewsById(int)
 	 */
 	@Override
@@ -272,7 +277,8 @@ public class NewsDaoImpl extends BaseDaoImpl implements NewsDao {
 				sqlQuery.append("SELECT * ");
 				sqlQuery.append("FROM tbl_news ");
 				sqlQuery.append("WHERE news_id = ?");
-				// Tao đối tượng prepareStatement để gửi các câu lệnh sql được tham số hóa đến csdl
+				// Tao đối tượng prepareStatement để gửi các câu lệnh sql được tham số hóa đến
+				// csdl
 				pst = con.prepareStatement(sqlQuery.toString());
 				int index = 0;
 				pst.setLong(++index, newsId);
@@ -303,24 +309,28 @@ public class NewsDaoImpl extends BaseDaoImpl implements NewsDao {
 		return news;
 	}
 
-	/* (non-javadoc)
+	/*
+	 * (non-javadoc)
+	 * 
 	 * @see ytebnews.dao.NewsDao#approveNews()
 	 */
 	@Override
-	public void approveNews(int newsId) throws ClassNotFoundException, SQLException {
+	public void approveNews(int newsId, int categoryId) throws ClassNotFoundException, SQLException {
 		try {
 			connectDB();
 			// TẠo câu sql
 			StringBuilder sqlQuery = new StringBuilder();
 			sqlQuery.append("UPDATE tbl_news ");
-			sqlQuery.append("SET approve = ?, date = ? ");
+			sqlQuery.append("SET approve = ?, date = ?, category_id = ? ");
 			sqlQuery.append("WHERE news_id = ? ");
-			// Tao đối tượng prepareStatement để gửi các câu lệnh sql được tham số hóa đến csdl
+			// Tao đối tượng prepareStatement để gửi các câu lệnh sql được tham số hóa đến
+			// csdl
 			pst = con.prepareStatement(sqlQuery.toString());
 			int index = 0;
 			// Truyền các giá trị value
 			pst.setInt(++index, Constant.APPROVE_Y);
 			pst.setString(++index, Common.getTimeNow());
+			pst.setInt(++index, categoryId);
 			pst.setInt(++index, newsId);
 			// Thực thi câu lệnh
 			pst.executeUpdate();
@@ -328,7 +338,7 @@ public class NewsDaoImpl extends BaseDaoImpl implements NewsDao {
 			System.out.println(this.getClass().getName() + "-"
 					+ Thread.currentThread().getStackTrace()[1].getMethodName() + e.getMessage());
 			throw e;
-		}finally {
+		} finally {
 			closeConnectDB();
 		}
 	}

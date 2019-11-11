@@ -75,8 +75,8 @@ public class NewsLogicImpl implements NewsLogic {
 	 * @see ytebnews.logics.NewsLogic#approveNews(int)
 	 */
 	@Override
-	public void approveNews(int newsId) throws ClassNotFoundException, SQLException {
-		newsDao.approveNews(newsId);
+	public void approveNews(int newsId , int categoryId) throws ClassNotFoundException, SQLException {
+		newsDao.approveNews(newsId, categoryId);
 	}
 
 }

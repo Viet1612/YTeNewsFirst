@@ -1,6 +1,7 @@
 package ytebnews.controllers;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -8,9 +9,13 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.sound.midi.Soundbank;
 
+import ytebnews.entities.Category;
 import ytebnews.entities.News;
+import ytebnews.logics.CategoryLogic;
 import ytebnews.logics.NewsLogic;
+import ytebnews.logics.impl.CategoryLogicImpl;
 import ytebnews.logics.impl.NewsLogicImpl;
 import ytebnews.utils.Common;
 import ytebnews.utils.Constant;
@@ -31,14 +36,17 @@ public class DetailNewAdminController extends HttpServlet {
 		try {
 			// Khai báo khơi tạo đối tượng
 			NewsLogic newsLogic = new NewsLogicImpl();
+			CategoryLogic categoryLogic = new CategoryLogicImpl();
 			// Lấy id từ rq
 			int newsId = Common.parseInt(request.getParameter(Constant.NEWS_ID), Constant.NEWS_ID_DEFAULT);
 			// userId paseInt không lỗi và tồn tại mới hiển thị ADM005
 			if (newsId > 0 && newsLogic.checkExistNewsId(newsId)) {
 				// Lấy userInfor bằng userId
 				News news = newsLogic.getNewsById(newsId);
+				List<Category> lisCategories = categoryLogic.getListCategory();
 				// Set đối tượng lên rq
 				request.setAttribute(Constant.NEWS, news);
+				request.setAttribute("listcategory", lisCategories);
 				RequestDispatcher dispatch = request.getServletContext()
 						.getRequestDispatcher(Constant.DETAIL_NEWS_ADMIN_JSP);
 				dispatch.forward(request, response);
@@ -66,9 +74,11 @@ public class DetailNewAdminController extends HttpServlet {
 			NewsLogic newsLogic = new NewsLogicImpl();
 			// Lấy id từ rq
 			int newsId = Common.parseInt(request.getParameter(Constant.NEWS_ID), Constant.NEWS_ID_DEFAULT);
-			// userId paseInt không lỗi và tồn tại mới hiển thị ADM005
+			int catelogyId = Common.parseInt(request.getParameter(Constant.CATEGORY_ID), Constant.CATEGORY_ID_DEFAULT);
+			System.out.println(catelogyId);
+			// userId paseInt không lỗi và tồn tại mới cho phê duyệt
 			if (newsId > 0 && newsLogic.checkExistNewsId(newsId)) {
-				newsLogic.approveNews(newsId);
+				newsLogic.approveNews(newsId, catelogyId);
 				response.sendRedirect(request.getContextPath() + Constant.LIST_NEWS_URL + "?action=approvesuccess");
 			} else {
 				// chuyển đến mh lỗi
