@@ -76,7 +76,7 @@
 					<div class="box-header with-border">
 						<h3 class="box-title">List</h3>
 						<div>
-							<h3>${approvesuccess}</h3>
+							<h3 style="color: red;">${approvesuccess}${deletesuccess}</h3>
 						</div>
 						<div class="box-tools pull-right">
 							<button class="btn btn-box-tool" data-widget="collapse"

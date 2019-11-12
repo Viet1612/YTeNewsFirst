@@ -73,7 +73,7 @@
 					<div class="box-header with-border">
 						<h3 class="box-title">List</h3>
 						<div>
-							<h3>${insertsuccess}</h3>
+							<h3 style="color: red;">${insertsuccess}${deletesuccess}</h3>
 						</div>
 						<div class="box-tools pull-right">
 							<button class="btn btn-box-tool" data-widget="collapse"
@@ -129,15 +129,19 @@
 							<div class="col-md-12 table-responsive">
 								<table class="table table-bordered ">
 									<tr>
+									<th style="width: 3%">ID</th>
 										<th style="width: 12%">Image</th>
-										<th style="width: 14%">Title</th>
+										<th style="width: 13%">Title</th>
 										<th style="width: 13%">Description</th>
 										<th style="width: 45%">Content</th>
 										<th style="width: 7%">Date Post</th>
-										<th style="width: 4%">Action</th>
+										<th style="width: 3%">Action</th>
 									</tr>
 									<c:forEach items="${listNews}" var="news">
 										<tr>
+										<td><a
+												href="${pageContext.request.contextPath}/detailnews.at?newsid=${news.newsId}"><c:out
+														value="${news.newsId}" /></a></td>
 											<td><img
 												src="${pageContext.request.contextPath}/images_news/${news.image}"
 												class="img-responsive" alt="${news.categoryName}"></td>
@@ -151,7 +155,7 @@
 														class="fa fa-pencil"></i>
 													</a>
 												</c:if>
-												<c:if test="${news.approve == 1 || news.approve == 0}">
+												<c:if test="${news.approve == 0}">
 													<button class="btn  btn-sm btn-danger" onclick="comfirmDeleteAu(${news.newsId});">
 														<i class="fa fa-trash"></i>
 													</button>
@@ -161,7 +165,7 @@
 
 									<tfoot>
 										<tr>
-											<td colspan="7"><span class="pull-right">Page:
+											<td colspan="8"><span class="pull-right">Page:
 													${currentpage} - Total of recorders: ${totalnews}</span></td>
 										</tr>
 									</tfoot>

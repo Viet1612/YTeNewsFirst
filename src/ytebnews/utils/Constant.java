@@ -57,6 +57,7 @@ public class Constant {
 	public static final String PAGING = "paging";
 	public static final String BACK = "back";
 	public static final String INSERT_SUCC = "insertsuccess";
+	public static final String DELE_SUCC = "deletesuccess";
 	//jsp
 	public static final String LOGIN_ADMIN_JSP = "/admin/login.jsp";
 	public static final String LIST_CATEGORY_JSP = "/admin/manager_category.jsp";
@@ -80,7 +81,7 @@ public class Constant {
 	public static final String APPROVE_URL = "/approvenews.do";
 	public static final String DELE_NEWS_ADMIN_URL = "/deletenews.do";
 	public static final String DELE_NEWS_AUTHOR_URL = "/deletenews.at";
-	
+	public static final String VIEW_NEWS_AU_URL = "/detailnews.at";
 	//
 	//Số bản ghi trên một page
 	public static int LIMIT = Common.parseInt(ConfigProperties.getConfig("limit"), Constant.LIMIT_DEFAULT);
@@ -114,6 +115,7 @@ public class Constant {
 	public static final int NEWS_ID_DEFAULT = 0;
 	public static final String NEWS = "news";
 	public static final String APPROVE_SUCC = "approvesuccess";
+
 	
 	
 	

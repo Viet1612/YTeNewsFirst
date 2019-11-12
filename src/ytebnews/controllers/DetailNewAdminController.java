@@ -22,7 +22,7 @@ import ytebnews.utils.Constant;
 /**
  * Servlet implementation class DetailNewAdminController
  */
-@WebServlet(value = { Constant.VIEW_NEWS_URL, Constant.APPROVE_URL })
+@WebServlet(value = { Constant.VIEW_NEWS_URL, Constant.APPROVE_URL, Constant.VIEW_NEWS_AU_URL })
 public class DetailNewAdminController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
