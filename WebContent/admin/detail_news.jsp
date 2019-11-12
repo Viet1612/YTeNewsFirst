@@ -191,7 +191,9 @@
 			})
 		});
 	</script>
-
+<!-- modal -->
+<script src="${pageContext.request.contextPath}/admin/content/bootstrap/modal/jquery-3.2.1.slim.min.js"></script>
+    <script src="${pageContext.request.contextPath}/admin/content/bootstrap/modal/popper.min.js"></script>
 
 </body>
 </html>

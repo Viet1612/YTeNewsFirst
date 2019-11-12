@@ -66,4 +66,12 @@ public interface NewsLogic {
 	 * @throws ClassNotFoundException 
 	 */
 	public void approveNews(int newsId, int categoryId) throws ClassNotFoundException, SQLException;
+	
+	/**
+	 * Xoá tin tức
+	 * @param newsId
+	 * @throws SQLException
+	 * @throws ClassNotFoundException
+	 */
+	public void deleteNews(int newsId) throws SQLException, ClassNotFoundException;
 }

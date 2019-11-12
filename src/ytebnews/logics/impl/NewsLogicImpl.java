@@ -79,4 +79,13 @@ public class NewsLogicImpl implements NewsLogic {
 		newsDao.approveNews(newsId, categoryId);
 	}
 
+	/* (non-javadoc)
+	 * @see ytebnews.logics.NewsLogic#deleteNews(int)
+	 */
+	@Override
+	public void deleteNews(int newsId) throws SQLException, ClassNotFoundException {
+		newsDao.deleteNews(newsId);
+		
+	}
+
 }

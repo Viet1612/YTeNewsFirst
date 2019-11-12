@@ -38,7 +38,7 @@
 <link
 	href="${pageContext.request.contextPath}/admin/content/dist/css/skins/_all-skins.min.css"
 	rel="stylesheet" type="text/css" />
-	
+
 <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
 <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
 <!--[if lt IE 9]>
@@ -95,6 +95,7 @@
 							<form method="get"
 								action="${pageContext.request.contextPath}/listnews.do">
 								<input type="hidden" name="action" value="search" />
+								<input type="hidden" name="newsid" value="${news.newsId}" />
 								<div class="col-md-6" style="width: 90%;">
 									<div class="input-group">
 
@@ -108,13 +109,18 @@
 													<c:if test="${categoryid == category.categoryId}"> selected </c:if>><c:out
 														value="${category.categoryName}" /></option>
 											</c:forEach>
-											
-										</select> 
-										<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><select
+
+										</select> <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><select
 											style="margin-top: 9px; width: 15%;" name="approve">
-											<option value="-1" <c:if test="${approve == -1}"> selected </c:if>>Please Choose stt...</option>
-											<option value="0" <c:if test="${approve == 0}"> selected </c:if>>Chưa duyệt</option>
-											<option value="1" <c:if test="${approve == 1}"> selected </c:if>>Đã duyệt</option>
+											<option value="-1"
+												<c:if test="${approve == -1}"> selected </c:if>>Please
+												Choose stt...</option>
+											<option value="0"
+												<c:if test="${approve == 0}"> selected </c:if>>Chưa
+												duyệt</option>
+											<option value="1"
+												<c:if test="${approve == 1}"> selected </c:if>>Đã
+												duyệt</option>
 										</select><span class="input-group-btn">
 											<button class="btn btn-default" type="submit">
 												Search</button>
@@ -139,7 +145,9 @@
 									</tr>
 									<c:forEach items="${listNews}" var="news">
 										<tr>
-											<td><a href="${pageContext.request.contextPath}/detailnews.do?newsid=${news.newsId}"><c:out value="${news.newsId}" /></a></td>
+											<td><a
+												href="${pageContext.request.contextPath}/detailnews.do?newsid=${news.newsId}"><c:out
+														value="${news.newsId}" /></a></td>
 											<td><img
 												src="${pageContext.request.contextPath}/images_news/${news.image}"
 												class="img-responsive" alt="${news.categoryName}"></td>
@@ -149,13 +157,17 @@
 											<td><c:out value="${news.userName}" /></td>
 											<td><c:out value="${news.datePost}" /></td>
 
-											<td><c:if test="${news.approve == 0}"><a href="${pageContext.request.contextPath}/detailnews.do?newsid=${news.newsId}"><button class="btn btn-sm btn-primary"  > <i
-													class="fa fa-plus-circle"></i>
-											</button></a></c:if>
-											<button class="btn  btn-sm btn-danger" onclick="">
+											<td><c:if test="${news.approve == 0}">
+													<a
+														href="${pageContext.request.contextPath}/detailnews.do?newsid=${news.newsId}"><button
+															class="btn btn-sm btn-primary">
+															<i class="fa fa-plus-circle"></i>
+														</button></a>
+												</c:if>
+												<button class="btn  btn-sm btn-danger"
+													onclick="comfirmDeleteAdmin(${news.newsId});">
 													<i class="fa fa-trash"></i>
-												</button>
-											</td>
+												</button></td>
 										</tr>
 									</c:forEach>
 
@@ -180,7 +192,7 @@
 									<c:param name="action" value="paging" />
 									<c:param name="keyname" value="${keyname}" />
 									<c:param name="categoryid" value="${categoryid}" />
-									<c:param name="approve" value="${approve}"  />
+									<c:param name="approve" value="${approve}" />
 
 								</c:url>
 								<td class="lbl_paging"><a
@@ -214,6 +226,9 @@
 	<script
 		src="${pageContext.request.contextPath}/admin/content/bootstrap/js/bootstrap.min.js"
 		type="text/javascript"></script>
+	<script
+		src="${pageContext.request.contextPath}/admin/content/bootstrap/js/news.js"
+		type="text/javascript"></script>
 	<!-- Bootstrap 3.3.6 -->
 	<!-- SlimScroll -->
 	<script
@@ -228,10 +243,6 @@
 	<script
 		src="${pageContext.request.contextPath}/admin/content/dist/js/demo.js"></script>
 
-
-<!-- modal -->
-<script src="${pageContext.request.contextPath}/admin/content/bootstrap/modal/jquery-3.2.1.slim.min.js"></script>
-    <script src="${pageContext.request.contextPath}/admin/content/bootstrap/modal/popper.min.js"></script>
 
 </body>
 

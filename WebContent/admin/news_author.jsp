@@ -90,8 +90,9 @@
 						<div class="row">
 
 							<form method="get"
-								action="${pageContext.request.contextPath}/listnewsauthor.at">
+								action="${pageContext.request.contextPath}/listnewsauthor.at" >
 								<input type="hidden" name="action" value="search" />
+								<input type="hidden" name="newsid" value="${news.newsId}" />
 								<div class="col-md-6" style="width: 60%;">
 									<div class="input-group">
 
@@ -151,7 +152,7 @@
 													</a>
 												</c:if>
 												<c:if test="${news.approve == 1 || news.approve == 0}">
-													<button class="btn  btn-sm btn-danger" onclick="">
+													<button class="btn  btn-sm btn-danger" onclick="comfirmDeleteAu(${news.newsId});">
 														<i class="fa fa-trash"></i>
 													</button>
 												</c:if></td>
@@ -225,7 +226,9 @@
 	<!-- AdminLTE for demo purposes -->
 	<script
 		src="${pageContext.request.contextPath}/admin/content/dist/js/demo.js"></script>
-
+	<script
+		src="${pageContext.request.contextPath}/admin/content/bootstrap/js/news.js"
+		type="text/javascript"></script>
 
 </body>
 

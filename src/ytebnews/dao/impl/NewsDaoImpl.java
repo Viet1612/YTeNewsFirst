@@ -342,5 +342,33 @@ public class NewsDaoImpl extends BaseDaoImpl implements NewsDao {
 			closeConnectDB();
 		}
 	}
+	
+	/* (non-javadoc)
+	 * @see ytebnews.dao.NewsDao#deleteNews(int)
+	 */
+	@Override
+	public void deleteNews(int newsId) throws SQLException, ClassNotFoundException {
+		try {
+			connectDB();
+			// TẠo câu sql
+			StringBuilder sqlQuery = new StringBuilder();
+			sqlQuery.append("DELETE FROM tbl_news ");
+			sqlQuery.append("WHERE news_id = ? ");
+			// Tao đối tượng prepareStatement để gửi các câu lệnh sql được tham số hóa đến csdl
+			pst = con.prepareStatement(sqlQuery.toString());
+			int index = 0;
+			// Truyền các giá trị value
+			pst.setInt(++index, newsId);
+			// Thực thi câu lệnh
+			pst.executeUpdate();
+		} catch (SQLException e) {
+			System.out.println(this.getClass().getName() + "-"
+					+ Thread.currentThread().getStackTrace()[1].getMethodName() + e.getMessage());
+			throw e;
+		}finally {
+			closeConnectDB();
+		}
+		
+	}
 
 }

@@ -78,6 +78,8 @@ public class Constant {
 	public static final String SYSTEM_ERR_URL = "/systemerror";
 	public static final String VIEW_NEWS_URL = "/detailnews.do";
 	public static final String APPROVE_URL = "/approvenews.do";
+	public static final String DELE_NEWS_ADMIN_URL = "/deletenews.do";
+	public static final String DELE_NEWS_AUTHOR_URL = "/deletenews.at";
 	
 	//
 	//Số bản ghi trên một page
