@@ -18,7 +18,9 @@ import ytebnews.utils.Constant;
  */
 public class CategoryDaoImpl extends BaseDaoImpl implements CategoryDao {
 
-	/* (non-javadoc)
+	/*
+	 * (non-javadoc)
+	 * 
 	 * @see ytebnews.dao.CategoryDao#getListCategory()
 	 */
 	@Override
@@ -55,6 +57,112 @@ public class CategoryDaoImpl extends BaseDaoImpl implements CategoryDao {
 		}
 
 		return liCategories;
+	}
+
+	/*
+	 * (non-javadoc)
+	 * 
+	 * @see ytebnews.dao.CategoryDao#insertCategory(ytebnews.entities.Category)
+	 */
+	@Override
+	public void insertCategory(Category category) throws ClassNotFoundException, SQLException {
+		try {
+			connectDB();
+			// TẠo câu sql
+			StringBuilder sqlQuery = new StringBuilder();
+			sqlQuery.append("INSERT INTO tbl_category (category_name) ");
+			sqlQuery.append("VALUE (?)");
+			// Tao đối tượng prepareStatement để gửi các câu lệnh sql được tham số hóa đến
+			// csdl
+			pst = con.prepareStatement(sqlQuery.toString());
+			int index = 0;
+			// Truyền các giá trị value
+			pst.setString(++index, category.getCategoryName());
+			pst.executeUpdate();
+
+		} catch (SQLException e) {
+			System.out.println(this.getClass().getName() + "-"
+					+ Thread.currentThread().getStackTrace()[1].getMethodName() + e.getMessage());
+			throw e;
+		} finally {
+			closeConnectDB();
+		}
+	}
+
+	/*
+	 * (non-javadoc)
+	 * 
+	 * @see ytebnews.dao.CategoryDao#getCategoryById(int)
+	 */
+	@Override
+	public Category getCategoryById(int categoryId) throws ClassNotFoundException, SQLException {
+		Category category = null;
+		try {
+			connectDB();
+			if (con != null) {
+				// Câu SQl
+				StringBuilder sqlQuery = new StringBuilder();
+				sqlQuery.append("SELECT * ");
+				sqlQuery.append("FROM tbl_category ");
+				sqlQuery.append("WHERE category_id = ?");
+				// Tao đối tượng prepareStatement để gửi các câu lệnh sql được tham số hóa đến
+				// csdl
+				pst = con.prepareStatement(sqlQuery.toString());
+				int index = 0;
+				pst.setLong(++index, categoryId);
+				rs = pst.executeQuery();
+				// Lấy bản ghi
+				while (rs.next()) {
+					category = new Category();
+					category.setCategoryId(rs.getInt(Constant.T_CATEGORY_ID));
+					category.setCategoryName(rs.getString(Constant.T_CATEGORY_NAME));
+
+				}
+
+			}
+
+		} catch (SQLException e) {
+			System.out.println(this.getClass().getName() + "-"
+					+ Thread.currentThread().getStackTrace()[1].getMethodName() + e.getMessage());
+			throw e;
+		} finally {
+			closeConnectDB();
+		}
+		return category;
+	}
+
+	/*
+	 * (non-javadoc)
+	 * 
+	 * @see ytebnews.dao.CategoryDao#updateCategory(ytebnews.entities.Category)
+	 */
+	@Override
+	public void updateCategory(Category category) throws ClassNotFoundException, SQLException {
+		try {
+			connectDB();
+			StringBuilder sqlQuery = new StringBuilder();
+			sqlQuery.append("UPDATE tbl_category ");
+			sqlQuery.append("SET category_name = ? ");
+			sqlQuery.append("WHERE category_id = ? ");
+			// Tao đối tượng prepareStatement để gửi các câu lệnh sql được tham số hóa đến
+			// csdl
+			pst = con.prepareStatement(sqlQuery.toString());
+			int index = 0;
+			// Truyền các giá trị value
+			pst.setString(++index, category.getCategoryName());
+			pst.setInt(++index, category.getCategoryId());
+			
+
+			// Thực thi câu lệnh
+			pst.executeUpdate();
+		} catch (SQLException e) {
+			System.out.println(this.getClass().getName() + "-"
+					+ Thread.currentThread().getStackTrace()[1].getMethodName() + e.getMessage());
+			throw e;
+		} finally {
+			closeConnectDB();
+		}
+
 	}
 
 }

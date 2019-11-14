@@ -41,19 +41,3 @@ function comfirmDeleteAu(newsId) {
 	}
 }
 
-function createForm(newsId) {
-	var deleForm = document.createElement("form");
-	deleForm.method = "POST";
-	// Create an input
-	var mapInput = document.createElement("input");
-	mapInput.type = "hidden";
-	mapInput.name = "newsid";
-	mapInput.value = newsId;
-
-	// Add the input to the form
-	deleForm.appendChild(mapInput);
-
-	// Add the form to dom
-	
-	return deleForm;
-}

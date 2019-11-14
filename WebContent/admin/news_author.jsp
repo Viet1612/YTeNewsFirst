@@ -127,7 +127,7 @@
 						<br>
 						<div class="row">
 							<div class="col-md-12 table-responsive">
-								<table class="table table-bordered ">
+								<table class="table table-bordered " style="table-layout: fixed;">
 									<tr>
 									<th style="width: 3%">ID</th>
 										<th style="width: 12%">Image</th>
@@ -145,10 +145,10 @@
 											<td><img
 												src="${pageContext.request.contextPath}/images_news/${news.image}"
 												class="img-responsive" alt="${news.categoryName}"></td>
-											<td><c:out value="${news.newsName}" /></td>
-											<td><c:out value="${news.description}" /></td>
-											<td><c:out value="${news.content}" /></td>
-											<td><c:out value="${news.datePost}" /></td>
+											<td class="namewrap"><c:out value="${news.newsName}" /></td>
+											<td class="namewrap"><c:out value="${news.description}" /></td>
+											<td class="namewrap"><c:out value="${news.content}" /></td>
+											<td class="namewrap"><c:out value="${news.datePost}" /></td>
 
 											<td><c:if test="${news.approve == 0}">
 													<a class="btn btn-sm btn-primary" href=""> <i
@@ -165,7 +165,7 @@
 
 									<tfoot>
 										<tr>
-											<td colspan="8"><span class="pull-right">Page:
+											<td colspan="7"><span class="pull-right">Page:
 													${currentpage} - Total of recorders: ${totalnews}</span></td>
 										</tr>
 									</tfoot>

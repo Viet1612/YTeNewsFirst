@@ -31,4 +31,29 @@ public class CategoryLogicImpl implements CategoryLogic {
 		return listCategories;
 	}
 
+	/* (non-javadoc)
+	 * @see ytebnews.logics.CategoryLogic#insertCategory(ytebnews.entities.Category)
+	 */
+	@Override
+	public void insertCategory(Category category) throws ClassNotFoundException, SQLException {
+		categoryDao.insertCategory(category);
+	}
+
+	/* (non-javadoc)
+	 * @see ytebnews.logics.CategoryLogic#getCategoryById(int)
+	 */
+	@Override
+	public Category getCategoryById(int categoryId) throws ClassNotFoundException, SQLException {
+		return categoryDao.getCategoryById(categoryId);
+	}
+
+	/* (non-javadoc)
+	 * @see ytebnews.logics.CategoryLogic#updateCategory(ytebnews.entities.Category)
+	 */
+	@Override
+	public void updateCategory(Category category) throws ClassNotFoundException, SQLException {
+		categoryDao.updateCategory(category);
+		
+	}
+
 }

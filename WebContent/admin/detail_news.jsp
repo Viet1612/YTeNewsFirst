@@ -104,10 +104,17 @@
 						</div>
 
 						<div class="box-footer">
+						<c:if test="${rule == 0}">
 							<a
 								href='${pageContext.request.contextPath}/listnews.do?action=back'
 								class="btn btn-default">Back</a>
-							<c:if test="${news.approve == 0}">
+								</c:if>
+									<c:if test="${rule == 2}">
+							<a
+								href='${pageContext.request.contextPath}/listnewsauthor.at?action=back'
+								class="btn btn-default">Back</a>
+								</c:if>
+							<c:if test="${news.approve == 0 && rule == 0}">
 								<input id="btnAdd" type="button"
 									class="btn btn-success pull-right" value='Approve'
 									data-toggle="modal" data-target="#myModal" />

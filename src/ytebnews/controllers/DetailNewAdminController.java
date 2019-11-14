@@ -9,6 +9,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import ytebnews.entities.Category;
 import ytebnews.entities.News;
@@ -36,6 +37,8 @@ public class DetailNewAdminController extends HttpServlet {
 			// Khai báo khơi tạo đối tượng
 			NewsLogic newsLogic = new NewsLogicImpl();
 			CategoryLogic categoryLogic = new CategoryLogicImpl();
+			HttpSession session = request.getSession();
+			int rule = (int) session.getAttribute("rule");
 			// Lấy id từ rq
 			int newsId = Common.parseInt(request.getParameter(Constant.NEWS_ID), Constant.NEWS_ID_DEFAULT);
 			// userId paseInt không lỗi và tồn tại mới hiển thị ADM005
@@ -46,6 +49,7 @@ public class DetailNewAdminController extends HttpServlet {
 				// Set đối tượng lên rq
 				request.setAttribute(Constant.NEWS, news);
 				request.setAttribute("listcategory", lisCategories);
+				request.setAttribute("rule", rule);
 				RequestDispatcher dispatch = request.getServletContext()
 						.getRequestDispatcher(Constant.DETAIL_NEWS_ADMIN_JSP);
 				dispatch.forward(request, response);

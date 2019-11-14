@@ -66,6 +66,7 @@ public class Constant {
 	public static final String MANAGER_NEWS_AUTHOR_JSP = "/admin/news_author.jsp";
 	public static final String INSERT_NEWS_JSP = "/admin/insert_news.jsp";
 	public static final String DETAIL_NEWS_ADMIN_JSP = "/admin/detail_news.jsp";
+	public static final String EDIT_CATEGORY_JSP = "/admin/insert_category.jsp";
 	
 	
 	//servlet
@@ -82,6 +83,8 @@ public class Constant {
 	public static final String DELE_NEWS_ADMIN_URL = "/deletenews.do";
 	public static final String DELE_NEWS_AUTHOR_URL = "/deletenews.at";
 	public static final String VIEW_NEWS_AU_URL = "/detailnews.at";
+	public static final String INSERT_CATEGORY_URL = "/insertcategory.do";
+	public static final String UPDATE_CATEGORY_URL = "/updatecategory.do";
 	//
 	//Số bản ghi trên một page
 	public static int LIMIT = Common.parseInt(ConfigProperties.getConfig("limit"), Constant.LIMIT_DEFAULT);
@@ -115,28 +118,13 @@ public class Constant {
 	public static final int NEWS_ID_DEFAULT = 0;
 	public static final String NEWS = "news";
 	public static final String APPROVE_SUCC = "approvesuccess";
-
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-
-	
-
+	public static final String INSERT = "insert";
+	public static final String UPDATE_SUCC = "updatesuccess";
 	
 
 	
 	
 	
-	
-	
+
 
 }

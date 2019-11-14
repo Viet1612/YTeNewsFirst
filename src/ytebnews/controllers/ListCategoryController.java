@@ -14,6 +14,7 @@ import ytebnews.entities.Category;
 import ytebnews.logics.CategoryLogic;
 import ytebnews.logics.impl.CategoryLogicImpl;
 import ytebnews.utils.Constant;
+import ytebnews.utils.MessageProperties;
 
 /**
  * Servlet implementation class ListCategoryController
@@ -29,6 +30,13 @@ public class ListCategoryController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		try {
+			String action = request.getParameter(Constant.ACTION);
+			if (Constant.INSERT_SUCC.equals(action)) {
+				request.setAttribute(Constant.INSERT_SUCC, MessageProperties.getMesage("MSG004"));
+			} else if (Constant.UPDATE_SUCC.equals(action)) {
+				request.setAttribute(Constant.UPDATE_SUCC, MessageProperties.getMesage("MSG005"));
+
+			}
 			CategoryLogic categoryLogic = new CategoryLogicImpl();
 			List<Category> listCategories = categoryLogic.getListCategory();
 			request.setAttribute("listcategory", listCategories);

@@ -19,6 +19,9 @@
 <link
 	href="${pageContext.request.contextPath}/admin/content/bootstrap/css/bootstrap.min.css"
 	rel="stylesheet" type="text/css" />
+	<link
+	href="${pageContext.request.contextPath}/admin/content/bootstrap/css/style.css"
+	rel="stylesheet" type="text/css" />
 <!-- Font Awesome -->
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
@@ -132,7 +135,7 @@
 						<br>
 						<div class="row">
 							<div class="col-md-12 table-responsive">
-								<table class="table table-bordered ">
+								<table class="table table-bordered " style="table-layout: fixed;">
 									<tr>
 										<th style="width: 3%">ID</th>
 										<th style="width: 12%">Image</th>
@@ -148,14 +151,13 @@
 											<td><a
 												href="${pageContext.request.contextPath}/detailnews.do?newsid=${news.newsId}"><c:out
 														value="${news.newsId}" /></a></td>
-											<td><img
-												src="${pageContext.request.contextPath}/images_news/${news.image}"
+											<td><img src="${pageContext.request.contextPath}/images_news/${news.image}"
 												class="img-responsive" alt="${news.categoryName}"></td>
-											<td><c:out value="${news.categoryName}" /></td>
-											<td><c:out value="${news.newsName}" /></td>
-											<td><c:out value="${news.content}" /></td>
-											<td><c:out value="${news.userName}" /></td>
-											<td><c:out value="${news.datePost}" /></td>
+											<td class="namewrap"><c:out value="${news.categoryName}" /></td>
+											<td class="namewrap"><c:out value="${news.newsName}" /></td>
+											<td class="namewrap"><c:out value="${news.content}" /></td>
+											<td class="namewrap"><c:out value="${news.userName}" /></td>
+											<td class="namewrap"><c:out value="${news.datePost}" /></td>
 
 											<td><c:if test="${news.approve == 0}">
 													<a

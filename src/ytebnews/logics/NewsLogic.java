@@ -74,4 +74,6 @@ public interface NewsLogic {
 	 * @throws ClassNotFoundException
 	 */
 	public void deleteNews(int newsId) throws SQLException, ClassNotFoundException;
+	
+
 }

@@ -61,12 +61,14 @@ public class LoginAdminController extends HttpServlet {
 			} else {
 				User user = userLogic.getUserByLoginName(loginName);
 				session.setAttribute(Constant.LOGIN_NAME, loginName);
+				session.setAttribute("rule", user.getRule());
 				// Không có lỗi set loginname lên session
 				if (user.getRule() == Constant.RULE_ADMIN) {
 					// Chuyển đến màn index
 					response.sendRedirect(request.getContextPath() + Constant.INDEX_ADMIN_URL);
 				} else if (user.getRule() == Constant.RULE_AUTHOR) {
 					session.setAttribute("userid", user.getUserId());
+					session.setAttribute("rule", user.getRule());
 					session.setAttribute("fullname", user.getFullName());
 					response.sendRedirect(request.getContextPath() + Constant.LIST_NEWS_AUTHOR_URL);
 				}

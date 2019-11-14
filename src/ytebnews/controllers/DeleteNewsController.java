@@ -26,7 +26,6 @@ public class DeleteNewsController extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		try {
-			System.out.println("dậvahehaaaaaa");
 			// Khai báo khơi tạo đối tượng
 			NewsLogic newsLogic = new NewsLogicImpl();
 			String servletPath = request.getServletPath();

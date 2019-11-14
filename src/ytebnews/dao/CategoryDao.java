@@ -22,5 +22,30 @@ public interface CategoryDao {
 	 * @throws ClassNotFoundException 
 	 */
 	public List<Category> getListCategory() throws ClassNotFoundException, SQLException;
+	
+	/**
+	 * Thêm chủ đề
+	 * @param category
+	 * @throws SQLException 
+	 * @throws ClassNotFoundException 
+	 */
+	public void insertCategory(Category category) throws ClassNotFoundException, SQLException;
+	
+	/**
+	 * Lấy chủ để bởi id
+	 * @param categoryId
+	 * @return category
+	 * @throws SQLException 
+	 * @throws ClassNotFoundException 
+	 */
+	public Category getCategoryById(int categoryId) throws ClassNotFoundException, SQLException;
+	
+	/**
+	 * update chủ đề
+	 * @param category
+	 * @throws SQLException 
+	 * @throws ClassNotFoundException 
+	 */
+	public void updateCategory(Category category) throws ClassNotFoundException, SQLException;
 
 }
