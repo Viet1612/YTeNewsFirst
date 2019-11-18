@@ -59,13 +59,13 @@
 		                    <div class="form-group">
                                         <label class="col-sm-2 control-label">Title</label>
                                         <div class="col-sm-8">
-                                             <textarea id="des" type="text" class="form-control" name="title" placeholder="Please enter title!" rows="5" cols="80">${news.newsName}</textarea>	                      	
+                                             <textarea id="des" class="form-control" name="title" placeholder="Please enter title!" rows="5" cols="80">${news.newsName}</textarea>	                      	
                                         </div>		                      
 		                    </div>  
 		                      <div class="form-group">
                                         <label class="col-sm-2 control-label">Description</label>
                                         <div class="col-sm-8">
-                                         <textarea id="des" type="text" class="form-control" name="description" placeholder="Please enter description!" rows="5" cols="80">${news.description}</textarea>	                      	
+                                         <textarea id="des" class="form-control" name="description" placeholder="Please enter description!" rows="5" cols="80">${news.description}</textarea>	                      	
                                         </div>		                      
 		                    </div>  
 		                    
@@ -73,14 +73,14 @@
                                         <label class="col-sm-2 control-label">Image</label>
                                         <div class="col-sm-8">
                                             <input onchange="readURL(this);" type="file" id="file" name="file" name="uploadFile" class="btn btn-white btn-warning btn-bold">	   
-                                             <img class="text-center" width="160" height="230" alt="Image" style="border:1px solid black;" hidden id="showAvatar" >            
+                                             <img class="text-center" width="160" height="230" alt="Image" hidden="" style="border:1px solid black;"  id="showAvatar" >            
                                         </div>		                      
 		                    </div>
 		                    
 		                    <div class="form-group">
                                         <label class="col-sm-2 control-label">Content</label>
                                         <div class="col-sm-8"> 
-                                            <textarea id="des" type="text" class="form-control" name="content" placeholder="Please enter content!" rows="15" cols="80">${news.content}</textarea>	                      	
+                                            <textarea id="des" class="form-control" name="content" placeholder="Please enter content!" rows="15" cols="80">${news.content}</textarea>	                      	
                                             
                                         </div>		                      
 		                    </div>   

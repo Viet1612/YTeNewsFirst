@@ -48,20 +48,30 @@
                                 <h3 class="box-title">News Information</h3>
                             </div><!-- /.box-header -->
                             <!-- form start -->
-                            <form action="/Asean/UpdateNewsServlet" method="post" class="form-horizontal" enctype="multipart/form-data">
+                            <form action="${pageContext.request.contextPath}/updatenews.at" method="post" class="form-horizontal" enctype="multipart/form-data">
                                 <div class="box-body">
 		                    <div class="form-group">
-                                        <label class="col-sm-2 control-label">News</label>
-                                        <div class="col-sm-8">
-                                            <input id="proname" type="text" class="form-control" name="productname" value="" placeholder="Tên sản phẩm">		                      	
+                                        <label class="col-sm-2 control-label">Title</label>
+                                       <div class="col-sm-8">
+                                             <textarea id="des" class="form-control" name="title" placeholder="Please enter title!" rows="5" cols="80">${news.newsName}</textarea>	                      	
+                                        </div>	                      
+		                    </div>  
+		                         <div class="form-group">
+                                        <label class="col-sm-2 control-label">Description</label>
+                                     <div class="col-sm-8">
+                                         <textarea id="des" class="form-control" name="description" placeholder="Please enter description!" rows="5" cols="80">${news.description}</textarea>	                      	
                                         </div>		                      
 		                    </div>  
 		                    
 		                    <div class="form-group">
                                         <label class="col-sm-2 control-label">Category</label>
                                         <div class="col-sm-8">                             
-                                            <select name="categoryid" id="categoryid" class="form-control">
-												
+                                            <select name="category" style="width: 500px" class="form-control">
+														<c:forEach items="${listcategory}" var="category">
+												<option value="${category.categoryId}"
+													<c:if test="${news.categoryId == category.categoryId}"> selected </c:if>><c:out
+														value="${category.categoryName}" /></option>
+											</c:forEach>
                                             </select>	
                                         </div>		                      
 		                    </div> 
@@ -73,23 +83,24 @@
                                         <label class="col-sm-2 control-label">Image</label>
                                         <div class="col-sm-8">
                                             <input onchange="readURL(this);" value="" type="file" id="file" name="files[]"  class="btn btn-white btn-warning btn-bold">	                                            
-                                            <img width="160" height="230" alt="Hình ảnh" hidden style="border:1px solid black;" id="showAvatar" > 
+                                            <img width="160" height="230" alt="Hình ảnh" src="${pageContext.request.contextPath}/images_news/${news.image}"  style="border:1px solid black;" id="showAvatar" > 
                                         </div>		                      
 		                    </div>       
                                             
 		                    	                   
 		                    <div class="form-group">
                                         <label class="col-sm-2 control-label">Content</label>
-                                        <div class="col-sm-8">
-                                              <input id="des" type="text" class="form-control" value="" name="description" placeholder="Diễn giải">	                      	
+                                           <div class="col-sm-8"> 
+                                            <textarea id="des" class="form-control" name="content" placeholder="Please enter content!" rows="15" cols="80">${news.content}</textarea>	                      	
+                                            
                                         </div>		                      
 		                    </div>       
                                 </div>
 		                 
 		                 <div class="box-footer">
-                                    <a href='manager_product.jsp' class="btn btn-default">Delete</a> 
+                                    <a href='${pageContext.request.contextPath}/listnewsauthor.at?action=back' class="btn btn-default">Back</a> 
                                     <input type="hidden" name="command" value="update"> 
-                                    <input onclick="return SaveProduct();" id="btnUpdate" type="submit" class="btn btn-success pull-right" value='Update'/>
+                                    <input id="btnUpdate" type="submit" class="btn btn-success pull-right" value='Update'/>
                                 </div>
                             </form>                        
                         </div><!-- /.box -->

@@ -67,6 +67,7 @@ public class Constant {
 	public static final String INSERT_NEWS_JSP = "/admin/insert_news.jsp";
 	public static final String DETAIL_NEWS_ADMIN_JSP = "/admin/detail_news.jsp";
 	public static final String EDIT_CATEGORY_JSP = "/admin/insert_category.jsp";
+	public static final String EDIT_NEWS_JSP = "/admin/edit_news.jsp";
 	
 	
 	//servlet
@@ -85,6 +86,7 @@ public class Constant {
 	public static final String VIEW_NEWS_AU_URL = "/detailnews.at";
 	public static final String INSERT_CATEGORY_URL = "/insertcategory.do";
 	public static final String UPDATE_CATEGORY_URL = "/updatecategory.do";
+	public static final String UPDATE_NEWS_URL = "/updatenews.at";
 	//
 	//Số bản ghi trên một page
 	public static int LIMIT = Common.parseInt(ConfigProperties.getConfig("limit"), Constant.LIMIT_DEFAULT);

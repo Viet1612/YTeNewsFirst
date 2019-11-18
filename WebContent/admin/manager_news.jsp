@@ -105,7 +105,7 @@
 										<input type="text" class="form-control" style="width: 40%;"
 											name="keyname" value="${keyname}" placeholder="keyword">
 										<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
-										<select style="margin-top: 9px; width: 22%;" name="categoryid">
+										<select style="margin-top: 9px; width: 22%;" name="categoryid" >
 											<option value="0">Please Choose Category</option>
 											<c:forEach items="${listcategory}" var="category">
 												<option value="${category.categoryId}"

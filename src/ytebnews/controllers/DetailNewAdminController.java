@@ -41,9 +41,8 @@ public class DetailNewAdminController extends HttpServlet {
 			int rule = (int) session.getAttribute("rule");
 			// Lấy id từ rq
 			int newsId = Common.parseInt(request.getParameter(Constant.NEWS_ID), Constant.NEWS_ID_DEFAULT);
-			// userId paseInt không lỗi và tồn tại mới hiển thị ADM005
+			// newsid paseInt không lỗi và tồn tại mới hiển thị 
 			if (newsId > 0 && newsLogic.checkExistNewsId(newsId)) {
-				// Lấy userInfor bằng userId
 				News news = newsLogic.getNewsById(newsId);
 				List<Category> lisCategories = categoryLogic.getListCategory();
 				// Set đối tượng lên rq

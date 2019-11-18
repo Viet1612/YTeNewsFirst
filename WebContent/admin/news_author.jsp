@@ -151,7 +151,7 @@
 											<td class="namewrap"><c:out value="${news.datePost}" /></td>
 
 											<td><c:if test="${news.approve == 0}">
-													<a class="btn btn-sm btn-primary" href=""> <i
+													<a class="btn btn-sm btn-primary" href="${pageContext.request.contextPath}/updatenews.at?newsid=${news.newsId}"> <i
 														class="fa fa-pencil"></i>
 													</a>
 												</c:if>
