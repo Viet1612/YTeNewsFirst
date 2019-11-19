@@ -24,7 +24,7 @@
             <jsp:include page="header.jsp"></jsp:include>
                 <!-- =============================================== -->
                 <!-- Left side column. contains the sidebar -->
-            <jsp:include page="menu.jsp"></jsp:include>
+           <jsp:include page="menu_author.jsp"></jsp:include>
                 <!-- =============================================== -->
                 <!-- Content Wrapper. Contains page content -->
                 <div class="content-wrapper">

@@ -342,8 +342,10 @@ public class NewsDaoImpl extends BaseDaoImpl implements NewsDao {
 			closeConnectDB();
 		}
 	}
-	
-	/* (non-javadoc)
+
+	/*
+	 * (non-javadoc)
+	 * 
 	 * @see ytebnews.dao.NewsDao#deleteNews(int)
 	 */
 	@Override
@@ -354,7 +356,8 @@ public class NewsDaoImpl extends BaseDaoImpl implements NewsDao {
 			StringBuilder sqlQuery = new StringBuilder();
 			sqlQuery.append("DELETE FROM tbl_news ");
 			sqlQuery.append("WHERE news_id = ? ");
-			// Tao đối tượng prepareStatement để gửi các câu lệnh sql được tham số hóa đến csdl
+			// Tao đối tượng prepareStatement để gửi các câu lệnh sql được tham số hóa đến
+			// csdl
 			pst = con.prepareStatement(sqlQuery.toString());
 			int index = 0;
 			// Truyền các giá trị value
@@ -365,10 +368,47 @@ public class NewsDaoImpl extends BaseDaoImpl implements NewsDao {
 			System.out.println(this.getClass().getName() + "-"
 					+ Thread.currentThread().getStackTrace()[1].getMethodName() + e.getMessage());
 			throw e;
-		}finally {
+		} finally {
 			closeConnectDB();
 		}
-		
+
 	}
+
+	/*
+	 * (non-javadoc)
+	 * 
+	 * @see ytebnews.dao.NewsDao#updateNews(News)
+	 */
+	@Override
+	public void updateNews(News news) throws SQLException, ClassNotFoundException {
+		try {
+			connectDB();
+			StringBuilder sqlQuery = new StringBuilder();
+			sqlQuery.append("UPDATE tbl_news ");
+			sqlQuery.append("SET category_id = ?, news_name = ?, description = ?, content = ?, image = ?, date = ? ");
+			sqlQuery.append("WHERE news_id = ? ");
+			// Tao đối tượng prepareStatement để gửi các câu lệnh sql được tham số hóa đến
+			// csdl
+			pst = con.prepareStatement(sqlQuery.toString());
+			int index = 0;
+			// Truyền các giá trị value
+			pst.setInt(++index, news.getCategoryId());
+			pst.setString(++index, news.getNewsName());
+			pst.setString(++index, news.getDescription());
+			pst.setString(++index, news.getContent());
+			pst.setString(++index, news.getImage());
+			pst.setString(++index, news.getDatePost());
+			
+
+			// Thực thi câu lệnh
+			pst.executeUpdate();
+		} catch (SQLException e) {
+			System.out.println(this.getClass().getName() + "-"
+					+ Thread.currentThread().getStackTrace()[1].getMethodName() + e.getMessage());
+			throw e;
+		} finally {
+			closeConnectDB();
+		}
+	}	
 
 }

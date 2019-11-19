@@ -88,4 +88,12 @@ public class NewsLogicImpl implements NewsLogic {
 		
 	}
 
+	/* (non-javadoc)
+	 * @see ytebnews.logics.NewsLogic#updateNews(News)
+	 */
+	@Override
+	public void updateNews(News news) throws SQLException, ClassNotFoundException {
+		newsDao.updateNews(news);
+	}
+
 }

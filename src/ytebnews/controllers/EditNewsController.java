@@ -104,7 +104,7 @@ public class EditNewsController extends HttpServlet {
 					} else if (i == 2) {
 						description = new String(fileItem.getString().getBytes("iso-8859-1"), "UTF-8"); // des
 					} else if (!fileItem.isFormField()) {
-
+						System.out.println(fileItem.getSize());
 						// xử lý file upload ảnh
 						if (!"".equals(image)) {
 							String dirUrl = request.getServletContext().getRealPath("") + File.separator
@@ -139,9 +139,9 @@ public class EditNewsController extends HttpServlet {
 					dispatch.forward(request, response);
 				} else {
 					// Insert vào db
-					newsLogic.insertNewAuthor(news);
+				//	newsLogic.insertNewAuthor(news);
 					// Ghi file upload
-					fileImage.write(file);
+					//fileImage.write(file);
 					response.sendRedirect(
 							request.getContextPath() + Constant.LIST_NEWS_AUTHOR_URL + "?action=insertsuccess");
 				}

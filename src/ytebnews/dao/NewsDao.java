@@ -74,6 +74,14 @@ public interface NewsDao {
 	 * @throws ClassNotFoundException
 	 */
 	public void deleteNews(int newsId) throws SQLException, ClassNotFoundException;
+	
+	/**
+	 * Update tin tức 
+	 * @param news
+	 * @throws ClassNotFoundException 
+	 * @throws SQLException 
+	 */
+	public void updateNews(News news) throws SQLException, ClassNotFoundException;
 
 
 }
