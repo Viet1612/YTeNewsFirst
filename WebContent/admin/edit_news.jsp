@@ -50,6 +50,7 @@
                             <!-- form start -->
                             <form action="${pageContext.request.contextPath}/updatenews.at" method="post" class="form-horizontal" enctype="multipart/form-data">
                                 <div class="box-body">
+                                <div>${err}</div>
 		                    <div class="form-group">
                                         <label class="col-sm-2 control-label">Title</label>
                                        <div class="col-sm-8">
@@ -63,27 +64,12 @@
                                         </div>		                      
 		                    </div>  
 		                    
-		                    <div class="form-group">
-                                        <label class="col-sm-2 control-label">Category</label>
-                                        <div class="col-sm-8">                             
-                                            <select name="category" style="width: 500px" class="form-control">
-														<c:forEach items="${listcategory}" var="category">
-												<option value="${category.categoryId}"
-													<c:if test="${news.categoryId == category.categoryId}"> selected </c:if>><c:out
-														value="${category.categoryName}" /></option>
-											</c:forEach>
-                                            </select>	
-                                        </div>		                      
-		                    </div> 
-		                    
-		                    
-                                            
-                                      
                                     <div class="form-group">
                                         <label class="col-sm-2 control-label">Image</label>
                                         <div class="col-sm-8">
                                             <input onchange="readURL(this);" value="" type="file" id="file" name="files[]"  class="btn btn-white btn-warning btn-bold">	                                            
-                                            <img width="160" height="230" alt="Hình ảnh" src="${pageContext.request.contextPath}/images_news/${news.image}"  style="border:1px solid black;" id="showAvatar" > 
+                                            <img width="160" height="230" alt="Hình ảnh" src="${pageContext.request.contextPath}/images_news/${news.image}"  style="border:1px solid black;" id="hideAvatar" > 
+                                           <img class="text-center" width="160" height="230" alt="Image" hidden="" style="border:1px solid black;"  id="showAvatar" >
                                         </div>		                      
 		                    </div>       
                                             
@@ -96,10 +82,9 @@
                                         </div>		                      
 		                    </div>       
                                 </div>
-		                 
+		                 <input type="hidden" name="newsid" value="${news.newsId}" />
 		                 <div class="box-footer">
                                     <a href='${pageContext.request.contextPath}/listnewsauthor.at?action=back' class="btn btn-default">Back</a> 
-                                    <input type="hidden" name="command" value="update"> 
                                     <input id="btnUpdate" type="submit" class="btn btn-success pull-right" value='Update'/>
                                 </div>
                             </form>                        
@@ -133,6 +118,8 @@
                         reader.onload = function(e) {
                             $('#showAvatar').prop('hidden', false);
                             $('#showAvatar').attr('src', e.target.result);
+                            $('#hideAvatar').attr('src', "");
+                            $('#hideAvatar').prop('hidden', true);
                         };
                         reader.readAsDataURL(input.files[0]);
                     }

@@ -77,10 +77,13 @@ public class ListNewsController extends HttpServlet {
 					currentPage = (int) session.getAttribute(Constant.CURRENT_PAGE);
 				} else if (Constant.INSERT_SUCC.equals(action)) {
 					request.setAttribute(Constant.INSERT_SUCC, MessageProperties.getMesage("MSG001"));
-				}else if (Constant.APPROVE_SUCC.equals(action) && Constant.LIST_NEWS_URL.equals(servletPath)) {
+				} else if (Constant.APPROVE_SUCC.equals(action) && Constant.LIST_NEWS_URL.equals(servletPath)) {
 					request.setAttribute(Constant.APPROVE_SUCC, MessageProperties.getMesage("MSG002"));
-				}else if (Constant.DELE_SUCC.equals(action)) {
+				} else if (Constant.DELE_SUCC.equals(action)) {
 					request.setAttribute(Constant.DELE_SUCC, MessageProperties.getMesage("MSG003"));
+				} else if (Constant.UPDATE_SUCC.equals(action)) {
+					request.setAttribute(Constant.UPDATE_SUCC, MessageProperties.getMesage("MSG006"));
+
 				}
 
 			}

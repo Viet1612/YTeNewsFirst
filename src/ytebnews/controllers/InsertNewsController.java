@@ -70,7 +70,8 @@ public class InsertNewsController extends HttpServlet {
 				// sets maximum size of request (include file + form data)
 				upload.setSizeMax(Constant.MAX_REQUEST_SIZE);
 				List<FileItem> fileItems = upload.parseRequest(request);
-
+			
+				
 				int i = 0;
 				String title = "";
 				String description = "";

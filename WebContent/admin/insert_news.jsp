@@ -88,7 +88,6 @@
 		                 
 		                 <div class="box-footer">
                                     <a href='${pageContext.request.contextPath}/listnewsauthor.at?action=back' class="btn btn-default">Back</a> 
-                                    <input type="hidden" name="command" value="insert"> 
                                     <input id="btnAdd" type="submit" class="btn btn-success pull-right" value='Add'/>
                                 </div>
                             </form>                               

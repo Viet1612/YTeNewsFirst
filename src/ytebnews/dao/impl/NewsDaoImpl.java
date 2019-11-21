@@ -385,20 +385,19 @@ public class NewsDaoImpl extends BaseDaoImpl implements NewsDao {
 			connectDB();
 			StringBuilder sqlQuery = new StringBuilder();
 			sqlQuery.append("UPDATE tbl_news ");
-			sqlQuery.append("SET category_id = ?, news_name = ?, description = ?, content = ?, image = ?, date = ? ");
+			sqlQuery.append("SET news_name = ?, description = ?, content = ?, image = ?, date = ? ");
 			sqlQuery.append("WHERE news_id = ? ");
 			// Tao đối tượng prepareStatement để gửi các câu lệnh sql được tham số hóa đến
 			// csdl
 			pst = con.prepareStatement(sqlQuery.toString());
 			int index = 0;
 			// Truyền các giá trị value
-			pst.setInt(++index, news.getCategoryId());
 			pst.setString(++index, news.getNewsName());
 			pst.setString(++index, news.getDescription());
 			pst.setString(++index, news.getContent());
 			pst.setString(++index, news.getImage());
 			pst.setString(++index, news.getDatePost());
-			
+			pst.setLong(++index, news.getNewsId());
 
 			// Thực thi câu lệnh
 			pst.executeUpdate();

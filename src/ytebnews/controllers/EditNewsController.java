@@ -16,12 +16,9 @@ import org.apache.commons.fileupload.FileItem;
 import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
 
-import ytebnews.entities.Category;
 import ytebnews.entities.News;
-import ytebnews.logics.CategoryLogic;
 import ytebnews.logics.NewsLogic;
 import ytebnews.logics.UserLogic;
-import ytebnews.logics.impl.CategoryLogicImpl;
 import ytebnews.logics.impl.NewsLogicImpl;
 import ytebnews.logics.impl.UserLogicImpl;
 import ytebnews.utils.Common;
@@ -43,14 +40,11 @@ public class EditNewsController extends HttpServlet {
 			throws ServletException, IOException {
 		try {
 			NewsLogic newsLogic = new NewsLogicImpl();
-			CategoryLogic categoryLogic = new CategoryLogicImpl();
 			int newsId = Common.parseInt(request.getParameter(Constant.NEWS_ID), Constant.NEWS_ID_DEFAULT);
 			// userId paseInt không lỗi và tồn tại mới hiển thị
 			if (newsId > 0 && newsLogic.checkExistNewsId(newsId)) {
 				// Lấy news bằng userId
 				News news = newsLogic.getNewsById(newsId);
-				List<Category> lisCategories = categoryLogic.getListCategory();
-				request.setAttribute("listcategory", lisCategories);
 				// Set đối tượng lên rq
 				request.setAttribute(Constant.NEWS, news);
 				RequestDispatcher dispatch = request.getServletContext().getRequestDispatcher(Constant.EDIT_NEWS_JSP);
@@ -91,11 +85,18 @@ public class EditNewsController extends HttpServlet {
 				// sets maximum size of request (include file + form data)
 				upload.setSizeMax(Constant.MAX_REQUEST_SIZE);
 				List<FileItem> fileItems = upload.parseRequest(request);
+				System.out.println(fileItems.toString());
+				System.out.println();
+				System.out.println(fileItems.size());
+				for (int i = 0; i < fileItems.size(); i++) {
+					System.out.println(fileItems.get(i));
+				}
 
 				int i = 0;
 				String title = "";
 				String description = "";
 				String content = "";
+				String newsId = "";
 				for (FileItem fileItem : fileItems) {
 					i = i + 1;
 					// Lấy title
@@ -103,7 +104,7 @@ public class EditNewsController extends HttpServlet {
 						title = new String(fileItem.getString().getBytes("iso-8859-1"), "UTF-8");
 					} else if (i == 2) {
 						description = new String(fileItem.getString().getBytes("iso-8859-1"), "UTF-8"); // des
-					} else if (!fileItem.isFormField()) {
+					} else if (!fileItem.isFormField() && i == 3) {
 						System.out.println(fileItem.getSize());
 						// xử lý file upload ảnh
 						if (!"".equals(image)) {
@@ -119,6 +120,8 @@ public class EditNewsController extends HttpServlet {
 						}
 					} else if (i == 4) {
 						content = new String(fileItem.getString().getBytes("iso-8859-1"), "UTF-8");// content
+					} else if (i == 5) {
+						newsId = new String(fileItem.getString().getBytes("iso-8859-1"), "UTF-8");
 					}
 				}
 				news.setNewsName(title);
@@ -126,9 +129,7 @@ public class EditNewsController extends HttpServlet {
 				news.setImage(image);
 				news.setContent(content);
 				news.setDatePost(Common.getTimeNow());
-				news.setView(Constant.VIEW_DEFAULT);
-				news.setApprove(Constant.APPROVE_N);
-				news.setUserId(userId);
+				news.setNewsId(Integer.parseInt(newsId));
 				// Check nhập
 				if (!(Common.checkEmpty(title) && Common.checkEmpty(description) && Common.checkEmpty(content)
 						&& fileImage.getSize() > 0)) {
@@ -139,11 +140,12 @@ public class EditNewsController extends HttpServlet {
 					dispatch.forward(request, response);
 				} else {
 					// Insert vào db
-				//	newsLogic.insertNewAuthor(news);
+					newsLogic.updateNews(news);
+					;
 					// Ghi file upload
-					//fileImage.write(file);
+					fileImage.write(file);
 					response.sendRedirect(
-							request.getContextPath() + Constant.LIST_NEWS_AUTHOR_URL + "?action=insertsuccess");
+							request.getContextPath() + Constant.LIST_NEWS_AUTHOR_URL + "?action=updatesuccess");
 				}
 
 			} else {
