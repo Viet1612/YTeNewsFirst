@@ -60,7 +60,8 @@ public class InsertNewsController extends HttpServlet {
 			FileItem fileImage = null;
 			if (userLogic.checkUserIdAuthor(userId)) {
 				News news = new News();
-				String image = Common.getSalt() + ".png";
+				String image = Common.getSalt();
+				String nameImage ="";
 				DiskFileItemFactory fileItemFactory = new DiskFileItemFactory();
 				fileItemFactory.setSizeThreshold(Constant.MEMORY_THRESHOLD);
 				fileItemFactory.setRepository(new File(System.getProperty("java.io.tmpdir")));
@@ -87,13 +88,14 @@ public class InsertNewsController extends HttpServlet {
 
 						// xử lý file upload ảnh
 						if (!"".equals(image)) {
+							nameImage = fileItem.getName();
 							String dirUrl = request.getServletContext().getRealPath("") + File.separator
 									+ Constant.IMAGES_NEWS_FOLDER;
 							File dir = new File(dirUrl);
 							if (!dir.exists()) {
 								dir.mkdir();
 							}
-							String fileImg = dirUrl + File.separator + image;
+							String fileImg = dirUrl + File.separator + image +"-"+ nameImage;
 							file = new File(fileImg);
 							fileImage = fileItem;
 						}
@@ -103,7 +105,7 @@ public class InsertNewsController extends HttpServlet {
 				}
 				news.setNewsName(title);
 				news.setDescription(description);
-				news.setImage(image);
+				news.setImage(image +"-"+ nameImage);
 				news.setContent(content);
 				news.setDatePost(Common.getTimeNow());
 				news.setView(Constant.VIEW_DEFAULT);

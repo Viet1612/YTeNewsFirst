@@ -385,7 +385,10 @@ public class NewsDaoImpl extends BaseDaoImpl implements NewsDao {
 			connectDB();
 			StringBuilder sqlQuery = new StringBuilder();
 			sqlQuery.append("UPDATE tbl_news ");
-			sqlQuery.append("SET news_name = ?, description = ?, content = ?, image = ?, date = ? ");
+			sqlQuery.append("SET news_name = ?, description = ?, content = ?, date = ? ");
+			if (news.getImage() != null) {
+				sqlQuery.append(", image = ?");
+			}
 			sqlQuery.append("WHERE news_id = ? ");
 			// Tao đối tượng prepareStatement để gửi các câu lệnh sql được tham số hóa đến
 			// csdl
@@ -395,8 +398,10 @@ public class NewsDaoImpl extends BaseDaoImpl implements NewsDao {
 			pst.setString(++index, news.getNewsName());
 			pst.setString(++index, news.getDescription());
 			pst.setString(++index, news.getContent());
-			pst.setString(++index, news.getImage());
 			pst.setString(++index, news.getDatePost());
+			if (news.getImage() != null) {
+				pst.setString(++index, news.getImage());
+			}
 			pst.setLong(++index, news.getNewsId());
 
 			// Thực thi câu lệnh
@@ -408,6 +413,6 @@ public class NewsDaoImpl extends BaseDaoImpl implements NewsDao {
 		} finally {
 			closeConnectDB();
 		}
-	}	
+	}
 
 }

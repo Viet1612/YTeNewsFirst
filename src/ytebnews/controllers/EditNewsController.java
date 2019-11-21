@@ -75,7 +75,8 @@ public class EditNewsController extends HttpServlet {
 			FileItem fileImage = null;
 			if (userLogic.checkUserIdAuthor(userId)) {
 				News news = new News();
-				String image = Common.getSalt() + ".png";
+				String image = Common.getSalt();
+				String nameImage = "";
 				DiskFileItemFactory fileItemFactory = new DiskFileItemFactory();
 				fileItemFactory.setSizeThreshold(Constant.MEMORY_THRESHOLD);
 				fileItemFactory.setRepository(new File(System.getProperty("java.io.tmpdir")));
@@ -85,13 +86,6 @@ public class EditNewsController extends HttpServlet {
 				// sets maximum size of request (include file + form data)
 				upload.setSizeMax(Constant.MAX_REQUEST_SIZE);
 				List<FileItem> fileItems = upload.parseRequest(request);
-				System.out.println(fileItems.toString());
-				System.out.println();
-				System.out.println(fileItems.size());
-				for (int i = 0; i < fileItems.size(); i++) {
-					System.out.println(fileItems.get(i));
-				}
-
 				int i = 0;
 				String title = "";
 				String description = "";
@@ -105,7 +99,7 @@ public class EditNewsController extends HttpServlet {
 					} else if (i == 2) {
 						description = new String(fileItem.getString().getBytes("iso-8859-1"), "UTF-8"); // des
 					} else if (!fileItem.isFormField() && i == 3) {
-						System.out.println(fileItem.getSize());
+						nameImage = fileItem.getName();
 						// xử lý file upload ảnh
 						if (!"".equals(image)) {
 							String dirUrl = request.getServletContext().getRealPath("") + File.separator
@@ -114,7 +108,7 @@ public class EditNewsController extends HttpServlet {
 							if (!dir.exists()) {
 								dir.mkdir();
 							}
-							String fileImg = dirUrl + File.separator + image;
+							String fileImg = dirUrl + File.separator + image + "-" + nameImage;
 							file = new File(fileImg);
 							fileImage = fileItem;
 						}
@@ -126,22 +120,22 @@ public class EditNewsController extends HttpServlet {
 				}
 				news.setNewsName(title);
 				news.setDescription(description);
-				news.setImage(image);
+				if (fileImage.getSize() > 0) {
+					news.setImage(image + "-" + nameImage);
+				}
 				news.setContent(content);
 				news.setDatePost(Common.getTimeNow());
 				news.setNewsId(Integer.parseInt(newsId));
 				// Check nhập
-				if (!(Common.checkEmpty(title) && Common.checkEmpty(description) && Common.checkEmpty(content)
-						&& fileImage.getSize() > 0)) {
+				if (!(Common.checkEmpty(title) && Common.checkEmpty(description) && Common.checkEmpty(content))) {
 					request.setAttribute("err", MessageProperties.getMesage(Constant.ER001));
 					request.setAttribute(Constant.NEWS, news);
 					RequestDispatcher dispatch = request.getServletContext()
 							.getRequestDispatcher(Constant.EDIT_NEWS_JSP);
 					dispatch.forward(request, response);
 				} else {
-					// Insert vào db
+					// update vào db
 					newsLogic.updateNews(news);
-					;
 					// Ghi file upload
 					fileImage.write(file);
 					response.sendRedirect(
@@ -152,7 +146,6 @@ public class EditNewsController extends HttpServlet {
 				response.sendRedirect(request.getContextPath() + Constant.LOGOUT_URL);
 			}
 
-//
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
