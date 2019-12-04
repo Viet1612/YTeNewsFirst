@@ -119,7 +119,19 @@ public class InsertNewsController extends HttpServlet {
 					RequestDispatcher dispatch = request.getServletContext()
 							.getRequestDispatcher(Constant.INSERT_NEWS_JSP);
 					dispatch.forward(request, response);
-				} else {
+				} else if (!Common.checkLength(Constant.MIN_LENTH_TITLE_DES, Constant.MAX_LENTH_TITLE_DES, title)) {
+					request.setAttribute("err", MessageProperties.getMesage(Constant.ER002));
+					request.setAttribute(Constant.NEWS, news);
+					RequestDispatcher dispatch = request.getServletContext()
+							.getRequestDispatcher(Constant.INSERT_NEWS_JSP);
+					dispatch.forward(request, response);
+				} else if (!Common.checkLength(Constant.MIN_LENTH_TITLE_DES, Constant.MAX_LENTH_TITLE_DES, description)) {
+					request.setAttribute("err", MessageProperties.getMesage(Constant.ER003));
+					request.setAttribute(Constant.NEWS, news);
+					RequestDispatcher dispatch = request.getServletContext()
+							.getRequestDispatcher(Constant.INSERT_NEWS_JSP);
+					dispatch.forward(request, response);
+				}  else {
 					//Insert vào db
 					newsLogic.insertNewAuthor(news);
 					//Ghi file upload

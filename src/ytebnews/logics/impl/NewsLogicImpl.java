@@ -96,4 +96,12 @@ public class NewsLogicImpl implements NewsLogic {
 		newsDao.updateNews(news);
 	}
 
+	/* (non-javadoc)
+	 * @see ytebnews.logics.NewsLogic#getListNewsLatest(int)
+	 */
+	@Override
+	public List<News> getListNewsHeader(int limit) throws ClassNotFoundException, SQLException {
+		return newsDao.getListNewsHeader(limit);
+	}
+
 }

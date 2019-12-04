@@ -68,6 +68,7 @@ public class Constant {
 	public static final String DETAIL_NEWS_ADMIN_JSP = "/admin/detail_news.jsp";
 	public static final String EDIT_CATEGORY_JSP = "/admin/insert_category.jsp";
 	public static final String EDIT_NEWS_JSP = "/admin/edit_news.jsp";
+	public static final String INDEX_JSP = "/jsp/index.jsp";
 	
 	
 	//servlet
@@ -87,6 +88,9 @@ public class Constant {
 	public static final String INSERT_CATEGORY_URL = "/insertcategory.do";
 	public static final String UPDATE_CATEGORY_URL = "/updatecategory.do";
 	public static final String UPDATE_NEWS_URL = "/updatenews.at";
+	
+	//TIn tức servlet
+	public static final String INDEX_URL = "/index.html";
 	//
 	//Số bản ghi trên một page
 	public static int LIMIT = Common.parseInt(ConfigProperties.getConfig("limit"), Constant.LIMIT_DEFAULT);
@@ -122,6 +126,10 @@ public class Constant {
 	public static final String APPROVE_SUCC = "approvesuccess";
 	public static final String INSERT = "insert";
 	public static final String UPDATE_SUCC = "updatesuccess";
+	public static final int MIN_LENTH_TITLE_DES = 0;
+	public static final int MAX_LENTH_TITLE_DES = 249;
+	public static final String ER002 = "ER002";
+	public static final String ER003 = "ER003";
 	
 
 	

@@ -104,8 +104,8 @@
 									</tr>
 									<c:forEach items="${listcategory}" var="category">
 										<tr>
-											<td>${category.categoryId}</td>
-											<td>${category.categoryName}</td>
+											<td><c:out value="${category.categoryId}" /></td>
+											<td><c:out value="${category.categoryName}" /></td>
 											<!--class="badge bg-red"-->
 											<td><a class="btn btn-sm btn-primary" href="${pageContext.request.contextPath}/updatecategory.do?categoryid=${category.categoryId}"><i
 													class="fa fa-pencil"></i></a></td>

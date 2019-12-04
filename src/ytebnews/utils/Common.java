@@ -181,5 +181,21 @@ public class Common {
 		return timeNow;
 	}
 	
+	/**
+	 * Check độ dài nhập thỏa mãn
+	 * 
+	 * @param min   độ dài tối thiểu
+	 * @param max   độ dài tối đa
+	 * @param input dữ liệu nhập
+	 * @return true thỏa mãn ddkien độ dài, false ngược lại
+	 */
+	public static boolean checkLength(int min, int max, String input) {
+		boolean isLength = false;
+		if (input.trim().length() >= min && input.trim().length() <= max) {
+			isLength = true;
+		}
+		return isLength;
+	}
+
 	
 }

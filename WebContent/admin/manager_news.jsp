@@ -67,7 +67,7 @@
 			<section class="content-header">
 				<h1>List News</h1>
 				<ol class="breadcrumb">
-					<li><a href="index.jsp"><i class="fa fa-dashboard"></i>
+					<li><a href="${pageContext.request.contextPath}/index.do"><i class="fa fa-dashboard"></i>
 							Home</a></li>
 					<li class="active">List News</li>
 				</ol>

@@ -48,126 +48,29 @@
       <div class="site-mobile-menu-body"></div>
     </div>
 
-
-    
-    <div class="header-top">
-      <div class="container">
-        <div class="row align-items-center">
-          <div class="col-12 col-lg-6 d-flex">
-            <a href="index.html" class="site-logo">
-              Meranda
-            </a>
-
-            <a href="#" class="ml-auto d-inline-block d-lg-none site-menu-toggle js-menu-toggle text-black"><span
-                class="icon-menu h3"></span></a>
-
-          </div>
-          <div class="col-12 col-lg-6 ml-auto d-flex">
-            <div class="ml-md-auto top-social d-none d-lg-inline-block">
-              <a href="#" class="d-inline-block p-3"><span class="icon-facebook"></span></a>
-                <a href="#" class="d-inline-block p-3"><span class="icon-twitter"></span></a>
-                <a href="#" class="d-inline-block p-3"><span class="icon-instagram"></span></a>
-            </div>
-            <form action="#" class="search-form d-inline-block">
-
-              <div class="d-flex">
-                <input type="email" class="form-control" placeholder="Search...">
-                <button type="submit" class="btn btn-secondary" ><span class="icon-search"></span></button>
-              </div>
-            </form>
-
-            
-          </div>
-          <div class="col-6 d-block d-lg-none text-right">
-            
-          </div>
-        </div>
-      </div>
-      
-
-
-      
-      <div class="site-navbar py-2 js-sticky-header site-navbar-target d-none pl-0 d-lg-block" role="banner">
-
-      <div class="container">
-        <div class="d-flex align-items-center">
-          
-          <div class="mr-auto">
-            <nav class="site-navigation position-relative text-right" role="navigation">
-              <ul class="site-menu main-menu js-clone-nav mr-auto d-none pl-0 d-lg-block">
-                <li class="active">
-                  <a href="index.html" class="nav-link text-left">Home</a>
-                </li>
-                <li>
-                  <a href="categories.html" class="nav-link text-left">Categories</a>
-                </li>
-                <li>
-                  <a href="categories.html" class="nav-link text-left">Politics</a>
-                </li>
-                <li>
-                  <a href="categories.html" class="nav-link text-left">Business</a>
-                </li>
-                <li>
-                    <a href="categories.html" class="nav-link text-left">Health</a>
-                </li>
-                <li><a href="categories.html" class="nav-link text-left">Design</a></li>
-                <li>
-                  <a href="categories.html" class="nav-link text-left">Sport</a>
-                </li>
-                <li><a href="contact.html" class="nav-link text-left">Contact</a></li>
-              </ul>                                                                                                                                                                                                                                                                                         
-            </nav>
-
-          </div>
-         
-        </div>
-      </div>
-
-    </div>
-    
-    </div>
+<jsp:include page="header.jsp"></jsp:include>
 
     <div class="site-section py-0">
       <div class="owl-carousel hero-slide owl-style">
-
+<c:forEach items="${listnewsheader}" var="news">
         <div class="site-section">
           <div class="container">
             <div class="half-post-entry d-block d-lg-flex bg-light">
-              <div class="img-bg" style="background-image: url('${pageContext.request.contextPath}/images/big_img_1.jpg')"></div>
+              <div class="img-bg" style="background-image: url('${pageContext.request.contextPath}/images_news/${news.image}"></div>
               <div class="contents">
-                <span class="caption">Editor's Pick</span>
-                <h2><a href="blog-single.html">News Needs to Meet Its Audiences Where They Are</a></h2>
-                <p class="mb-3">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptate vero obcaecati natus adipisci necessitatibus eius, enim vel sit ad reiciendis. Enim praesentium magni delectus cum, tempore deserunt aliquid quaerat culpa nemo veritatis, iste adipisci excepturi consectetur doloribus aliquam accusantium beatae?</p>
-                
+                <span class="caption"><c:out value="${news.categoryName}" /></span>
+                <h2><a href="blog-single.html"><c:out value="${news.newsName}" /></a></h2>
+                <p class="mb-3"><c:out value="${news.description}" /></p>
                 <div class="post-meta">
-                  <span class="d-block"><a href="#">Dave Rogers</a> in <a href="#">Food</a></span>
-                  <span class="date-read">Jun 14 <span class="mx-1">&bullet;</span> 3 min read <span class="icon-star2"></span></span>
+                  <span class="d-block"><a href="#"><c:out value="${news.userName}" /></a></span>
+                  <span class="date-read"><c:out value="${news.datePost}" /><span class="mx-1">&bullet;</span> 3 min read <span class="icon-star2"></span></span>
                 </div>
 
               </div>
             </div>
           </div>
         </div>
-
-        <div class="site-section">
-          <div class="container">
-            <div class="half-post-entry d-block d-lg-flex bg-light">
-              <div class="img-bg" style="background-image: url('images/big_img_1.jpg')"></div>
-              <div class="contents">
-                <span class="caption">Editor's Pick</span>
-                <h2><a href="blog-single.html">News Needs to Meet Its Audiences Where They Are</a></h2>
-                <p class="mb-3">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptate vero obcaecati natus adipisci necessitatibus eius, enim vel sit ad reiciendis. Enim praesentium magni delectus cum, tempore deserunt aliquid quaerat culpa nemo veritatis, iste adipisci excepturi consectetur doloribus aliquam accusantium beatae?</p>
-                
-                <div class="post-meta">
-                  <span class="d-block"><a href="#">Dave Rogers</a> in <a href="#">Food</a></span>
-                  <span class="date-read">Jun 14 <span class="mx-1">&bullet;</span> 3 min read <span class="icon-star2"></span></span>
-                </div>
-
-              </div>
-            </div>
-          </div>
-        </div>
-
+</c:forEach>
 
       </div>
     </div>
