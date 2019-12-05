@@ -59,8 +59,8 @@
               <div class="img-bg" style="background-image: url('${pageContext.request.contextPath}/images_news/${news.image}"></div>
               <div class="contents">
                 <span class="caption"><c:out value="${news.categoryName}" /></span>
-                <h2><a href="blog-single.html"><c:out value="${news.newsName}" /></a></h2>
-                <p class="mb-3"><c:out value="${news.description}" /></p>
+                <h2 style="word-wrap: break-word;"><a href="blog-single.html"><c:out value="${news.newsName}" /></a></h2>
+                <p class="mb-3" style="word-wrap: break-word;"><c:out value="${news.description}" /></p>
                 <div class="post-meta">
                   <span class="d-block"><a href="#"><c:out value="${news.userName}" /></a></span>
                   <span class="date-read"><c:out value="${news.datePost}" /><span class="mx-1">&bullet;</span> 3 min read <span class="icon-star2"></span></span>
