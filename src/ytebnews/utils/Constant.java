@@ -130,6 +130,8 @@ public class Constant {
 	public static final int MAX_LENTH_TITLE_DES = 249;
 	public static final String ER002 = "ER002";
 	public static final String ER003 = "ER003";
+	public static final int NOT_VIEW_ORDER = 0;
+	public static final int VIEW_ORDER = 1;
 	
 
 	

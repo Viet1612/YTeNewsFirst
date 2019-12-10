@@ -1,52 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-  <title>Meranda &mdash; Website Template by Colorlib</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-
-  <link href="https://fonts.googleapis.com/css?family=B612+Mono|Cabin:400,700&display=swap" rel="stylesheet">
-
-  <link rel="stylesheet" href="${pageContext.request.contextPath}/fonts/icomoon/style.css">
-
-  <link rel="stylesheet" href="${pageContext.request.contextPath}/css/bootstrap.min.css">
-  <link rel="stylesheet" href="${pageContext.request.contextPath}/css/jquery-ui.css">
-  <link rel="stylesheet" href="${pageContext.request.contextPath}/css/owl.carousel.min.css">
-  <link rel="stylesheet" href="${pageContext.request.contextPath}/css/owl.theme.default.min.css">
-  <link rel="stylesheet" href="${pageContext.request.contextPath}/css/owl.theme.default.min.css">
-
-  <link rel="stylesheet" href="${pageContext.request.contextPath}/css/jquery.fancybox.min.css">
-
-  <link rel="stylesheet" href="${pageContext.request.contextPath}/css/bootstrap-datepicker.css">
-
-  <link rel="stylesheet" href="${pageContext.request.contextPath}/fonts/flaticon/font/flaticon.css">
-
-  <link rel="stylesheet" href="${pageContext.request.contextPath}/css/aos.css">
-  <link href="${pageContext.request.contextPath}/css/jquery.mb.YTPlayer.min.css" media="all" rel="stylesheet" type="text/css">
-
-  <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css">
-
-
-
-</head>
-
-<body data-spy="scroll" data-target=".site-navbar-target" data-offset="300">
-
-  <div class="site-wrap">
-
-    <div class="site-mobile-menu site-navbar-target">
-      <div class="site-mobile-menu-header">
-        <div class="site-mobile-menu-close mt-3">
-          <span class="icon-close2 js-menu-toggle"></span>
-        </div>
-      </div>
-      <div class="site-mobile-menu-body"></div>
-    </div>
 
 <jsp:include page="header.jsp"></jsp:include>
 
@@ -56,7 +10,7 @@
         <div class="site-section">
           <div class="container">
             <div class="half-post-entry d-block d-lg-flex bg-light">
-              <div class="img-bg" style="background-image: url('${pageContext.request.contextPath}/images_news/${news.image}"></div>
+              <div class="img-bg" style="background-image: url('${pageContext.request.contextPath}/images_news/${news.image}')"></div>
               <div class="contents">
                 <span class="caption"><c:out value="${news.categoryName}" /></span>
                 <h2 style="word-wrap: break-word;"><a href="blog-single.html"><c:out value="${news.newsName}" /></a></h2>
@@ -75,114 +29,83 @@
       </div>
     </div>
   
-
-    <div class="site-section">
+      <!-- START section -->
+   <div class="site-section">
       <div class="container">
         <div class="row">
+        <c:if test = "${category0.size() > 0}">
+          <!-- category 1 -->
           <div class="col-lg-8">
+           
             <div class="row">
               <div class="col-12">
                 <div class="section-title">
-                  <h2>Editor's Pick</h2>
+                  <h2><a style="color: black;"><c:out value="${listcategory.get(0).categoryName}" /></a></h2>
                 </div>
               </div>
             </div>
+           
             <div class="row">
+       
+            <!-- news 1 -->
+           
               <div class="col-md-6">
+               <c:set var = "news0"  value = "${category0.get(0)}"/>
+               
                 <div class="post-entry-1">
-                  <a href="post-single.html"><img src="images/img_h_1.jpg" alt="Image" class="img-fluid"></a>
-                  <h2><a href="blog-single.html">News Needs to Meet Its Audiences Where They Are</a></h2>
-                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eligendi temporibus praesentium neque, voluptatum quam quibusdam.</p>
+                  <a href="post-single.html"><img src="${pageContext.request.contextPath}/images_news/${news0.image}" alt="Image" class="img-fluid"></a>
+                  <h2 style="word-wrap: break-word;"><a href="blog-single.html"><c:out value="${news0.newsName}" /></a></h2>
+                  <p style="word-wrap: break-word;"><c:out value="${news0.description}" /></p>
                   <div class="post-meta">
-                    <span class="d-block"><a href="#">Dave Rogers</a> in <a href="#">News</a></span>
-                    <span class="date-read">Jun 14 <span class="mx-1">&bullet;</span> 3 min read <span class="icon-star2"></span></span>
+                    <span class="d-block"><a href="#"><c:out value="${news0.userName}" /></a></span>
+                    <span class="date-read"><c:out value="${news0.datePost}" /><span class="mx-1">&bullet;</span> 3 min read <span class="icon-star2"></span></span>
                   </div>
                 </div>
               </div>
+              
+               <!-- end news 1 -->
+            
               <div class="col-md-6">
+                    <c:set var = "i"  value = "${0}"/>
+                <c:forEach items="${category0}" var="news">
+               <c:if test = "${i > 0}">
                 <div class="post-entry-2 d-flex bg-light">
-                  <div class="thumbnail" style="background-image: url('images/img_v_1.jpg')"></div>
+                  <div class="thumbnail"><img src="${pageContext.request.contextPath}/images_news/${news.image}" alt="Image" class="img-fluid"></div>
                   <div class="contents">
-                    <h2><a href="blog-single.html">News Needs to Meet Its Audiences Where They Are</a></h2>
+                    <h2  style="word-wrap: break-word;"><a href="blog-single.html"><c:out value="${news.newsName}" /></a></h2>
                     <div class="post-meta">
-                      <span class="d-block"><a href="#">Dave Rogers</a> in <a href="#">News</a></span>
-                      <span class="date-read">Jun 14 <span class="mx-1">&bullet;</span> 3 min read <span class="icon-star2"></span></span>
+                      <span class="d-block"><a href="#"><c:out value="${news.userName}" /></a></span>
+                      <span class="date-read"><c:out value="${news.datePost}" /> <span class="mx-1">&bullet;</span> 3 min read <span class="icon-star2"></span></span>
                     </div>
                   </div>
                 </div>
-
-                <div class="post-entry-2 d-flex">
-                  <div class="thumbnail" style="background-image: url('images/img_v_2.jpg')"></div>
-                  <div class="contents">
-                    <h2><a href="blog-single.html">News Needs to Meet Its Audiences Where They Are</a></h2>
-                    <div class="post-meta">
-                      <span class="d-block"><a href="#">Dave Rogers</a> in <a href="#">News</a></span>
-                      <span class="date-read">Jun 14 <span class="mx-1">&bullet;</span> 3 min read <span class="icon-star2"></span></span>
-                    </div>
-                  </div>
-                </div>
-
-                <div class="post-entry-2 d-flex">
-                  <div class="thumbnail" style="background-image: url('images/img_v_3.jpg')"></div>
-                  <div class="contents">
-                    <h2><a href="blog-single.html">News Needs to Meet Its Audiences Where They Are</a></h2>
-                    <div class="post-meta">
-                      <span class="d-block"><a href="#">Dave Rogers</a> in <a href="#">News</a></span>
-                      <span class="date-read">Jun 14 <span class="mx-1">&bullet;</span> 3 min read <span class="icon-star2"></span></span>
-                    </div>
-                  </div>
-                </div>
+                 </c:if>
+                <c:set var = "i"  value = "${i + 1}"/>
+                </c:forEach>
               </div>
             </div>
+            
           </div>
+         </c:if>
+           <!-- end category 1 -->
           <div class="col-lg-4">
             <div class="section-title">
               <h2>Trending</h2>
             </div>
-
+             <c:set var = "i"  value = "${1}"/>
+			<c:forEach items="${listnewstrending}" var="news">
             <div class="trend-entry d-flex">
-              <div class="number align-self-start">01</div>
+              <div class="number align-self-start">0<c:out value="${i}" /></div>
               <div class="trend-contents">
-                <h2><a href="blog-single.html">News Needs to Meet Its Audiences Where They Are</a></h2>
+                <h2 style="word-wrap: break-word;"><a href="blog-single.html"><c:out value="${news.newsName}" /></a></h2>
                 <div class="post-meta">
-                  <span class="d-block"><a href="#">Dave Rogers</a> in <a href="#">News</a></span>
-                  <span class="date-read">Jun 14 <span class="mx-1">&bullet;</span> 3 min read <span class="icon-star2"></span></span>
+                  <span class="d-block"><a href="#"><c:out value="${news.userName}" /></a></span>
+                  <span class="date-read"><c:out value="${news.datePost}" /><span class="mx-1">&bullet;</span> 3 min read <span class="icon-star2"></span></span>
                 </div>
               </div>
             </div>
-
-            <div class="trend-entry d-flex">
-              <div class="number align-self-start">02</div>
-              <div class="trend-contents">
-                <h2><a href="blog-single.html">News Needs to Meet Its Audiences Where They Are</a></h2>
-                <div class="post-meta">
-                  <span class="d-block"><a href="#">Dave Rogers</a> in <a href="#">News</a></span>
-                  <span class="date-read">Jun 14 <span class="mx-1">&bullet;</span> 3 min read <span class="icon-star2"></span></span>
-                </div>
-              </div>
-            </div>
-
-            <div class="trend-entry d-flex">
-              <div class="number align-self-start">03</div>
-              <div class="trend-contents">
-                <h2><a href="blog-single.html">News Needs to Meet Its Audiences Where They Are</a></h2>
-                <div class="post-meta">
-                  <span class="d-block"><a href="#">Dave Rogers</a> in <a href="#">News</a></span>
-                  <span class="date-read">Jun 14 <span class="mx-1">&bullet;</span> 3 min read <span class="icon-star2"></span></span>
-                </div>
-              </div>
-            </div>
-
-            <div class="trend-entry d-flex">
-              <div class="number align-self-start">04</div>
-              <div class="trend-contents">
-                <h2><a href="blog-single.html">News Needs to Meet Its Audiences Where They Are</a></h2>
-                <div class="post-meta">
-                  <span class="d-block"><a href="#">Dave Rogers</a> in <a href="#">News</a></span>
-                  <span class="date-read">Jun 14 <span class="mx-1">&bullet;</span> 3 min read <span class="icon-star2"></span></span>
-                </div>
-              </div>
-            </div>
+			<c:set var = "i"  value = "${i + 1}"/>
+        </c:forEach>
             
             <p>
               <a href="#" class="more">See All Trends <span class="icon-keyboard_arrow_right"></span></a>
@@ -194,18 +117,19 @@
     </div>
     <!-- END section -->
 
+	<c:set var = "newstop"  value = "${listnewstrending.get(0)}"/>
     <div class="py-0">
       <div class="container">
         <div class="half-post-entry d-block d-lg-flex bg-light">
-          <div class="img-bg" style="background-image: url('images/big_img_1.jpg')"></div>
+          <div class="img-bg" style="background-image: url('${pageContext.request.contextPath}/images_news/${newstop.image}')"></div>
           <div class="contents">
-            <span class="caption">Editor's Pick</span>
-            <h2><a href="blog-single.html">News Needs to Meet Its Audiences Where They Are</a></h2>
-            <p class="mb-3">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptate vero obcaecati natus adipisci necessitatibus eius, enim vel sit ad reiciendis. Enim praesentium magni delectus cum, tempore deserunt aliquid quaerat culpa nemo veritatis, iste adipisci excepturi consectetur doloribus aliquam accusantium beatae?</p>
+            <span class="caption">${listnewstrending.get(0).categoryName}</span>
+            <h2 style="word-wrap: break-word;"><a href="blog-single.html"><c:out value="${newstop.newsName}" /></a></h2>
+            <p class="mb-3" style="word-wrap: break-word;"><c:out value="${newstop.description}" /></p>
             
             <div class="post-meta">
-              <span class="d-block"><a href="#">Dave Rogers</a> in <a href="#">Food</a></span>
-              <span class="date-read">Jun 14 <span class="mx-1">&bullet;</span> 3 min read <span class="icon-star2"></span></span>
+              <span class="d-block"><a href="#"><c:out value="${newstop.userName}" /></a></span>
+              <span class="date-read"><c:out value="${newstop.datePost}" /><span class="mx-1">&bullet;</span> 3 min read <span class="icon-star2"></span></span>
             </div>
 
           </div>
@@ -216,82 +140,50 @@
     <div class="site-section">
       <div class="container">
         <div class="row">
+          <!-- category 2 -->
+           <c:if test = "${category1.size() > 0}">
           <div class="col-lg-6">
             <div class="section-title">
-              <h2>Politics</h2>
+              <h2><a style="color: black;"><c:out value="${listcategory.get(1).categoryName}" /></a></h2>
             </div>
+             <c:forEach items="${category1}" var="news">
             <div class="post-entry-2 d-flex">
-              <div class="thumbnail" style="background-image: url('images/img_v_1.jpg')"></div>
+              <div class="thumbnail"><img src="${pageContext.request.contextPath}/images_news/${news.image}" alt="Image" class="img-fluid"></div>
               <div class="contents">
-                <h2><a href="blog-single.html">News Needs to Meet Its Audiences Where They Are</a></h2>
-                <p class="mb-3">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eligendi temporibus praesentium neque, voluptatum quam quibusdam.</p>
+                <h2 style="word-wrap: break-word;"><a href="blog-single.html"><c:out value="${news.newsName}" /></a></h2>
+                <p style="word-wrap: break-word;" class="mb-3"><c:out value="${news.description}" /></p>
                 <div class="post-meta">
-                  <span class="d-block"><a href="#">Dave Rogers</a> in <a href="#">News</a></span>
-                  <span class="date-read">Jun 14 <span class="mx-1">&bullet;</span> 3 min read <span class="icon-star2"></span></span>
+                  <span class="d-block"><a href="#"><c:out value="${newstop.userName}" /></a></span>
+                  <span class="date-read"><c:out value="${news.datePost}" /><span class="mx-1">&bullet;</span> 3 min read <span class="icon-star2"></span></span>
                 </div>
               </div>
             </div>
-            <div class="post-entry-2 d-flex">
-              <div class="thumbnail" style="background-image: url('images/img_v_2.jpg')"></div>
-              <div class="contents">
-                <h2><a href="blog-single.html">News Needs to Meet Its Audiences Where They Are</a></h2>
-                <p class="mb-3">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eligendi temporibus praesentium neque, voluptatum quam quibusdam.</p>
-                <div class="post-meta">
-                  <span class="d-block"><a href="#">Dave Rogers</a> in <a href="#">News</a></span>
-                  <span class="date-read">Jun 14 <span class="mx-1">&bullet;</span> 3 min read <span class="icon-star2"></span></span>
-                </div>
-              </div>
-            </div>
-            <div class="post-entry-2 d-flex">
-              <div class="thumbnail" style="background-image: url('images/img_v_3.jpg')"></div>
-              <div class="contents">
-                <h2><a href="blog-single.html">News Needs to Meet Its Audiences Where They Are</a></h2>
-                <p class="mb-3">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eligendi temporibus praesentium neque, voluptatum quam quibusdam.</p>
-                <div class="post-meta">
-                  <span class="d-block"><a href="#">Dave Rogers</a> in <a href="#">News</a></span>
-                  <span class="date-read">Jun 14 <span class="mx-1">&bullet;</span> 3 min read <span class="icon-star2"></span></span>
-                </div>
-              </div>
-            </div>
+            </c:forEach>
           </div>
+          </c:if>
+            <!-- end category 2 -->
+              <!-- category 3 -->
+                <c:if test = "${category2.size() > 0}">
           <div class="col-lg-6">
             <div class="section-title">
-              <h2>Business</h2>
+              <h2><a style="color: black;"><c:out value="${listcategory.get(2).categoryName}" /></a></h2>
             </div>
+             <c:forEach items="${category2}" var="news">
             <div class="post-entry-2 d-flex">
-              <div class="thumbnail" style="background-image: url('images/img_v_1.jpg')"></div>
+              <div class="thumbnail"><img src="${pageContext.request.contextPath}/images_news/${news.image}" alt="Image" class="img-fluid"></div>
               <div class="contents">
-                <h2><a href="blog-single.html">News Needs to Meet Its Audiences Where They Are</a></h2>
-                <p class="mb-3">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eligendi temporibus praesentium neque, voluptatum quam quibusdam.</p>
+                <h2 style="word-wrap: break-word;"><a href="blog-single.html"><c:out value="${news.newsName}" /></a></h2>
+                <p style="word-wrap: break-word;" class="mb-3"><c:out value="${news.description}" /></p>
                 <div class="post-meta">
-                  <span class="d-block"><a href="#">Dave Rogers</a> in <a href="#">News</a></span>
-                  <span class="date-read">Jun 14 <span class="mx-1">&bullet;</span> 3 min read <span class="icon-star2"></span></span>
+                  <span class="d-block"><a href="#"><c:out value="${newstop.userName}" /></a></span>
+                  <span class="date-read"><c:out value="${news.datePost}" /><span class="mx-1">&bullet;</span> 3 min read <span class="icon-star2"></span></span>
                 </div>
               </div>
             </div>
-            <div class="post-entry-2 d-flex">
-              <div class="thumbnail" style="background-image: url('images/img_v_2.jpg')"></div>
-              <div class="contents">
-                <h2><a href="blog-single.html">News Needs to Meet Its Audiences Where They Are</a></h2>
-                <p class="mb-3">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eligendi temporibus praesentium neque, voluptatum quam quibusdam.</p>
-                <div class="post-meta">
-                  <span class="d-block"><a href="#">Dave Rogers</a> in <a href="#">News</a></span>
-                  <span class="date-read">Jun 14 <span class="mx-1">&bullet;</span> 3 min read <span class="icon-star2"></span></span>
-                </div>
-              </div>
-            </div>
-            <div class="post-entry-2 d-flex">
-              <div class="thumbnail" style="background-image: url('images/img_v_3.jpg')"></div>
-              <div class="contents">
-                <h2><a href="blog-single.html">News Needs to Meet Its Audiences Where They Are</a></h2>
-                <p class="mb-3">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eligendi temporibus praesentium neque, voluptatum quam quibusdam.</p>
-                <div class="post-meta">
-                  <span class="d-block"><a href="#">Dave Rogers</a> in <a href="#">News</a></span>
-                  <span class="date-read">Jun 14 <span class="mx-1">&bullet;</span> 3 min read <span class="icon-star2"></span></span>
-                </div>
-              </div>
-            </div>
+            </c:forEach>
           </div>
+          </c:if>
+            <!--end category 3 -->
         </div>
       </div>
     </div>
@@ -301,100 +193,55 @@
     <div class="site-section">
       <div class="container">
         <div class="row">
+        <!-- category 4 -->
+        <c:if test = "${category3.size() > 0}">
           <div class="col-lg-9">
+            <div class="section-title">
+              <h2><a style="color: black;"><c:out value="${listcategory.get(3).categoryName}" /></a></h2>
+            </div>
+              <c:forEach items="${category3}" var="news">
+            <div class="post-entry-2 d-flex">
+              <div class="thumbnail order-md-2" ><img src="${pageContext.request.contextPath}/images_news/${news.image}" alt="Image" class="img-fluid"></div>
+              <div class="contents order-md-1 pl-0">
+                <h2 style="word-wrap: break-word;"><a href="blog-single.html"><c:out value="${news.newsName}" /></a></h2>
+                <p  style="word-wrap: break-word;" class="mb-3"><c:out value="${news.description}" /></p>
+                <div class="post-meta">
+                  <span class="d-block"><a href="#"><c:out value="${newstop.userName}" /></a></span>
+                  <span class="date-read"><c:out value="${news.datePost}" /><span class="mx-1">&bullet;</span> 3 min read <span class="icon-star2"></span></span>
+                </div>
+              </div>
+            </div>
+            </c:forEach>
+          </div>
+          </c:if>
+          <!--end category 4 -->
+          <!--recent -->
+          <div class="col-lg-3">
             <div class="section-title">
               <h2>Recent News</h2>
             </div>
-            <div class="post-entry-2 d-flex">
-              <div class="thumbnail order-md-2" style="background-image: url('images/img_h_4.jpg')"></div>
-              <div class="contents order-md-1 pl-0">
-                <h2><a href="blog-single.html">News Needs to Meet Its Audiences Where They Are</a></h2>
-                <p class="mb-3">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eligendi temporibus praesentium neque, voluptatum quam quibusdam.</p>
-                <div class="post-meta">
-                  <span class="d-block"><a href="#">Dave Rogers</a> in <a href="#">News</a></span>
-                  <span class="date-read">Jun 14 <span class="mx-1">&bullet;</span> 3 min read <span class="icon-star2"></span></span>
-                </div>
-              </div>
-            </div>
-
-            <div class="post-entry-2 d-flex">
-              <div class="thumbnail order-md-2" style="background-image: url('${pageContext.request.contextPath}/images/img_h_3.jpg')"></div>
-              <div class="contents order-md-1 pl-0">
-                <h2><a href="blog-single.html">News Needs to Meet Its Audiences Where They Are</a></h2>
-                <p class="mb-3">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eligendi temporibus praesentium neque, voluptatum quam quibusdam.</p>
-                <div class="post-meta">
-                  <span class="d-block"><a href="#">Dave Rogers</a> in <a href="#">News</a></span>
-                  <span class="date-read">Jun 14 <span class="mx-1">&bullet;</span> 3 min read <span class="icon-star2"></span></span>
-                </div>
-              </div>
-            </div>
-
-            <div class="post-entry-2 d-flex">
-              <div class="thumbnail order-md-2" style="background-image: url('images/img_h_3.jpg')"></div>
-              <div class="contents order-md-1 pl-0">
-                <span class="caption mb-4 d-block">Editor's Pick</span>
-                <h2><a href="blog-single.html">News Needs to Meet Its Audiences Where They Are</a></h2>
-                <p class="mb-3">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eligendi temporibus praesentium neque, voluptatum quam quibusdam.</p>
-                <div class="post-meta">
-                  <span class="d-block"><a href="#">Dave Rogers</a> in <a href="#">News</a></span>
-                  <span class="date-read">Jun 14 <span class="mx-1">&bullet;</span> 3 min read <span class="icon-star2"></span></span>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-3">
-            <div class="section-title">
-              <h2>Popular Posts</h2>
-            </div>
-
+            <c:set var = "i"  value = "${1}"/>
+			<c:forEach items="${listnewsheader}" var="news">
             <div class="trend-entry d-flex">
-              <div class="number align-self-start">01</div>
+              <div class="number align-self-start">0<c:out value="${i}" /></div>
               <div class="trend-contents">
-                <h2><a href="blog-single.html">News Needs to Meet Its Audiences Where They Are</a></h2>
+                <h2 style="word-wrap: break-word;"><a href="blog-single.html"><c:out value="${news.newsName}" /></a></h2>
                 <div class="post-meta">
-                  <span class="d-block"><a href="#">Dave Rogers</a> in <a href="#">News</a></span>
-                  <span class="date-read">Jun 14 <span class="mx-1">&bullet;</span> 3 min read <span class="icon-star2"></span></span>
+                  <span class="d-block"><a href="#"><c:out value="${newstop.userName}" /></a></span>
+                  <span class="date-read"><c:out value="${news.datePost}" /> <span class="mx-1">&bullet;</span> 3 min read <span class="icon-star2"></span></span>
                 </div>
               </div>
             </div>
+             <c:set var = "i"  value = "${i + 1}"/>
+            </c:forEach>
 
-            <div class="trend-entry d-flex">
-              <div class="number align-self-start">02</div>
-              <div class="trend-contents">
-                <h2><a href="blog-single.html">News Needs to Meet Its Audiences Where They Are</a></h2>
-                <div class="post-meta">
-                  <span class="d-block"><a href="#">Dave Rogers</a> in <a href="#">News</a></span>
-                  <span class="date-read">Jun 14 <span class="mx-1">&bullet;</span> 3 min read <span class="icon-star2"></span></span>
-                </div>
-              </div>
-            </div>
-
-            <div class="trend-entry d-flex">
-              <div class="number align-self-start">03</div>
-              <div class="trend-contents">
-                <h2><a href="blog-single.html">News Needs to Meet Its Audiences Where They Are</a></h2>
-                <div class="post-meta">
-                  <span class="d-block"><a href="#">Dave Rogers</a> in <a href="#">News</a></span>
-                  <span class="date-read">Jun 14 <span class="mx-1">&bullet;</span> 3 min read <span class="icon-star2"></span></span>
-                </div>
-              </div>
-            </div>
-
-            <div class="trend-entry d-flex pl-0">
-              <div class="number align-self-start">04</div>
-              <div class="trend-contents">
-                <h2><a href="blog-single.html">News Needs to Meet Its Audiences Where They Are</a></h2>
-                <div class="post-meta">
-                  <span class="d-block"><a href="#">Dave Rogers</a> in <a href="#">News</a></span>
-                  <span class="date-read">Jun 14 <span class="mx-1">&bullet;</span> 3 min read <span class="icon-star2"></span></span>
-                </div>
-              </div>
-            </div>
+   
             
             <p>
               <a href="#" class="more">See All Popular <span class="icon-keyboard_arrow_right"></span></a>
             </p>
           </div>
+          <!--end recent -->
         </div>
 
         <div class="row">
@@ -410,71 +257,7 @@
       </div>
     </div>
 
-    <div class="site-section subscribe bg-light">
-      <div class="container">
-        <form action="#" class="row align-items-center">
-          <div class="col-md-5 mr-auto">
-            <h2>Newsletter Subcribe</h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perferendis aspernatur ut at quae omnis pariatur obcaecati possimus nisi ea iste!</p>
-          </div>
-          <div class="col-md-6 ml-auto">
-            <div class="d-flex">
-              <input type="email" class="form-control" placeholder="Enter your email">
-              <button type="submit" class="btn btn-secondary" ><span class="icon-paper-plane"></span></button>
-            </div>
-          </div>
-        </form>
-      </div>
-    </div>
+   
 
-
-    
-    <div class="footer">
-      <div class="container">
-        
-
-        <div class="row">
-          <div class="col-12">
-            <div class="copyright">
-                <p>
-                    <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-                    Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="icon-heart text-danger" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank" >Colorlib</a>
-                    <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-                    </p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    
-
-  </div>
-  <!-- .site-wrap -->
-
-
-  <!-- loader -->
-  <div id="loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#ff5e15"/></svg></div>
-
-  <script src="${pageContext.request.contextPath}/js/jquery-3.3.1.min.js"></script>
-  <script src="${pageContext.request.contextPath}/js/jquery-migrate-3.0.1.min.js"></script>
-  <script src="${pageContext.request.contextPath}/js/jquery-ui.js"></script>
-  <script src="${pageContext.request.contextPath}/js/popper.min.js"></script>
-  <script src="${pageContext.request.contextPath}/js/bootstrap.min.js"></script>
-  <script src="${pageContext.request.contextPath}/js/owl.carousel.min.js"></script>
-  <script src="${pageContext.request.contextPath}/js/jquery.stellar.min.js"></script>
-  <script src="${pageContext.request.contextPath}/js/jquery.countdown.min.js"></script>
-  <script src="${pageContext.request.contextPath}/js/bootstrap-datepicker.min.js"></script>
-  <script src="${pageContext.request.contextPath}/js/jquery.easing.1.3.js"></script>
-  <script src="${pageContext.request.contextPath}/js/aos.js"></script>
-  <script src="${pageContext.request.contextPath}/js/jquery.fancybox.min.js"></script>
-  <script src="${pageContext.request.contextPath}/js/jquery.sticky.js"></script>
-  <script src="${pageContext.request.contextPath}/js/jquery.mb.YTPlayer.min.js"></script>
-
-
-
-
-  <script src="${pageContext.request.contextPath}/js/main.js"></script>
-
-</body>
-
-</html>
+<jsp:include page="footer.jsp"></jsp:include>
+  

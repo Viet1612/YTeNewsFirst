@@ -84,13 +84,13 @@ public interface NewsLogic {
 	public void updateNews(News news) throws SQLException, ClassNotFoundException;
 
 	/**
-	 * Lấy 4 news mới nhất hiển thih trên trang chủ
+	 * Lấy 4 news hiển thih trên trang chủ
 	 * @param limit số news muốn lấy
 	 * @return List news
 	 * @throws SQLException 
 	 * @throws ClassNotFoundException 
 	 */
-	public List<News> getListNewsHeader(int limit) throws ClassNotFoundException, SQLException;
+	public List<News> getListNewsHome(int limit, int categoryId, int view) throws ClassNotFoundException, SQLException;
 	
 
 }

@@ -100,8 +100,8 @@ public class NewsLogicImpl implements NewsLogic {
 	 * @see ytebnews.logics.NewsLogic#getListNewsLatest(int)
 	 */
 	@Override
-	public List<News> getListNewsHeader(int limit) throws ClassNotFoundException, SQLException {
-		return newsDao.getListNewsHeader(limit);
+	public List<News> getListNewsHome(int limit, int categoryId, int view) throws ClassNotFoundException, SQLException {
+		return newsDao.getListNewsHome(limit, categoryId, view);
 	}
 
 }

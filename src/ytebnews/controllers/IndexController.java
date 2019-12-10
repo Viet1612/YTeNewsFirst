@@ -32,10 +32,18 @@ public class IndexController extends HttpServlet {
 		try {
 			CategoryLogic categoryLogic = new CategoryLogicImpl();
 			NewsLogic newsLogic = new NewsLogicImpl();
+			List<News> listNewsByCategoryId = null;
 			List<Category> listCategories = categoryLogic.getListCategory();
-			List<News> listNewsHeader = newsLogic.getListNewsHeader(4);
-			request.setAttribute("listnewsheader", listNewsHeader);
+			List<News> listNewsHeader = newsLogic.getListNewsHome(5, 0, Constant.NOT_VIEW_ORDER);
+			List<News> listNewsTrending = newsLogic.getListNewsHome(4, 0, Constant.VIEW_ORDER);
+			for (int i = 0; i < listCategories.size(); i++) {
+				listNewsByCategoryId = newsLogic.getListNewsHome(5, listCategories.get(i).getCategoryId(), Constant.NOT_VIEW_ORDER);
+				request.setAttribute("category" + i, listNewsByCategoryId);
+//				request.setAttribute(listCategories.get(i).getCategoryId(), listNewsByCategoryId);
+			}
 			request.setAttribute("listcategory", listCategories);
+			request.setAttribute("listnewsheader", listNewsHeader);
+			request.setAttribute("listnewstrending", listNewsTrending);
 			RequestDispatcher dispatch = request.getServletContext().getRequestDispatcher(Constant.INDEX_JSP);
 			dispatch.forward(request, response);
 			

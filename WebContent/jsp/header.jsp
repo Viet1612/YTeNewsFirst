@@ -1,6 +1,52 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>YteNews24h</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+
+  <link href="https://fonts.googleapis.com/css?family=B612+Mono|Cabin:400,700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="${pageContext.request.contextPath}/fonts/icomoon/style.css">
+
+  <link rel="stylesheet" href="${pageContext.request.contextPath}/css/bootstrap.min.css">
+  <link rel="stylesheet" href="${pageContext.request.contextPath}/css/jquery-ui.css">
+  <link rel="stylesheet" href="${pageContext.request.contextPath}/css/owl.carousel.min.css">
+  <link rel="stylesheet" href="${pageContext.request.contextPath}/css/owl.theme.default.min.css">
+  <link rel="stylesheet" href="${pageContext.request.contextPath}/css/owl.theme.default.min.css">
+
+  <link rel="stylesheet" href="${pageContext.request.contextPath}/css/jquery.fancybox.min.css">
+
+  <link rel="stylesheet" href="${pageContext.request.contextPath}/css/bootstrap-datepicker.css">
+
+  <link rel="stylesheet" href="${pageContext.request.contextPath}/fonts/flaticon/font/flaticon.css">
+
+  <link rel="stylesheet" href="${pageContext.request.contextPath}/css/aos.css">
+  <link href="${pageContext.request.contextPath}/css/jquery.mb.YTPlayer.min.css" media="all" rel="stylesheet" type="text/css">
+
+  <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css">
+
+
+
+</head>
+
+<body data-spy="scroll" data-target=".site-navbar-target" data-offset="300">
+
+  <div class="site-wrap">
+
+    <div class="site-mobile-menu site-navbar-target">
+      <div class="site-mobile-menu-header">
+        <div class="site-mobile-menu-close mt-3">
+          <span class="icon-close2 js-menu-toggle"></span>
+        </div>
+      </div>
+      <div class="site-mobile-menu-body"></div>
+    </div>
 
 
 
@@ -8,7 +54,7 @@
 	<div class="container">
 		<div class="row align-items-center">
 			<div class="col-12 col-lg-6 d-flex">
-				<a href="index.html" class="site-logo"> Meranda </a> <a href="#"
+				<a href="index.html" class="site-logo"> YTeNews24h </a> <a href="#"
 					class="ml-auto d-inline-block d-lg-none site-menu-toggle js-menu-toggle text-black"><span
 					class="icon-menu h3"></span></a>
 

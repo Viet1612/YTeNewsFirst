@@ -420,7 +420,7 @@ public class NewsDaoImpl extends BaseDaoImpl implements NewsDao {
 	 * @see ytebnews.dao.NewsDao#getListNewsLatest()
 	 */
 	@Override
-	public List<News> getListNewsHeader(int limit) throws ClassNotFoundException, SQLException {
+	public List<News> getListNewsHome(int limit, int categoryId, int view) throws ClassNotFoundException, SQLException {
 		List<News> listNews = null;
 		try {
 			connectDB();
@@ -432,12 +432,26 @@ public class NewsDaoImpl extends BaseDaoImpl implements NewsDao {
 			sqlQuery.append("INNER JOIN tbl_user AS u ");
 			sqlQuery.append("ON u.user_id = n.user_id ");
 			sqlQuery.append("WHERE n.approve = ? ");
-			sqlQuery.append("ORDER BY n.date DESC ");
-			sqlQuery.append(" LIMIT 0, ?;");
+			if (categoryId > 0) {
+				sqlQuery.append("AND n.category_id = ? ");
+			}
+			if (view == Constant.NOT_VIEW_ORDER) {
+				sqlQuery.append("ORDER BY n.date DESC ");
+			} else if (view == Constant.VIEW_ORDER) {
+				sqlQuery.append("ORDER BY n.view DESC ");
+			}
+			if (limit > 0) {
+				sqlQuery.append("LIMIT 0, ?;");
+			}
 			pst = con.prepareStatement(sqlQuery.toString());
 			int index = 0;
 			pst.setInt(++index, Constant.APPROVE_Y);
-			pst.setInt(++index, limit);
+			if (categoryId > 0) {
+				pst.setInt(++index, categoryId);
+			}
+			if (limit > 0) {
+				pst.setInt(++index, limit);
+			}
 			rs = pst.executeQuery();
 			// Lấy các bản ghi
 			listNews = new ArrayList<News>();
