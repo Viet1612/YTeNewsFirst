@@ -13,8 +13,8 @@
           <div class="col-md-6 ml-auto">
           
             <div class="d-flex">
-           <div>
-<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3724.696199620743!2d105.84315191542306!3d21.00481169397013!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3135ac76ccab6dd7%3A0x55e92a5b07a97d03!2zVHLGsOG7nW5nIMSQ4bqhaSBo4buNYyBCw6FjaCBraG9hIEjDoCBO4buZaQ!5e0!3m2!1svi!2s!4v1575915930507!5m2!1svi!2s" width="400" height="150" frameborder="0" style="border:0;" allowfullscreen=""></iframe>
+           <div style="border-style: outset">
+<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3724.696199620743!2d105.84315191542306!3d21.00481169397013!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3135ac76ccab6dd7%3A0x55e92a5b07a97d03!2zVHLGsOG7nW5nIMSQ4bqhaSBo4buNYyBCw6FjaCBraG9hIEjDoCBO4buZaQ!5e0!3m2!1svi!2s!4v1575915930507!5m2!1svi!2s" width="500" height="180" frameborder="0" style="border:0;" allowfullscreen=""></iframe>
            </div>
             </div>
           </div>
@@ -40,7 +40,7 @@
       </div>
     </div>
     
-
+</div>
   <!-- .site-wrap -->
 
 

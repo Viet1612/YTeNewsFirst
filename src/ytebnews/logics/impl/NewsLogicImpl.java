@@ -104,4 +104,13 @@ public class NewsLogicImpl implements NewsLogic {
 		return newsDao.getListNewsHome(limit, categoryId, view);
 	}
 
+	/* (non-javadoc)
+	 *@see ytebnews.logics.NewsLogic#getListNewsCategories(int, int, int, java.lang.String, java.lang.String)
+	 */
+	@Override
+	public List<News> getListNewsCategories(int offset, int limit, int categoryId, String keyName,
+			String orderByTrending) throws ClassNotFoundException, SQLException {
+		return newsDao.getListNewsCategories(offset, limit, categoryId, keyName, orderByTrending);
+	}
+
 }

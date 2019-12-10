@@ -92,5 +92,15 @@ public interface NewsLogic {
 	 */
 	public List<News> getListNewsHome(int limit, int categoryId, int view) throws ClassNotFoundException, SQLException;
 	
+	/**
+	 * Lấy limit news hiển thih trên từng categories
+	 * @param 
+	 * @return List news
+	 * @throws SQLException 
+	 * @throws ClassNotFoundException 
+	 */
+	public List<News> getListNewsCategories(int offset, int limit, int categoryId, String keyName, String orderByTrending ) throws ClassNotFoundException, SQLException;
+
+	
 
 }

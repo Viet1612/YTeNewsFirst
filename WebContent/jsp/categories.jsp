@@ -13,119 +13,23 @@
         <div class="row">
           <div class="col-lg-9">
             <div class="section-title">
-              <span class="caption d-block small">Categories</span>
-              <h2>Politics</h2>
+              <h2>${categoryname}</h2>
             </div>
+            
+            	<c:forEach items="${listNews}" var="news">
             <div class="post-entry-2 d-flex">
-              <div class="thumbnail order-md-2" style="background-image: url('images/img_h_4.jpg')"></div>
+              <div class="thumbnail order-md-2"><img src="${pageContext.request.contextPath}/images_news/${news.image}" alt="Image" class="img-fluid"></div>
               <div class="contents order-md-1 pl-0">
-                <h2><a href="blog-single.html">News Needs to Meet Its Audiences Where They Are</a></h2>
-                <p class="mb-3">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eligendi temporibus praesentium neque, voluptatum quam quibusdam.</p>
+                <h2 style="word-wrap: break-word;"><a href="blog-single.html"><c:out value="${news.newsName}" /></a></h2>
+                <p class="mb-3" style="word-wrap: break-word;"><c:out value="${news.description}" /></p>
                 <div class="post-meta">
-                  <span class="d-block"><a href="#">Dave Rogers</a> in <a href="#">News</a></span>
-                  <span class="date-read">Jun 14 <span class="mx-1">&bullet;</span> 3 min read <span class="icon-star2"></span></span>
+                  <span class="d-block"><c:out value="${news.userName}" /></span>
+                  <span class="date-read"><c:out value="${news.datePost}" /> <span class="mx-1">&bullet;</span> 3 min read <span class="icon-star2"></span></span>
                 </div>
               </div>
             </div>
+			</c:forEach>
 
-            <div class="post-entry-2 d-flex">
-              <div class="thumbnail order-md-2" style="background-image: url('images/img_h_3.jpg')"></div>
-              <div class="contents order-md-1 pl-0">
-                <h2><a href="blog-single.html">News Needs to Meet Its Audiences Where They Are</a></h2>
-                <p class="mb-3">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eligendi temporibus praesentium neque, voluptatum quam quibusdam.</p>
-                <div class="post-meta">
-                  <span class="d-block"><a href="#">Dave Rogers</a> in <a href="#">News</a></span>
-                  <span class="date-read">Jun 14 <span class="mx-1">&bullet;</span> 3 min read <span class="icon-star2"></span></span>
-                </div>
-              </div>
-            </div>
-
-            <div class="post-entry-2 d-flex">
-              <div class="thumbnail order-md-2" style="background-image: url('images/img_h_1.jpg')"></div>
-              <div class="contents order-md-1 pl-0">
-                
-                <h2><a href="blog-single.html">News Needs to Meet Its Audiences Where They Are</a></h2>
-                <p class="mb-3">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eligendi temporibus praesentium neque, voluptatum quam quibusdam.</p>
-                <div class="post-meta">
-                  <span class="d-block"><a href="#">Dave Rogers</a> in <a href="#">News</a></span>
-                  <span class="date-read">Jun 14 <span class="mx-1">&bullet;</span> 3 min read <span class="icon-star2"></span></span>
-                </div>
-              </div>
-            </div>
-
-            <div class="post-entry-2 d-flex">
-              <div class="thumbnail order-md-2" style="background-image: url('images/img_h_4.jpg')"></div>
-              <div class="contents order-md-1 pl-0">
-                <h2><a href="blog-single.html">News Needs to Meet Its Audiences Where They Are</a></h2>
-                <p class="mb-3">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eligendi temporibus praesentium neque, voluptatum quam quibusdam.</p>
-                <div class="post-meta">
-                  <span class="d-block"><a href="#">Dave Rogers</a> in <a href="#">News</a></span>
-                  <span class="date-read">Jun 14 <span class="mx-1">&bullet;</span> 3 min read <span class="icon-star2"></span></span>
-                </div>
-              </div>
-            </div>
-
-            <div class="post-entry-2 d-flex">
-              <div class="thumbnail order-md-2" style="background-image: url('images/img_h_3.jpg')"></div>
-              <div class="contents order-md-1 pl-0">
-                <h2><a href="blog-single.html">News Needs to Meet Its Audiences Where They Are</a></h2>
-                <p class="mb-3">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eligendi temporibus praesentium neque, voluptatum quam quibusdam.</p>
-                <div class="post-meta">
-                  <span class="d-block"><a href="#">Dave Rogers</a> in <a href="#">News</a></span>
-                  <span class="date-read">Jun 14 <span class="mx-1">&bullet;</span> 3 min read <span class="icon-star2"></span></span>
-                </div>
-              </div>
-            </div>
-
-            <div class="post-entry-2 d-flex">
-              <div class="thumbnail order-md-2" style="background-image: url('images/img_h_1.jpg')"></div>
-              <div class="contents order-md-1 pl-0">
-                
-                <h2><a href="blog-single.html">News Needs to Meet Its Audiences Where They Are</a></h2>
-                <p class="mb-3">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eligendi temporibus praesentium neque, voluptatum quam quibusdam.</p>
-                <div class="post-meta">
-                  <span class="d-block"><a href="#">Dave Rogers</a> in <a href="#">News</a></span>
-                  <span class="date-read">Jun 14 <span class="mx-1">&bullet;</span> 3 min read <span class="icon-star2"></span></span>
-                </div>
-              </div>
-            </div>
-
-            <div class="post-entry-2 d-flex">
-              <div class="thumbnail order-md-2" style="background-image: url('images/img_h_4.jpg')"></div>
-              <div class="contents order-md-1 pl-0">
-                <h2><a href="blog-single.html">News Needs to Meet Its Audiences Where They Are</a></h2>
-                <p class="mb-3">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eligendi temporibus praesentium neque, voluptatum quam quibusdam.</p>
-                <div class="post-meta">
-                  <span class="d-block"><a href="#">Dave Rogers</a> in <a href="#">News</a></span>
-                  <span class="date-read">Jun 14 <span class="mx-1">&bullet;</span> 3 min read <span class="icon-star2"></span></span>
-                </div>
-              </div>
-            </div>
-
-            <div class="post-entry-2 d-flex">
-              <div class="thumbnail order-md-2" style="background-image: url('images/img_h_3.jpg')"></div>
-              <div class="contents order-md-1 pl-0">
-                <h2><a href="blog-single.html">News Needs to Meet Its Audiences Where They Are</a></h2>
-                <p class="mb-3">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eligendi temporibus praesentium neque, voluptatum quam quibusdam.</p>
-                <div class="post-meta">
-                  <span class="d-block"><a href="#">Dave Rogers</a> in <a href="#">News</a></span>
-                  <span class="date-read">Jun 14 <span class="mx-1">&bullet;</span> 3 min read <span class="icon-star2"></span></span>
-                </div>
-              </div>
-            </div>
-
-            <div class="post-entry-2 d-flex">
-              <div class="thumbnail order-md-2" style="background-image: url('images/img_h_1.jpg')"></div>
-              <div class="contents order-md-1 pl-0">
-                
-                <h2><a href="blog-single.html">News Needs to Meet Its Audiences Where They Are</a></h2>
-                <p class="mb-3">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eligendi temporibus praesentium neque, voluptatum quam quibusdam.</p>
-                <div class="post-meta">
-                  <span class="d-block"><a href="#">Dave Rogers</a> in <a href="#">News</a></span>
-                  <span class="date-read">Jun 14 <span class="mx-1">&bullet;</span> 3 min read <span class="icon-star2"></span></span>
-                </div>
-              </div>
-            </div>
           </div>
           <div class="col-lg-3">
             <div class="section-title">
@@ -181,14 +85,20 @@
             </p>
           </div>
         </div>
-
+	<c:url value="categories.html" var="url_paging">
+		<c:param name="action" value="paging" />
+		<c:param name="keyname" value="${keyname}" />
+		<c:param name="categoryid" value="${categoryid}" />
+		<c:param name="trending" value="${trending}" />
+	</c:url>
         <div class="row">
           <div class="col-lg-6">
             <ul class="custom-pagination list-unstyled">
-              <li><a href="#">1</a></li>
-              <li class="active">2</li>
-              <li><a href="#">3</a></li>
-              <li><a href="#">4</a></li>
+              <li><a href="${url_paging}&currentpage=${previous}">${previouschar}</a></li>
+              <c:forEach items="${listPaging}" var="Paging">
+              <li <c:if test = "${currentpage == Paging}"> class="active"</c:if>><a href="${url_paging}&currentpage=${Paging}">${Paging}</a></li>
+              </c:forEach>
+              <li><a href="${url_paging}&currentpage=${next}">${nextchar}</a></li>
             </ul>
           </div>
         </div>

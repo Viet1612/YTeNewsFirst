@@ -102,7 +102,7 @@
 								href="${pageContext.request.contextPath}/index.html"
 								class="nav-link text-left">Home</a></li>
 							<c:forEach items="${listcategory}" var="category">
-								<li><a href="categories.html" class="nav-link text-left"><c:out
+								<li><a href="${pageContext.request.contextPath}/categories.html?categoryid=${category.categoryId}" class="nav-link text-left"><c:out
 											value="${category.categoryName}" /></a></li>
 							</c:forEach>
 							<li><a href="contact.html" class="nav-link text-left">Contact</a></li>

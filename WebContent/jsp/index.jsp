@@ -40,7 +40,7 @@
             <div class="row">
               <div class="col-12">
                 <div class="section-title">
-                  <h2><a style="color: black;"><c:out value="${listcategory.get(0).categoryName}" /></a></h2>
+                  <h2><a style="color: black;" href="${pageContext.request.contextPath}/categories.html?categoryid=${category.categoryId}"><c:out value="${listcategory.get(0).categoryName}" /></a></h2>
                 </div>
               </div>
             </div>
@@ -108,7 +108,7 @@
         </c:forEach>
             
             <p>
-              <a href="#" class="more">See All Trends <span class="icon-keyboard_arrow_right"></span></a>
+              <a href="${pageContext.request.contextPath}/categories.html?action=trending" class="more">See All Trends <span class="icon-keyboard_arrow_right"></span></a>
             </p>
 
           </div>
@@ -144,7 +144,7 @@
            <c:if test = "${category1.size() > 0}">
           <div class="col-lg-6">
             <div class="section-title">
-              <h2><a style="color: black;"><c:out value="${listcategory.get(1).categoryName}" /></a></h2>
+              <h2><a style="color: black;" href="${pageContext.request.contextPath}/categories.html?categoryid=${category.categoryId}"><c:out value="${listcategory.get(1).categoryName}" /></a></h2>
             </div>
              <c:forEach items="${category1}" var="news">
             <div class="post-entry-2 d-flex">
@@ -166,7 +166,7 @@
                 <c:if test = "${category2.size() > 0}">
           <div class="col-lg-6">
             <div class="section-title">
-              <h2><a style="color: black;"><c:out value="${listcategory.get(2).categoryName}" /></a></h2>
+              <h2><a style="color: black;" href="${pageContext.request.contextPath}/categories.html?categoryid=${category.categoryId}"><c:out value="${listcategory.get(2).categoryName}" /></a></h2>
             </div>
              <c:forEach items="${category2}" var="news">
             <div class="post-entry-2 d-flex">
@@ -197,7 +197,7 @@
         <c:if test = "${category3.size() > 0}">
           <div class="col-lg-9">
             <div class="section-title">
-              <h2><a style="color: black;"><c:out value="${listcategory.get(3).categoryName}" /></a></h2>
+              <h2><a style="color: black;" href="${pageContext.request.contextPath}/categories.html?categoryid=${category.categoryId}"><c:out value="${listcategory.get(3).categoryName}" /></a></h2>
             </div>
               <c:forEach items="${category3}" var="news">
             <div class="post-entry-2 d-flex">
@@ -238,7 +238,7 @@
    
             
             <p>
-              <a href="#" class="more">See All Popular <span class="icon-keyboard_arrow_right"></span></a>
+              <a href="${pageContext.request.contextPath}/categories.html" class="more">See All Popular <span class="icon-keyboard_arrow_right"></span></a>
             </p>
           </div>
           <!--end recent -->

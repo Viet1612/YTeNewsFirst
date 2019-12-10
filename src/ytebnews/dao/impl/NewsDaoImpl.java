@@ -482,4 +482,84 @@ public class NewsDaoImpl extends BaseDaoImpl implements NewsDao {
 		return listNews;
 	}
 
+	/*
+	 * (non-javadoc)
+	 * 
+	 * @see ytebnews.dao.NewsDao#getListNewsCategories(int, int, int,
+	 * java.lang.String, java.lang.String, java.lang.String)
+	 */
+	@Override
+	public List<News> getListNewsCategories(int offset, int limit, int categoryId, String keyName,
+			String orderByTrending) throws ClassNotFoundException, SQLException {
+
+		List<News> listNews = null;
+		try {
+			connectDB();
+			if (con != null) {
+				int index = 0;
+				// Câu SQL
+				StringBuilder sqlQuery = new StringBuilder();
+				sqlQuery.append(
+						"SELECT n.news_id, n.category_id, n.news_name, n.approve, c.category_id, c.category_name, n.description, n.content, n.image, n.date, n.user_id, u.full_name, n.view ");
+				sqlQuery.append("FROM (tbl_news AS n LEFT JOIN tbl_category AS c ");
+				sqlQuery.append("ON n.category_id = c.category_id) ");
+				sqlQuery.append("INNER JOIN tbl_user AS u ");
+				sqlQuery.append("ON u.user_id = n.user_id ");
+				sqlQuery.append("WHERE approve = 1  ");
+				// Trường hợp có chọn group id
+				if (categoryId > 0) {
+					sqlQuery.append("AND c.category_id = ? ");
+				}
+				// Trường hợp có nhập full name
+				if (keyName.trim().length() > 0) {
+					sqlQuery.append("AND n.news_name LIKE ? ");
+				}
+				if (orderByTrending.trim().length() > 0) {
+					sqlQuery.append("ORDER BY n.view DESC ");
+				} else {
+					sqlQuery.append("ORDER BY n.date DESC ");
+				}
+				sqlQuery.append(" LIMIT ?, ?;");
+				// Tao đối tượng prepareStatement để gửi các câu lệnh sql được tham số hóa đến
+				// csdl
+				pst = con.prepareStatement(sqlQuery.toString());
+
+				if (categoryId > 0) {
+					pst.setInt(++index, categoryId);
+				}
+				if (keyName.trim().length() > 0) {
+					pst.setString(++index, "%" + keyName + "%");
+				}
+				pst.setInt(++index, offset);
+				pst.setInt(++index, limit);
+				rs = pst.executeQuery();
+				// Lấy các bản ghi
+				listNews = new ArrayList<News>();
+				while (rs.next()) {
+					News news = new News();
+					// Lấy thông tin từng user
+					news.setNewsId(rs.getInt(Constant.T_NEWS_ID));
+					news.setNewsName(rs.getString(Constant.T_NEWS_NAME));
+					news.setDescription(rs.getString(Constant.T_DESCRIPTION));
+					news.setContent(rs.getString(Constant.T_CONTENT));
+					news.setImage(rs.getString(Constant.T_IMAGE));
+					news.setDatePost(rs.getString(Constant.T_DATE));
+					news.setUserName(rs.getString(Constant.T_FUll_NAME));
+					news.setView(rs.getLong(Constant.T_VIEW));
+					news.setCategoryId(rs.getInt(Constant.T_CATEGORY_ID));
+					news.setApprove(rs.getInt("approve"));
+					news.setCategoryName(rs.getString(Constant.T_CATEGORY_NAME));
+					listNews.add(news);
+				}
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+			System.out.println(this.getClass().getName() + "-"
+					+ Thread.currentThread().getStackTrace()[1].getMethodName() + e.getMessage());
+			throw e;
+		}
+
+		return listNews;
+	}
+
 }
