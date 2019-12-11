@@ -44,12 +44,16 @@ public class CategoriesController extends HttpServlet {
 			int currentPage = Constant.CURRENT_PAGE_DEFAULT;
 			String orderByTrending = Constant.KEYNAME_DEFAULT;
 			String action = request.getParameter(Constant.ACTION);
+			String categoryName = Constant.KEYNAME_DEFAULT;
 
 			System.out.println(action);
 
 			if (Constant.RECENT.equals(action) || Constant.TRENDING.equals(action)) {
-				if (Constant.ACTION.equals(Constant.TRENDING)) {
+				if (Constant.TRENDING.equals(action)) {
 					orderByTrending = Constant.TRENDING;
+					categoryName = Constant.TRENDING_CATE;
+				} else {
+					categoryName = Constant.RECENT_NEWS;
 				}
 
 			} else if (action == null) {
@@ -57,6 +61,7 @@ public class CategoriesController extends HttpServlet {
 			} else if (Constant.SEARCH.equals(action) || Constant.PAGING.equals(action)) {
 				keyName = request.getParameter(Constant.KEYNAME);
 				categoryId = Common.parseInt(request.getParameter(Constant.CATEGORY_ID), Constant.CATEGORY_ID_DEFAULT);
+				categoryName = Constant.SEARCH_LIST;
 				if (Constant.PAGING.equals(action)) {
 					// Lấy trang click
 					currentPage = Common.parseInt(request.getParameter(Constant.CURRENT_PAGE),
@@ -95,8 +100,11 @@ public class CategoriesController extends HttpServlet {
 			}
 			if(categoryId > 0) {
 				Category category = categoryLogic.getCategoryById(categoryId);
-				request.setAttribute("categoryname", category.getCategoryName());
+				categoryName = category.getCategoryName();
 			}
+			List<News> listNewsTrending = newsLogic.getListNewsHome(4, 0, Constant.VIEW_ORDER);
+			request.setAttribute("listnewstrending", listNewsTrending);
+			request.setAttribute("categoryname", categoryName);
 			request.setAttribute(Constant.KEYNAME, keyName);
 			request.setAttribute(Constant.CATEGORY_ID, categoryId);
 			request.setAttribute(Constant.CURRENT_PAGE, currentPage);

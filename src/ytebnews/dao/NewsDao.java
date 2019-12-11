@@ -59,7 +59,7 @@ public interface NewsDao {
 	 * @throws SQLException 
 	 * @throws ClassNotFoundException 
 	 */
-	public News getNewsById(int newsId) throws ClassNotFoundException, SQLException;
+	public News getNewsById(int newsId, int approve) throws ClassNotFoundException, SQLException;
 	
 	/**
 	 * Phê duyeeth bài viết
@@ -100,6 +100,14 @@ public interface NewsDao {
 	 * @throws ClassNotFoundException 
 	 */
 	public List<News> getListNewsCategories(int offset, int limit, int categoryId, String keyName, String orderByTrending ) throws ClassNotFoundException, SQLException;
+	
+	/**
+	 * update view
+	 * @param newsId
+	 * @throws ClassNotFoundException 
+	 * @throws SQLException 
+	 */
+	public void updateView(int newsId) throws SQLException, ClassNotFoundException;
 
 
 }

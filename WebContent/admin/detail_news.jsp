@@ -47,7 +47,12 @@
 		<jsp:include page="header.jsp"></jsp:include>
 		<!-- =============================================== -->
 		<!-- Left side column. contains the sidebar -->
+		<c:if test="${rule == 2}">
 		<jsp:include page="menu_author.jsp"></jsp:include>
+		</c:if>
+		<c:if test="${rule == 0}">
+		<jsp:include page="menu.jsp"></jsp:include>
+		</c:if>
 		<!-- =============================================== -->
 		<!-- Content Wrapper. Contains page content -->
 		<div class="content-wrapper">
@@ -71,7 +76,7 @@
 								<label class="col-sm-2 control-label">Title</label>
 								<div class="col-sm-8">
 									<textarea id="des" class="form-control" name="title"
-										placeholder="Please enter title!" rows="5" cols="80" readonly>${news.newsName}</textarea>
+										placeholder="Please enter title!" rows="5" cols="80" readonly><c:out value="${news.newsName}" /></textarea>
 								</div>
 							</div>
 							<div class="form-group">
@@ -79,7 +84,7 @@
 								<div class="col-sm-8">
 									<textarea id="des" class="form-control" name="description"
 										placeholder="Please enter description!" rows="5" cols="80"
-										readonly>${news.description}</textarea>
+										readonly><c:out value="${news.description}" /></textarea>
 								</div>
 							</div>
 
@@ -97,7 +102,7 @@
 								<div class="col-sm-8">
 									<textarea id="des" class="form-control" name="content"
 										placeholder="Please enter content!" rows="15" cols="80"
-										readonly>${news.content}</textarea>
+										readonly><c:out value="${news.content}" /></textarea>
 
 								</div>
 							</div>

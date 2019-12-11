@@ -43,7 +43,7 @@ public class DetailNewAdminController extends HttpServlet {
 			int newsId = Common.parseInt(request.getParameter(Constant.NEWS_ID), Constant.NEWS_ID_DEFAULT);
 			// newsid paseInt không lỗi và tồn tại mới hiển thị 
 			if (newsId > 0 && newsLogic.checkExistNewsId(newsId)) {
-				News news = newsLogic.getNewsById(newsId);
+				News news = newsLogic.getNewsById(newsId, Constant.APPROVE_DC);
 				List<Category> lisCategories = categoryLogic.getListCategory();
 				// Set đối tượng lên rq
 				request.setAttribute(Constant.NEWS, news);

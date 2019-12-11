@@ -69,7 +69,8 @@ public class Constant {
 	public static final String EDIT_CATEGORY_JSP = "/admin/insert_category.jsp";
 	public static final String EDIT_NEWS_JSP = "/admin/edit_news.jsp";
 	public static final String INDEX_JSP = "/jsp/index.jsp";
-	public static final String CATEGORIES_JSP = "/jsp/categories.jsp";;
+	public static final String CATEGORIES_JSP = "/jsp/categories.jsp";
+	public static final String NEWS_SINGLE_JSP = "/jsp/news_single.jsp";
 	
 	
 	//servlet
@@ -93,6 +94,7 @@ public class Constant {
 	//TIn tức servlet
 	public static final String INDEX_URL = "/index.html";
 	public static final String CATERGORIES_NEWS_URL = "/categories.html";
+	public static final String NEWS_URL = "/news.html";
 	//
 	//Số bản ghi trên một page
 	public static int LIMIT = Common.parseInt(ConfigProperties.getConfig("limit"), Constant.LIMIT_DEFAULT);
@@ -136,6 +138,10 @@ public class Constant {
 	public static final int VIEW_ORDER = 1;
 	public static final String RECENT = "recent";
 	public static final String TRENDING = "trending";
+	public static final String TRENDING_CATE = "TOP TRENDING";
+	public static final String RECENT_NEWS = "RECENT NEWS";
+	public static final String SEARCH_LIST = "SEARCH RESULT";
+	
 	
 	
 

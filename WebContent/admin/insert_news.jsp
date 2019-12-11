@@ -59,13 +59,13 @@
 		                    <div class="form-group">
                                         <label class="col-sm-2 control-label">Title</label>
                                         <div class="col-sm-8">
-                                             <textarea id="des" class="form-control" name="title" placeholder="Please enter title!" rows="5" cols="80">${news.newsName}</textarea>	                      	
+                                             <textarea id="des" class="form-control" name="title" placeholder="Please enter title!" rows="5" cols="80"><c:out value="${news.newsName}"/></textarea>	                      	
                                         </div>		                      
 		                    </div>  
 		                      <div class="form-group">
                                         <label class="col-sm-2 control-label">Description</label>
                                         <div class="col-sm-8">
-                                         <textarea id="des" class="form-control" name="description" placeholder="Please enter description!" rows="5" cols="80">${news.description}</textarea>	                      	
+                                         <textarea id="des" class="form-control" name="description" placeholder="Please enter description!" rows="5" cols="80"><c:out value="${news.description}"/></textarea>	                      	
                                         </div>		                      
 		                    </div>  
 		                    
@@ -80,7 +80,7 @@
 		                    <div class="form-group">
                                         <label class="col-sm-2 control-label">Content</label>
                                         <div class="col-sm-8"> 
-                                            <textarea id="des" class="form-control" name="content" placeholder="Please enter content!" rows="15" cols="80">${news.content}</textarea>	                      	
+                                            <textarea id="des" class="form-control" name="content" placeholder="Please enter content!" rows="15" cols="80"><c:out value="${news.content}"/></textarea>	                      	
                                             
                                         </div>		                      
 		                    </div>   

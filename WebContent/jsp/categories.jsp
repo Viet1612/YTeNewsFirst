@@ -18,9 +18,9 @@
             
             	<c:forEach items="${listNews}" var="news">
             <div class="post-entry-2 d-flex">
-              <div class="thumbnail order-md-2"><img src="${pageContext.request.contextPath}/images_news/${news.image}" alt="Image" class="img-fluid"></div>
+              <div class="thumbnail order-md-2"><a href="${pageContext.request.contextPath}/news.html?newsid=${news.newsId}"><img src="${pageContext.request.contextPath}/images_news/${news.image}" alt="Image" class="img-fluid"></a></div>
               <div class="contents order-md-1 pl-0">
-                <h2 style="word-wrap: break-word;"><a href="blog-single.html"><c:out value="${news.newsName}" /></a></h2>
+                <h2 style="word-wrap: break-word;"><a href="${pageContext.request.contextPath}/news.html?newsid=${news.newsId}"><c:out value="${news.newsName}" /></a></h2>
                 <p class="mb-3" style="word-wrap: break-word;"><c:out value="${news.description}" /></p>
                 <div class="post-meta">
                   <span class="d-block"><c:out value="${news.userName}" /></span>
@@ -33,55 +33,26 @@
           </div>
           <div class="col-lg-3">
             <div class="section-title">
-              <h2>Popular Posts</h2>
+              <h2>Trending</h2>
             </div>
 
+   			<c:set var = "i"  value = "${1}"/>
+			<c:forEach items="${listnewstrending}" var="news">
             <div class="trend-entry d-flex">
-              <div class="number align-self-start">01</div>
+              <div class="number align-self-start">0<c:out value="${i}" /></div>
               <div class="trend-contents">
-                <h2><a href="blog-single.html">News Needs to Meet Its Audiences Where They Are</a></h2>
+                <h2 style="word-wrap: break-word;"><a href="${pageContext.request.contextPath}/news.html?newsid=${news.newsId}"><c:out value="${news.newsName}" /></a></h2>
                 <div class="post-meta">
-                  <span class="d-block"><a href="#">Dave Rogers</a> in <a href="#">News</a></span>
-                  <span class="date-read">Jun 14 <span class="mx-1">&bullet;</span> 3 min read <span class="icon-star2"></span></span>
+                  <span class="d-block"><a href="#"><c:out value="${news.userName}" /></a></span>
+                  <span class="date-read"><c:out value="${news.datePost}" /> <span class="mx-1">&bullet;</span> 3 min read <span class="icon-star2"></span></span>
                 </div>
               </div>
             </div>
-
-            <div class="trend-entry d-flex">
-              <div class="number align-self-start">02</div>
-              <div class="trend-contents">
-                <h2><a href="blog-single.html">News Needs to Meet Its Audiences Where They Are</a></h2>
-                <div class="post-meta">
-                  <span class="d-block"><a href="#">Dave Rogers</a> in <a href="#">News</a></span>
-                  <span class="date-read">Jun 14 <span class="mx-1">&bullet;</span> 3 min read <span class="icon-star2"></span></span>
-                </div>
-              </div>
-            </div>
-
-            <div class="trend-entry d-flex">
-              <div class="number align-self-start">03</div>
-              <div class="trend-contents">
-                <h2><a href="blog-single.html">News Needs to Meet Its Audiences Where They Are</a></h2>
-                <div class="post-meta">
-                  <span class="d-block"><a href="#">Dave Rogers</a> in <a href="#">News</a></span>
-                  <span class="date-read">Jun 14 <span class="mx-1">&bullet;</span> 3 min read <span class="icon-star2"></span></span>
-                </div>
-              </div>
-            </div>
-
-            <div class="trend-entry d-flex pl-0">
-              <div class="number align-self-start">04</div>
-              <div class="trend-contents">
-                <h2><a href="blog-single.html">News Needs to Meet Its Audiences Where They Are</a></h2>
-                <div class="post-meta">
-                  <span class="d-block"><a href="#">Dave Rogers</a> in <a href="#">News</a></span>
-                  <span class="date-read">Jun 14 <span class="mx-1">&bullet;</span> 3 min read <span class="icon-star2"></span></span>
-                </div>
-              </div>
-            </div>
+             <c:set var = "i"  value = "${i + 1}"/>
+            </c:forEach>
             
             <p>
-              <a href="#" class="more">See All Popular <span class="icon-keyboard_arrow_right"></span></a>
+              <a href="${pageContext.request.contextPath}/categories.html?action=trending" class="more">See All Popular <span class="icon-keyboard_arrow_right"></span></a>
             </p>
           </div>
         </div>

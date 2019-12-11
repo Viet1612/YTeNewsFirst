@@ -13,7 +13,7 @@
               <div class="img-bg" style="background-image: url('${pageContext.request.contextPath}/images_news/${news.image}')"></div>
               <div class="contents">
                 <span class="caption"><c:out value="${news.categoryName}" /></span>
-                <h2 style="word-wrap: break-word;"><a href="blog-single.html"><c:out value="${news.newsName}" /></a></h2>
+                <h2 style="word-wrap: break-word;"><a href="${pageContext.request.contextPath}/news.html?newsid=${news.newsId}"><c:out value="${news.newsName}" /></a></h2>
                 <p class="mb-3" style="word-wrap: break-word;"><c:out value="${news.description}" /></p>
                 <div class="post-meta">
                   <span class="d-block"><a href="#"><c:out value="${news.userName}" /></a></span>
@@ -53,8 +53,8 @@
                <c:set var = "news0"  value = "${category0.get(0)}"/>
                
                 <div class="post-entry-1">
-                  <a href="post-single.html"><img src="${pageContext.request.contextPath}/images_news/${news0.image}" alt="Image" class="img-fluid"></a>
-                  <h2 style="word-wrap: break-word;"><a href="blog-single.html"><c:out value="${news0.newsName}" /></a></h2>
+                  <a href="${pageContext.request.contextPath}/news.html?newsid=${news0.newsId}"><img src="${pageContext.request.contextPath}/images_news/${news0.image}" alt="Image" class="img-fluid"></a>
+                  <h2 style="word-wrap: break-word;"><a href="${pageContext.request.contextPath}/news.html?newsid=${news0.newsId}"><c:out value="${news0.newsName}" /></a></h2>
                   <p style="word-wrap: break-word;"><c:out value="${news0.description}" /></p>
                   <div class="post-meta">
                     <span class="d-block"><a href="#"><c:out value="${news0.userName}" /></a></span>
@@ -72,7 +72,7 @@
                 <div class="post-entry-2 d-flex bg-light">
                   <div class="thumbnail"><img src="${pageContext.request.contextPath}/images_news/${news.image}" alt="Image" class="img-fluid"></div>
                   <div class="contents">
-                    <h2  style="word-wrap: break-word;"><a href="blog-single.html"><c:out value="${news.newsName}" /></a></h2>
+                    <h2  style="word-wrap: break-word;"><a href="${pageContext.request.contextPath}/news.html?newsid=${news.newsId}"><c:out value="${news.newsName}" /></a></h2>
                     <div class="post-meta">
                       <span class="d-block"><a href="#"><c:out value="${news.userName}" /></a></span>
                       <span class="date-read"><c:out value="${news.datePost}" /> <span class="mx-1">&bullet;</span> 3 min read <span class="icon-star2"></span></span>
@@ -97,7 +97,7 @@
             <div class="trend-entry d-flex">
               <div class="number align-self-start">0<c:out value="${i}" /></div>
               <div class="trend-contents">
-                <h2 style="word-wrap: break-word;"><a href="blog-single.html"><c:out value="${news.newsName}" /></a></h2>
+                <h2 style="word-wrap: break-word;"><a href="${pageContext.request.contextPath}/news.html?newsid=${news.newsId}"><c:out value="${news.newsName}" /></a></h2>
                 <div class="post-meta">
                   <span class="d-block"><a href="#"><c:out value="${news.userName}" /></a></span>
                   <span class="date-read"><c:out value="${news.datePost}" /><span class="mx-1">&bullet;</span> 3 min read <span class="icon-star2"></span></span>
@@ -124,7 +124,7 @@
           <div class="img-bg" style="background-image: url('${pageContext.request.contextPath}/images_news/${newstop.image}')"></div>
           <div class="contents">
             <span class="caption">${listnewstrending.get(0).categoryName}</span>
-            <h2 style="word-wrap: break-word;"><a href="blog-single.html"><c:out value="${newstop.newsName}" /></a></h2>
+            <h2 style="word-wrap: break-word;"><a href="${pageContext.request.contextPath}/news.html?newsid=${newstop.newsId}"><c:out value="${newstop.newsName}" /></a></h2>
             <p class="mb-3" style="word-wrap: break-word;"><c:out value="${newstop.description}" /></p>
             
             <div class="post-meta">
@@ -150,10 +150,10 @@
             <div class="post-entry-2 d-flex">
               <div class="thumbnail"><img src="${pageContext.request.contextPath}/images_news/${news.image}" alt="Image" class="img-fluid"></div>
               <div class="contents">
-                <h2 style="word-wrap: break-word;"><a href="blog-single.html"><c:out value="${news.newsName}" /></a></h2>
+                <h2 style="word-wrap: break-word;"><a href="${pageContext.request.contextPath}/news.html?newsid=${news.newsId}"><c:out value="${news.newsName}" /></a></h2>
                 <p style="word-wrap: break-word;" class="mb-3"><c:out value="${news.description}" /></p>
                 <div class="post-meta">
-                  <span class="d-block"><a href="#"><c:out value="${newstop.userName}" /></a></span>
+                  <span class="d-block"><a href=""><c:out value="${newstop.userName}" /></a></span>
                   <span class="date-read"><c:out value="${news.datePost}" /><span class="mx-1">&bullet;</span> 3 min read <span class="icon-star2"></span></span>
                 </div>
               </div>
@@ -172,10 +172,10 @@
             <div class="post-entry-2 d-flex">
               <div class="thumbnail"><img src="${pageContext.request.contextPath}/images_news/${news.image}" alt="Image" class="img-fluid"></div>
               <div class="contents">
-                <h2 style="word-wrap: break-word;"><a href="blog-single.html"><c:out value="${news.newsName}" /></a></h2>
+                <h2 style="word-wrap: break-word;"><a href="${pageContext.request.contextPath}/news.html?newsid=${news.newsId}"><c:out value="${news.newsName}" /></a></h2>
                 <p style="word-wrap: break-word;" class="mb-3"><c:out value="${news.description}" /></p>
                 <div class="post-meta">
-                  <span class="d-block"><a href="#"><c:out value="${newstop.userName}" /></a></span>
+                  <span class="d-block"><a href=""><c:out value="${newstop.userName}" /></a></span>
                   <span class="date-read"><c:out value="${news.datePost}" /><span class="mx-1">&bullet;</span> 3 min read <span class="icon-star2"></span></span>
                 </div>
               </div>
@@ -203,10 +203,10 @@
             <div class="post-entry-2 d-flex">
               <div class="thumbnail order-md-2" ><img src="${pageContext.request.contextPath}/images_news/${news.image}" alt="Image" class="img-fluid"></div>
               <div class="contents order-md-1 pl-0">
-                <h2 style="word-wrap: break-word;"><a href="blog-single.html"><c:out value="${news.newsName}" /></a></h2>
+                <h2 style="word-wrap: break-word;"><a href="${pageContext.request.contextPath}/news.html?newsid=${news.newsId}"><c:out value="${news.newsName}" /></a></h2>
                 <p  style="word-wrap: break-word;" class="mb-3"><c:out value="${news.description}" /></p>
                 <div class="post-meta">
-                  <span class="d-block"><a href="#"><c:out value="${newstop.userName}" /></a></span>
+                  <span class="d-block"><a href=""><c:out value="${newstop.userName}" /></a></span>
                   <span class="date-read"><c:out value="${news.datePost}" /><span class="mx-1">&bullet;</span> 3 min read <span class="icon-star2"></span></span>
                 </div>
               </div>
@@ -225,9 +225,9 @@
             <div class="trend-entry d-flex">
               <div class="number align-self-start">0<c:out value="${i}" /></div>
               <div class="trend-contents">
-                <h2 style="word-wrap: break-word;"><a href="blog-single.html"><c:out value="${news.newsName}" /></a></h2>
+                <h2 ><a style="word-wrap: break-word;" href="${pageContext.request.contextPath}/news.html?newsid=${news.newsId}"><c:out value="${news.newsName}" /></a></h2>
                 <div class="post-meta">
-                  <span class="d-block"><a href="#"><c:out value="${newstop.userName}" /></a></span>
+                  <span class="d-block"><a href="#"><c:out value="${news.userName}" /></a></span>
                   <span class="date-read"><c:out value="${news.datePost}" /> <span class="mx-1">&bullet;</span> 3 min read <span class="icon-star2"></span></span>
                 </div>
               </div>
@@ -238,12 +238,13 @@
    
             
             <p>
-              <a href="${pageContext.request.contextPath}/categories.html" class="more">See All Popular <span class="icon-keyboard_arrow_right"></span></a>
+              <a href="${pageContext.request.contextPath}/categories.html?action=recent" class="more">See All Popular <span class="icon-keyboard_arrow_right"></span></a>
             </p>
           </div>
           <!--end recent -->
         </div>
 
+<%--
         <div class="row">
           <div class="col-lg-6">
             <ul class="custom-pagination list-unstyled">
@@ -254,6 +255,7 @@
             </ul>
           </div>
         </div>
+        --%>
       </div>
     </div>
 

@@ -35,7 +35,7 @@ public class IndexController extends HttpServlet {
 			List<News> listNewsByCategoryId = null;
 			List<Category> listCategories = categoryLogic.getListCategory();
 			List<News> listNewsHeader = newsLogic.getListNewsHome(5, 0, Constant.NOT_VIEW_ORDER);
-			List<News> listNewsTrending = newsLogic.getListNewsHome(4, 0, Constant.VIEW_ORDER);
+			List<News> listNewsTrending = newsLogic.getListNewsHome(5, 0, Constant.VIEW_ORDER);
 			for (int i = 0; i < listCategories.size(); i++) {
 				listNewsByCategoryId = newsLogic.getListNewsHome(5, listCategories.get(i).getCategoryId(), Constant.NOT_VIEW_ORDER);
 				request.setAttribute("category" + i, listNewsByCategoryId);

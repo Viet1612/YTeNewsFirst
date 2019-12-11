@@ -67,8 +67,8 @@ public class NewsLogicImpl implements NewsLogic {
 	 * @see ytebnews.logics.NewsLogic#getNewsById(int)
 	 */
 	@Override
-	public News getNewsById(int newsId) throws ClassNotFoundException, SQLException {
-		return newsDao.getNewsById(newsId);
+	public News getNewsById(int newsId, int approve) throws ClassNotFoundException, SQLException {
+		return newsDao.getNewsById(newsId, approve);
 	}
 
 	/* (non-javadoc)
@@ -111,6 +111,15 @@ public class NewsLogicImpl implements NewsLogic {
 	public List<News> getListNewsCategories(int offset, int limit, int categoryId, String keyName,
 			String orderByTrending) throws ClassNotFoundException, SQLException {
 		return newsDao.getListNewsCategories(offset, limit, categoryId, keyName, orderByTrending);
+	}
+
+	/* (non-javadoc)
+	 * @see ytebnews.logics.NewsLogic#updateView(int)
+	 */
+	@Override
+	public void updateView(int newsId) throws SQLException, ClassNotFoundException {
+		newsDao.updateView(newsId);
+		
 	}
 
 }

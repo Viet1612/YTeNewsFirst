@@ -44,7 +44,7 @@ public class EditNewsController extends HttpServlet {
 			// userId paseInt không lỗi và tồn tại mới hiển thị
 			if (newsId > 0 && newsLogic.checkExistNewsId(newsId)) {
 				// Lấy news bằng userId
-				News news = newsLogic.getNewsById(newsId);
+				News news = newsLogic.getNewsById(newsId, Constant.APPROVE_DC);
 				// Set đối tượng lên rq
 				request.setAttribute(Constant.NEWS, news);
 				RequestDispatcher dispatch = request.getServletContext().getRequestDispatcher(Constant.EDIT_NEWS_JSP);

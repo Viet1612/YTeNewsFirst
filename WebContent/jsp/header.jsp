@@ -8,7 +8,7 @@
   <title>YteNews24h</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
+	<link rel="shortcut icon" type="image/png" href="${pageContext.request.contextPath}/images/icon.png"/>
 
   <link href="https://fonts.googleapis.com/css?family=B612+Mono|Cabin:400,700&display=swap" rel="stylesheet">
 
@@ -67,10 +67,10 @@
 					<a href="#" class="d-inline-block p-3"><span
 						class="icon-instagram"></span></a>
 				</div>
-				<form action="#" class="search-form d-inline-block">
-
+				<form action="${pageContext.request.contextPath}/categories.html" class="search-form d-inline-block">
+					<input type="hidden" name="action" value="search" />
 					<div class="d-flex">
-						<input type="email" class="form-control" placeholder="Search...">
+						<input type="text" class="form-control" placeholder="Search..." value="${keyname}" name="keyname">
 						<button type="submit" class="btn btn-secondary">
 							<span class="icon-search"></span>
 						</button>

@@ -9,6 +9,7 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.time.ZonedDateTime;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Calendar;
 import java.util.List;
 
@@ -195,6 +196,13 @@ public class Common {
 			isLength = true;
 		}
 		return isLength;
+	}
+	
+	public static List<String> splitN(String input){
+		String[] listN = input.split("\\n");
+		List<String> listContent = Arrays.asList(listN);
+
+		return listContent;
 	}
 
 	
