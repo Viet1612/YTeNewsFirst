@@ -145,7 +145,10 @@ public class InsertNewsController extends HttpServlet {
 			
 //	
 		} catch (Exception e) {
-			e.printStackTrace();
+			System.out.println(this.getClass().getName() + "-"
+					+ Thread.currentThread().getStackTrace()[1].getMethodName() + e.getMessage());
+			// Chuyển đến mh lỗi
+			response.sendRedirect(request.getContextPath() + Constant.SYSTEM_ERR_URL);
 		}
 
 	}

@@ -5,7 +5,7 @@
 <html lang="en">
 
 <head>
-  <title>YteNews24h</title>
+  <title>Yte24hNews</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	<link rel="shortcut icon" type="image/png" href="${pageContext.request.contextPath}/images/icon.png"/>
@@ -54,7 +54,7 @@
 	<div class="container">
 		<div class="row align-items-center">
 			<div class="col-12 col-lg-6 d-flex">
-				<a href="index.html" class="site-logo"> YTeNews24h </a> <a href="#"
+				<a href="${pageContext.request.contextPath}/index.html" class="site-logo"> YTe24hNews </a> <a href="#"
 					class="ml-auto d-inline-block d-lg-none site-menu-toggle js-menu-toggle text-black"><span
 					class="icon-menu h3"></span></a>
 

@@ -525,8 +525,7 @@ public class NewsDaoImpl extends BaseDaoImpl implements NewsDao {
 				}
 				// Trường hợp có nhập full name
 				if (keyName.trim().length() > 0) {
-					sqlQuery.append("AND (n.news_name LIKE ? ");
-					sqlQuery.append("OR c.category_name LIKE ?) ");
+					sqlQuery.append("AND n.news_name LIKE ? ");
 				}
 				if (orderByTrending.trim().length() > 0) {
 					sqlQuery.append("ORDER BY n.view DESC ");
@@ -543,11 +542,9 @@ public class NewsDaoImpl extends BaseDaoImpl implements NewsDao {
 				}
 				if (keyName.trim().length() > 0) {
 					pst.setString(++index, "%" + keyName + "%");
-					pst.setString(++index, "%" + keyName + "%");
 				}
 				pst.setInt(++index, offset);
 				pst.setInt(++index, limit);
-				System.out.println(pst.toString());
 				rs = pst.executeQuery();
 				// Lấy các bản ghi
 				listNews = new ArrayList<News>();

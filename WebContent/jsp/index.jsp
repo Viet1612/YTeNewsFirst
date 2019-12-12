@@ -17,7 +17,7 @@
                 <p class="mb-3" style="word-wrap: break-word;"><c:out value="${news.description}" /></p>
                 <div class="post-meta">
                   <span class="d-block"><a href="#"><c:out value="${news.userName}" /></a></span>
-                  <span class="date-read"><c:out value="${news.datePost}" /><span class="mx-1">&bullet;</span> 3 min read <span class="icon-star2"></span></span>
+                  <span class="date-read"><c:out value="${news.datePost}" />&nbsp<span class="icon-star2">&nbsp</span>${news.categoryName}<span>&nbsp</span><span class="icon-star2"></span></span>
                 </div>
 
               </div>
@@ -58,7 +58,7 @@
                   <p style="word-wrap: break-word;"><c:out value="${news0.description}" /></p>
                   <div class="post-meta">
                     <span class="d-block"><a href="#"><c:out value="${news0.userName}" /></a></span>
-                    <span class="date-read"><c:out value="${news0.datePost}" /><span class="mx-1">&bullet;</span> 3 min read <span class="icon-star2"></span></span>
+                    <span class="date-read"><c:out value="${news0.datePost}" />&nbsp<span class="icon-star2">&nbsp</span>${news0.categoryName}<span>&nbsp</span><span class="icon-star2"></span></span>
                   </div>
                 </div>
               </div>
@@ -75,7 +75,7 @@
                     <h2  style="word-wrap: break-word;"><a href="${pageContext.request.contextPath}/news.html?newsid=${news.newsId}"><c:out value="${news.newsName}" /></a></h2>
                     <div class="post-meta">
                       <span class="d-block"><a href="#"><c:out value="${news.userName}" /></a></span>
-                      <span class="date-read"><c:out value="${news.datePost}" /> <span class="mx-1">&bullet;</span> 3 min read <span class="icon-star2"></span></span>
+                      <span class="date-read"><c:out value="${news.datePost}" /> &nbsp<span class="icon-star2">&nbsp</span>${news.categoryName}<span>&nbsp</span><span class="icon-star2"></span></span>
                     </div>
                   </div>
                 </div>
@@ -100,7 +100,7 @@
                 <h2 style="word-wrap: break-word;"><a href="${pageContext.request.contextPath}/news.html?newsid=${news.newsId}"><c:out value="${news.newsName}" /></a></h2>
                 <div class="post-meta">
                   <span class="d-block"><a href="#"><c:out value="${news.userName}" /></a></span>
-                  <span class="date-read"><c:out value="${news.datePost}" /><span class="mx-1">&bullet;</span> 3 min read <span class="icon-star2"></span></span>
+                  <span class="date-read"><c:out value="${news.datePost}" />&nbsp<span class="icon-star2">&nbsp</span>${news.categoryName}<span>&nbsp</span><span class="icon-star2"></span></span>
                 </div>
               </div>
             </div>
@@ -129,7 +129,7 @@
             
             <div class="post-meta">
               <span class="d-block"><a href="#"><c:out value="${newstop.userName}" /></a></span>
-              <span class="date-read"><c:out value="${newstop.datePost}" /><span class="mx-1">&bullet;</span> 3 min read <span class="icon-star2"></span></span>
+              <span class="date-read"><c:out value="${newstop.datePost}" />&nbsp<span class="icon-star2">&nbsp</span>${newstop.categoryName}<span>&nbsp</span><span class="icon-star2"></span></span>
             </div>
 
           </div>
@@ -154,7 +154,7 @@
                 <p style="word-wrap: break-word;" class="mb-3"><c:out value="${news.description}" /></p>
                 <div class="post-meta">
                   <span class="d-block"><a href=""><c:out value="${newstop.userName}" /></a></span>
-                  <span class="date-read"><c:out value="${news.datePost}" /><span class="mx-1">&bullet;</span> 3 min read <span class="icon-star2"></span></span>
+                  <span class="date-read"><c:out value="${news.datePost}" />&nbsp<span class="icon-star2">&nbsp</span>${news.categoryName}<span>&nbsp</span><span class="icon-star2"></span></span>
                 </div>
               </div>
             </div>
@@ -176,7 +176,7 @@
                 <p style="word-wrap: break-word;" class="mb-3"><c:out value="${news.description}" /></p>
                 <div class="post-meta">
                   <span class="d-block"><a href=""><c:out value="${newstop.userName}" /></a></span>
-                  <span class="date-read"><c:out value="${news.datePost}" /><span class="mx-1">&bullet;</span> 3 min read <span class="icon-star2"></span></span>
+                  <span class="date-read"><c:out value="${news.datePost}" />&nbsp<span class="icon-star2">&nbsp</span>${news.categoryName}<span>&nbsp</span><span class="icon-star2"></span></span>
                 </div>
               </div>
             </div>
@@ -207,7 +207,7 @@
                 <p  style="word-wrap: break-word;" class="mb-3"><c:out value="${news.description}" /></p>
                 <div class="post-meta">
                   <span class="d-block"><a href=""><c:out value="${newstop.userName}" /></a></span>
-                  <span class="date-read"><c:out value="${news.datePost}" /><span class="mx-1">&bullet;</span> 3 min read <span class="icon-star2"></span></span>
+                  <span class="date-read"><c:out value="${news.datePost}" />&nbsp<span class="icon-star2">&nbsp</span>${news.categoryName}<span>&nbsp</span><span class="icon-star2"></span></span>
                 </div>
               </div>
             </div>
@@ -228,7 +228,7 @@
                 <h2 ><a style="word-wrap: break-word;" href="${pageContext.request.contextPath}/news.html?newsid=${news.newsId}"><c:out value="${news.newsName}" /></a></h2>
                 <div class="post-meta">
                   <span class="d-block"><a href="#"><c:out value="${news.userName}" /></a></span>
-                  <span class="date-read"><c:out value="${news.datePost}" /> <span class="mx-1">&bullet;</span> 3 min read <span class="icon-star2"></span></span>
+                  <span class="date-read"><c:out value="${news.datePost}" /> &nbsp<span class="icon-star2">&nbsp</span>${news.categoryName}<span>&nbsp</span><span class="icon-star2"></span></span>
                 </div>
               </div>
             </div>

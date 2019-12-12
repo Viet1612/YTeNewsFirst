@@ -12,10 +12,10 @@ import javax.servlet.http.HttpServletResponse;
 import ytebnews.utils.Constant;
 
 /**
- * Servlet implementation class HomeAdminController
+ * Servlet implementation class ErrorController
  */
-@WebServlet(value = { Constant.INDEX_ADMIN_URL })
-public class HomeAdminController extends HttpServlet {
+@WebServlet(value = { Constant.SYSTEM_ERR_URL })
+public class ErrorController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	/**
@@ -24,15 +24,8 @@ public class HomeAdminController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		try {
-			RequestDispatcher dispatch = request.getServletContext().getRequestDispatcher(Constant.INDEX_ADMIN_JSP);
-			dispatch.forward(request, response);
-		} catch (Exception e) {
-			System.out.println(this.getClass().getName() + "-"
-					+ Thread.currentThread().getStackTrace()[1].getMethodName() + e.getMessage());
-			// Chuyển đến mh lỗi
-			response.sendRedirect(request.getContextPath() + Constant.SYSTEM_ERR_URL);
-		}
+		RequestDispatcher dispatch = request.getServletContext().getRequestDispatcher(Constant.ERROR_JSP);
+		dispatch.forward(request, response);
 	}
 
 }

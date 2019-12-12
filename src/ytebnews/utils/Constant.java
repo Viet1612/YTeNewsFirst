@@ -71,6 +71,7 @@ public class Constant {
 	public static final String INDEX_JSP = "/jsp/index.jsp";
 	public static final String CATEGORIES_JSP = "/jsp/categories.jsp";
 	public static final String NEWS_SINGLE_JSP = "/jsp/news_single.jsp";
+	public static final String ERROR_JSP =  "/jsp/404.jsp";
 	
 	
 	//servlet
@@ -141,6 +142,7 @@ public class Constant {
 	public static final String TRENDING_CATE = "TOP TRENDING";
 	public static final String RECENT_NEWS = "RECENT NEWS";
 	public static final String SEARCH_LIST = "SEARCH RESULT";
+
 	
 	
 	

@@ -46,7 +46,10 @@ public class DeleteNewsController extends HttpServlet {
 			}
 			response.sendRedirect(request.getContextPath() + path + "?action=deletesuccess");
 		} catch (Exception e) {
-			// TODO: handle exception
+			System.out.println(this.getClass().getName() + "-"
+					+ Thread.currentThread().getStackTrace()[1].getMethodName() + e.getMessage());
+			// Chuyển đến mh lỗi
+			response.sendRedirect(request.getContextPath() + Constant.SYSTEM_ERR_URL);
 		}
 
 	}

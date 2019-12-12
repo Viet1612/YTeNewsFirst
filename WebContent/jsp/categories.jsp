@@ -24,7 +24,7 @@
                 <p class="mb-3" style="word-wrap: break-word;"><c:out value="${news.description}" /></p>
                 <div class="post-meta">
                   <span class="d-block"><c:out value="${news.userName}" /></span>
-                  <span class="date-read"><c:out value="${news.datePost}" /> <span class="mx-1">&bullet;</span> 3 min read <span class="icon-star2"></span></span>
+                  <span class="date-read"><c:out value="${news.datePost}" /> &nbsp<span class="icon-star2">&nbsp</span>${news.categoryName}<span>&nbsp</span><span class="icon-star2"></span></span>
                 </div>
               </div>
             </div>
@@ -44,7 +44,7 @@
                 <h2 style="word-wrap: break-word;"><a href="${pageContext.request.contextPath}/news.html?newsid=${news.newsId}"><c:out value="${news.newsName}" /></a></h2>
                 <div class="post-meta">
                   <span class="d-block"><a href="#"><c:out value="${news.userName}" /></a></span>
-                  <span class="date-read"><c:out value="${news.datePost}" /> <span class="mx-1">&bullet;</span> 3 min read <span class="icon-star2"></span></span>
+                  <span class="date-read"><c:out value="${news.datePost}" /> &nbsp<span class="icon-star2">&nbsp</span>${news.categoryName}<span>&nbsp</span><span class="icon-star2"></span></span>
                 </div>
               </div>
             </div>
