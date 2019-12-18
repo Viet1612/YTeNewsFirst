@@ -16,32 +16,43 @@
             <div class="section-title mb-5">
               <h2>Contact Us</h2>
             </div>
-            <form method="post">
-              
+            <form method="post" action="${pageContext.request.contextPath}/contact.html">
+                  <div class="row">
+                      <div class="col-md-6 form-group" >
+                      <font color = "red">${msg006}</font>
+                      </div>
+                  </div>
+            	<c:forEach items="${listerr}" var="err">
+              	<div class="row">
+                      <div class="col-md-6 form-group" >
+                      <font color = "red">${msg006}${err}</font>
+                      </div>
+                  </div>
+                  </c:forEach>
                   <div class="row">
                       <div class="col-md-6 form-group">
-                          <label for="fname">First Name</label>
-                          <input type="text" id="fname" class="form-control form-control-lg">
-                      </div>
-                      <div class="col-md-6 form-group">
-                          <label for="lname">Last Name</label>
-                          <input type="text" id="lname" class="form-control form-control-lg">
+                          <label for="fname">Name</label>
+                          <input type="text" name="name" id="name" class="form-control form-control-lg" value="<c:out value="${contact.userName}" />">
                       </div>
                   </div>
                   <div class="row">
+                  
                       <div class="col-md-6 form-group">
                           <label for="eaddress">Email Address</label>
-                          <input type="text" id="eaddress" class="form-control form-control-lg">
+                          <input type="text" name="email" id="email" class="form-control form-control-lg" value="<c:out value="${contact.email}" />">
                       </div>
+
+                  </div>
+                    <div class="row">
                       <div class="col-md-6 form-group">
                           <label for="tel">Tel. Number</label>
-                          <input type="text" id="tel" class="form-control form-control-lg">
+                          <input type="text" name="tel" id="tel" class="form-control form-control-lg" value="<c:out value="${contact.tel}" />">
                       </div>
                   </div>
                   <div class="row">
                       <div class="col-md-12 form-group">
                           <label for="message">Message</label>
-                          <textarea name="" id="message" cols="30" rows="10" class="form-control"></textarea>
+                          <textarea name="message" id="message" cols="30" rows="10" class="form-control" ><c:out value="${contact.message}" /></textarea>
                       </div>
                   </div>
 

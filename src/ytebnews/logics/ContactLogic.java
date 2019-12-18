@@ -1,10 +1,18 @@
-package ytebnews.dao;
+/**
+ * Copyright(C) 2019 Tran Thanh Viet
+ * ContactLogic.java, Dec 14, 2019 VietTT
+ */
+package ytebnews.logics;
 
 import java.sql.SQLException;
 
 import ytebnews.entities.Contact;
 
-public interface ContactDao {
+/**
+ * @author VietTT
+ *
+ */
+public interface ContactLogic {
 	
 	/**
 	 * Insert Contact

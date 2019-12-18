@@ -21,7 +21,6 @@ import java.util.List;
  */
 public class Common {
 
-
 	/**
 	 * Mã hóa SHA1
 	 * 
@@ -165,8 +164,6 @@ public class Common {
 		return result;
 	}
 
-
-
 	/**
 	 * Lấy thời gian hiện tại
 	 * 
@@ -181,7 +178,7 @@ public class Common {
 		timeNow = yearNow + "-" + monthNow + "-" + dayNow;
 		return timeNow;
 	}
-	
+
 	/**
 	 * Check độ dài nhập thỏa mãn
 	 * 
@@ -197,13 +194,56 @@ public class Common {
 		}
 		return isLength;
 	}
-	
-	public static List<String> splitN(String input){
+
+	public static List<String> splitN(String input) {
 		String[] listN = input.split("\\n");
 		List<String> listContent = Arrays.asList(listN);
 
 		return listContent;
 	}
 
-	
+	/**
+	 * Kiểm tra thông tin nhập đúng format chưa
+	 * 
+	 * @param input      dữ liệu nhập từ form
+	 * @param typeFormat kiểu format
+	 * @return true đúng format, false ngược lại
+	 */
+	public static boolean checkFormat(String input, String typeFormat) {
+		boolean isFormat = false;
+		String regex = typeFormat;
+		// kiểm tra toàn bộ String có khớp với regex
+		isFormat = input.matches(regex);
+		return isFormat;
+	}
+
+	/**
+	 * Kiểm tra pass nhập trùng
+	 * 
+	 * @param pass    mật khẩu
+	 * @param passCon mật khẩu nhập lại
+	 * @return true trùng nhau
+	 */
+	public static boolean checkPassConfirm(String pass, String passCon) {
+		boolean isConf = false;
+		// So sánh 2 pass trùng trả về true
+		if (passCon.equals(pass)) {
+			isConf = true;
+		}
+		return isConf;
+	}
+
+	/**
+	 * Add lỗi vào list khi không rỗng
+	 * 
+	 * @param lissErrMes danh sách lỗi
+	 * @param err        lỗi
+	 */
+	public static void addErr(List<String> listErrMes, String err) {
+		// Kiểm tra err rỗng hay không
+		if (Common.checkEmpty(err)) {
+			listErrMes.add(err);
+		}
+	}
+
 }

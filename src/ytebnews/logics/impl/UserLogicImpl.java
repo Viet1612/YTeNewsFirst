@@ -6,6 +6,7 @@ package ytebnews.logics.impl;
 
 import java.security.NoSuchAlgorithmException;
 import java.sql.SQLException;
+import java.util.List;
 
 import ytebnews.dao.UserDao;
 import ytebnews.dao.impl.UserDaoImpl;
@@ -55,6 +56,43 @@ public class UserLogicImpl implements UserLogic {
 	@Override
 	public boolean checkUserIdAuthor(int userId) throws ClassNotFoundException, SQLException {
 		return userDao.checkUserId(userId, Constant.RULE_AUTHOR);
+	}
+
+	/* (non-javadoc)
+	 * @see ytebnews.logics.UserLogic#getListUser(int, int, java.lang.String)
+	 */
+	@Override
+	public List<User> getListUser(int offset, int limit, String keyName) throws SQLException, ClassNotFoundException {
+		return userDao.getListUser(offset, limit, keyName);
+	}
+
+	/* (non-javadoc)
+	 * @see ytebnews.logics.UserLogic#getTotalUser(java.lang.String)
+	 */
+	@Override
+	public int getTotalUser(String keyName) throws SQLException, ClassNotFoundException {
+		return userDao.getTotalUser(keyName);
+	}
+
+	/* (non-javadoc)
+	 * @see ytebnews.logics.UserLogic#insertUser(ytebnews.entities.User)
+	 */
+	@Override
+	public void insertUser(User user) throws SQLException, ClassNotFoundException {
+		userDao.insertUser(user);
+		
+	}
+
+	/* (non-javadoc)
+	 * @see ytebnews.logics.UserLogic#checkExistLoginName(java.lang.String)
+	 */
+	@Override
+	public boolean checkExistLoginName(String loginName) throws ClassNotFoundException, SQLException {
+		boolean isExist = false;
+		if (userDao.getUserByLoginName(loginName) != null) {
+			isExist = true;
+		}
+		return isExist;
 	}
 
 }

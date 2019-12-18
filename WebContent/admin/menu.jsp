@@ -28,7 +28,7 @@
 				href="${pageContext.request.contextPath}/listnews.do"><i
 					class="fa fa-copy"></i> <span> Management News</span></a></li>
 			<li><a
-				href="${pageContext.request.contextPath}/admin/manager_users.jsp"><i
+				href="${pageContext.request.contextPath}/listuser.do"><i
 					class="fa fa-venus-mars"></i> <span> Management Users</span></a></li>
 			<li><a
 				href="${pageContext.request.contextPath}/admin/manager_contact.jsp"><i

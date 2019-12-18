@@ -15,6 +15,21 @@ public class Contact {
 	private String email;
 	private String tel;
 	private String message;
+	private String dateContact;
+
+	/**
+	 * @return the dateContact
+	 */
+	public String getDateContact() {
+		return dateContact;
+	}
+
+	/**
+	 * @param dateContact the dateContact to set
+	 */
+	public void setDateContact(String dateContact) {
+		this.dateContact = dateContact;
+	}
 
 	/**
 	 * @return the contactId

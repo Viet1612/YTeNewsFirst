@@ -16,8 +16,25 @@ public class User {
 	private String email;
 	private String tel;
 	private String pass;
+	private String passConf;
 	private String salt;
 	private int rule;
+
+	
+	
+	/**
+	 * @return the passConf
+	 */
+	public String getPassConf() {
+		return passConf;
+	}
+
+	/**
+	 * @param passConf the passConf to set
+	 */
+	public void setPassConf(String passConf) {
+		this.passConf = passConf;
+	}
 
 	/**
 	 * @return the userId

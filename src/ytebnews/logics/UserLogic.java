@@ -6,6 +6,7 @@ package ytebnews.logics;
 
 import java.security.NoSuchAlgorithmException;
 import java.sql.SQLException;
+import java.util.List;
 
 import ytebnews.entities.User;
 
@@ -51,5 +52,42 @@ public interface UserLogic {
 	 * @throws ClassNotFoundException
 	 */
 	public boolean checkUserIdAuthor(int userId) throws ClassNotFoundException, SQLException;
+	
+	/**
+	 * Lấy list user
+	 * @param offset
+	 * @param limit
+	 * @param keyName
+	 * @return listUsser
+	 * @throws ClassNotFoundException 
+	 * @throws SQLException 
+	 */
+	public List<User> getListUser(int offset, int limit, String keyName) throws SQLException, ClassNotFoundException;
+	
+	/**
+	 * Lấy tổng user
+	 * @param keyname
+	 * @return tổng số user
+	 * @throws ClassNotFoundException 
+	 * @throws SQLException 
+	 */
+	public int getTotalUser(String keyName) throws SQLException, ClassNotFoundException;
+	
+	/**
+	 * Insert User
+	 * @param user
+	 * @throws ClassNotFoundException 
+	 * @throws SQLException 
+	 */
+	public void insertUser(User user) throws SQLException, ClassNotFoundException;
+	
+	/**
+	 * Check tồn tại 
+	 * @param loginName
+	 * @return true đã tồn tại
+	 * @throws SQLException 
+	 * @throws ClassNotFoundException 
+	 */
+	public boolean checkExistLoginName(String loginName) throws ClassNotFoundException, SQLException;
 
 }

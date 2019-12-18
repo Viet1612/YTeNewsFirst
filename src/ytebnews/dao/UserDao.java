@@ -5,6 +5,7 @@
 package ytebnews.dao;
 
 import java.sql.SQLException;
+import java.util.List;
 
 import ytebnews.entities.User;
 
@@ -33,5 +34,33 @@ public interface UserDao {
 	 * @throws ClassNotFoundException 
 	 */
 	public boolean checkUserId(int userId, int rule) throws ClassNotFoundException, SQLException;
+	
+	/**
+	 * Lấy list user
+	 * @param offset
+	 * @param limit
+	 * @param keyName
+	 * @return listUsser
+	 * @throws ClassNotFoundException 
+	 * @throws SQLException 
+	 */
+	public List<User> getListUser(int offset, int limit, String keyName) throws SQLException, ClassNotFoundException;
+	
+	/**
+	 * Lấy tổng user
+	 * @param keyname
+	 * @return tổng số user
+	 * @throws ClassNotFoundException 
+	 * @throws SQLException 
+	 */
+	public int getTotalUser(String keyName) throws SQLException, ClassNotFoundException;
+	
+	/**
+	 * Insert User
+	 * @param user
+	 * @throws ClassNotFoundException 
+	 * @throws SQLException 
+	 */
+	public void insertUser(User user) throws SQLException, ClassNotFoundException;
 
 }
