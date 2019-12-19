@@ -79,7 +79,7 @@
                                     </form>
 
                                     <div class="col-md-6">
-                                        <button onclick="window.location.href='insert_user.jsp'" class="btn btn-success">Add User</button>
+                                        <a href="${pageContext.request.contextPath}/insertuser.do"><button class="btn btn-success"> Add User</button></a>
                                     </div>
                                 </div>
                                                  <br>

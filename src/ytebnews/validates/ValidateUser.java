@@ -62,7 +62,6 @@ public class ValidateUser {
 		// fullname
 		String fullNameErr = validateFullName(user.getFullName());
 		Common.addErr(listErrMes, fullNameErr);
-		;
 
 		// email
 		String emailErr = validateEmail(user.getEmail(), user.getUserId());
